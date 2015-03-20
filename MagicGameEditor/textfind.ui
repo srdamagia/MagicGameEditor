@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TextFind</class>
+ <widget class="QWidget" name="TextFind">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>30</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <property name="leftMargin">
+    <number>9</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Find:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="txtFind"/>
+   </item>
+   <item>
+    <widget class="QWidget" name="widget" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QToolButton" name="btnFindNext">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="MagicGameEditor.qrc">
+          <normaloff>:/MagicGameEditor/Images/find_down.png</normaloff>:/MagicGameEditor/Images/find_down.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="btnFindPrevious">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="MagicGameEditor.qrc">
+          <normaloff>:/MagicGameEditor/Images/find_up.png</normaloff>:/MagicGameEditor/Images/find_up.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+  <action name="actionFind_Next">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/find_down.png</normaloff>:/MagicGameEditor/Images/find_down.png</iconset>
+   </property>
+   <property name="text">
+    <string>Find Next</string>
+   </property>
+   <property name="toolTip">
+    <string>Find Next</string>
+   </property>
+  </action>
+  <action name="actionFind_Previous">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/find_up.png</normaloff>:/MagicGameEditor/Images/find_up.png</iconset>
+   </property>
+   <property name="text">
+    <string>Find Previous</string>
+   </property>
+   <property name="toolTip">
+    <string>Find Previous</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="MagicGameEditor.qrc"/>
+ </resources>
+ <connections/>
+</ui>

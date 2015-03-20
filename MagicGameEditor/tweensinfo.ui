@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TweensInfo</class>
+ <widget class="QWidget" name="TweensInfo">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>410</width>
+    <height>275</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <layout class="QGridLayout" name="layoutToolBar"/>
+   </item>
+   <item>
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>408</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item row="0" column="0">
+        <layout class="QVBoxLayout" name="layoutTweens"/>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+  <action name="actionTranslate">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/transform_move.png</normaloff>:/MagicGameEditor/Images/transform_move.png</iconset>
+   </property>
+   <property name="text">
+    <string>Translate</string>
+   </property>
+   <property name="toolTip">
+    <string>Translate</string>
+   </property>
+  </action>
+  <action name="actionRotate">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/transform_rotate.png</normaloff>:/MagicGameEditor/Images/transform_rotate.png</iconset>
+   </property>
+   <property name="text">
+    <string>Rotate</string>
+   </property>
+   <property name="toolTip">
+    <string>Rotate</string>
+   </property>
+  </action>
+  <action name="actionScale">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/transform_scale.png</normaloff>:/MagicGameEditor/Images/transform_scale.png</iconset>
+   </property>
+   <property name="text">
+    <string>Scale</string>
+   </property>
+   <property name="toolTip">
+    <string>Scale</string>
+   </property>
+  </action>
+  <action name="actionAlpha">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/shading.png</normaloff>:/MagicGameEditor/Images/shading.png</iconset>
+   </property>
+   <property name="text">
+    <string>Alpha</string>
+   </property>
+   <property name="toolTip">
+    <string>Alpha</string>
+   </property>
+  </action>
+  <action name="actionGo_To">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/goto.png</normaloff>:/MagicGameEditor/Images/goto.png</iconset>
+   </property>
+   <property name="text">
+    <string>Go To</string>
+   </property>
+   <property name="toolTip">
+    <string>Go To</string>
+   </property>
+  </action>
+  <action name="actionLook_At">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/eye.png</normaloff>:/MagicGameEditor/Images/eye.png</iconset>
+   </property>
+   <property name="text">
+    <string>Look At</string>
+   </property>
+   <property name="toolTip">
+    <string>Look At</string>
+   </property>
+  </action>
+  <action name="actionDelay">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/clock.png</normaloff>:/MagicGameEditor/Images/clock.png</iconset>
+   </property>
+   <property name="text">
+    <string>Delay</string>
+   </property>
+   <property name="toolTip">
+    <string>Delay</string>
+   </property>
+  </action>
+  <action name="actionCustom">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/configure.png</normaloff>:/MagicGameEditor/Images/configure.png</iconset>
+   </property>
+   <property name="text">
+    <string>Custom</string>
+   </property>
+   <property name="toolTip">
+    <string>Custom</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="MagicGameEditor.qrc"/>
+ </resources>
+ <connections/>
+</ui>

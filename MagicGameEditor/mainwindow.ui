@@ -1,0 +1,1675 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>936</width>
+    <height>668</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>640</width>
+    <height>480</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout_3">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <item row="1" column="0">
+     <widget class="QFrame" name="backView">
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+      <property name="lineWidth">
+       <number>1</number>
+      </property>
+      <property name="midLineWidth">
+       <number>0</number>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QFrame" name="render">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QGridLayout" name="viewLayout">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="toolRender">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <property name="leftMargin">
+           <number>3</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>3</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="font">
+             <font>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Translate/Rotate/Scale</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="font">
+             <font>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="chkTRSX">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 0, 0);</string>
+            </property>
+            <property name="text">
+             <string>x:</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="chkTRSY">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(0, 128, 0);</string>
+            </property>
+            <property name="text">
+             <string>y:</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="chkTRSZ">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(0, 0, 255);</string>
+            </property>
+            <property name="text">
+             <string>z:</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>1</width>
+              <height>1</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="lblAxis">
+            <property name="font">
+             <font>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Axis</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="rbAxisCamera">
+            <property name="font">
+             <font>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Camera</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="rbAxisGlobal">
+            <property name="font">
+             <font>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Global</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="rbAxisLocal">
+            <property name="font">
+             <font>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Local</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>936</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="actionNew"/>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionSave_As"/>
+    <addaction name="separator"/>
+    <addaction name="actionPack"/>
+    <addaction name="separator"/>
+    <addaction name="actionClose_Project"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>&amp;Edit</string>
+    </property>
+    <addaction name="actionCopy"/>
+    <addaction name="actionPaste"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>&amp;View</string>
+    </property>
+    <addaction name="actionShow_Gizmos"/>
+    <addaction name="actionShow_GizmosPhysics"/>
+    <addaction name="actionShow_FPS"/>
+    <addaction name="actionShow_Information"/>
+    <addaction name="actionShow_Mouse_Position"/>
+   </widget>
+   <widget class="QMenu" name="menuWindow">
+    <property name="title">
+     <string>&amp;Window</string>
+    </property>
+    <addaction name="actionDevice4_3"/>
+    <addaction name="actionDevice16_9"/>
+    <addaction name="actionDevice16_10"/>
+    <addaction name="actionFree"/>
+    <addaction name="separator"/>
+    <addaction name="actionPortrait"/>
+    <addaction name="actionLandscape"/>
+    <addaction name="separator"/>
+    <addaction name="actionReset_Window_Layout"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <widget class="QMenu" name="menuScene">
+    <property name="title">
+     <string>&amp;Scene</string>
+    </property>
+    <widget class="QMenu" name="menuAdd">
+     <property name="title">
+      <string>Add</string>
+     </property>
+     <property name="icon">
+      <iconset resource="MagicGameEditor.qrc">
+       <normaloff>:/MagicGameEditor/Images/world.png</normaloff>:/MagicGameEditor/Images/world.png</iconset>
+     </property>
+     <addaction name="actionAddSprite"/>
+     <addaction name="actionAddText"/>
+     <addaction name="separator"/>
+     <addaction name="actionAddWindow"/>
+     <addaction name="actionAddButton"/>
+     <addaction name="actionAddSlider"/>
+     <addaction name="actionJoystick"/>
+     <addaction name="separator"/>
+     <addaction name="actionCamera"/>
+     <addaction name="actionAddModel"/>
+     <addaction name="actionLight"/>
+     <addaction name="actionParticles"/>
+     <addaction name="actionTerrain"/>
+     <addaction name="actionWater"/>
+     <addaction name="actionVegetation"/>
+     <addaction name="separator"/>
+     <addaction name="actionSound"/>
+     <addaction name="separator"/>
+     <addaction name="actionInstance"/>
+    </widget>
+    <widget class="QMenu" name="menuLayers">
+     <property name="title">
+      <string>Layers</string>
+     </property>
+     <property name="icon">
+      <iconset resource="MagicGameEditor.qrc">
+       <normaloff>:/MagicGameEditor/Images/layers.png</normaloff>:/MagicGameEditor/Images/layers.png</iconset>
+     </property>
+     <addaction name="actionAddLayer"/>
+     <addaction name="actionRemoveLayer"/>
+     <addaction name="actionRenameLayer"/>
+     <addaction name="separator"/>
+     <addaction name="actionVisibleLayer"/>
+    </widget>
+    <addaction name="menuAdd"/>
+    <addaction name="menuLayers"/>
+    <addaction name="separator"/>
+    <addaction name="actionRemoveObject"/>
+    <addaction name="actionCloneObject"/>
+    <addaction name="actionRenameObject"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuScene"/>
+   <addaction name="menuView"/>
+   <addaction name="menuWindow"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="windowTitle">
+    <string>Project</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionNew"/>
+   <addaction name="actionOpen"/>
+   <addaction name="actionSave"/>
+   <addaction name="actionSave_As"/>
+   <addaction name="actionConfigure_Project"/>
+   <addaction name="actionQuit"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QDockWidget" name="dockScene">
+   <property name="windowTitle">
+    <string>Scene</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <layout class="QGridLayout" name="gridLayout">
+     <property name="leftMargin">
+      <number>2</number>
+     </property>
+     <property name="topMargin">
+      <number>2</number>
+     </property>
+     <property name="rightMargin">
+      <number>2</number>
+     </property>
+     <property name="bottomMargin">
+      <number>2</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QTreeView" name="treeScene">
+       <property name="contextMenuPolicy">
+        <enum>Qt::CustomContextMenu</enum>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectItems</enum>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="rootIsDecorated">
+        <bool>true</bool>
+       </property>
+       <property name="headerHidden">
+        <bool>true</bool>
+       </property>
+       <attribute name="headerVisible">
+        <bool>false</bool>
+       </attribute>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockProperties">
+   <property name="windowTitle">
+    <string>Properties</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QToolBox" name="toolProperties">
+       <property name="minimumSize">
+        <size>
+         <width>200</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="pageObject">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>200</width>
+          <height>76</height>
+         </rect>
+        </property>
+        <attribute name="label">
+         <string>Object</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="layoutObject">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="pageMeshes">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>200</width>
+          <height>76</height>
+         </rect>
+        </property>
+        <attribute name="label">
+         <string>Meshes</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="layoutMesh">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="pagePhysics">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>200</width>
+          <height>76</height>
+         </rect>
+        </property>
+        <attribute name="label">
+         <string>Physics</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="layoutPhysics">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="pageSkeleton">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>200</width>
+          <height>76</height>
+         </rect>
+        </property>
+        <attribute name="label">
+         <string>Skeleton</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="layoutSkeleton">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="pageTween">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>200</width>
+          <height>76</height>
+         </rect>
+        </property>
+        <attribute name="label">
+         <string>Tween</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="layoutTween">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockScript">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>483</width>
+     <height>156</height>
+    </size>
+   </property>
+   <property name="windowTitle">
+    <string>Script</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>8</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_3">
+    <layout class="QGridLayout" name="gridLayout_2">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QSplitter" name="splitterScript">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <widget class="QWidget" name="layoutWidget">
+        <layout class="QGridLayout" name="layoutScript">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+        </layout>
+       </widget>
+       <widget class="QTreeWidget" name="treeHelp">
+        <attribute name="headerVisible">
+         <bool>false</bool>
+        </attribute>
+        <column>
+         <property name="text">
+          <string>Help</string>
+         </property>
+        </column>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockTerrain">
+   <property name="acceptDrops">
+    <bool>false</bool>
+   </property>
+   <property name="floating">
+    <bool>false</bool>
+   </property>
+   <property name="features">
+    <set>QDockWidget::AllDockWidgetFeatures</set>
+   </property>
+   <property name="windowTitle">
+    <string>Terrain</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_4"/>
+  </widget>
+  <widget class="QToolBar" name="view">
+   <property name="windowTitle">
+    <string>View</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QToolBar" name="order">
+   <property name="windowTitle">
+    <string>Order</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionBringToFront"/>
+   <addaction name="actionBringForward"/>
+   <addaction name="actionSendBackward"/>
+   <addaction name="actionSendToBack"/>
+  </widget>
+  <widget class="QToolBar" name="camera">
+   <property name="windowTitle">
+    <string>Camera</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionOrthographic"/>
+   <addaction name="actionPerspective"/>
+   <addaction name="separator"/>
+  </widget>
+  <widget class="QDockWidget" name="dockParticles">
+   <property name="windowTitle">
+    <string>Particles</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_5">
+    <layout class="QVBoxLayout" name="layoutParticles">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QToolBar" name="physics">
+   <property name="windowTitle">
+    <string>Simulation</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionSimulate"/>
+   <addaction name="actionUpdate_Scene_Tree_View"/>
+  </widget>
+  <widget class="QDockWidget" name="dockLog">
+   <property name="windowTitle">
+    <string>Log</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>8</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_6">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QTextBrowser" name="txtLog">
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="lineWidth">
+        <number>0</number>
+       </property>
+       <property name="html">
+        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.Helvetica Neue DeskInterface'; font-size:13pt; font-weight:400; font-style:normal;&quot; bgcolor=&quot;#000000&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockShaders">
+   <property name="windowTitle">
+    <string>Shaders</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_7">
+    <layout class="QGridLayout" name="layoutShaders">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockMaterials">
+   <property name="windowTitle">
+    <string>Materials</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_8">
+    <layout class="QGridLayout" name="layoutMaterials">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+    </layout>
+   </widget>
+  </widget>
+  <action name="actionNew">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/new.png</normaloff>:/MagicGameEditor/Images/new.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;New</string>
+   </property>
+   <property name="statusTip">
+    <string>New Project</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/open.png</normaloff>:/MagicGameEditor/Images/open.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Open</string>
+   </property>
+   <property name="statusTip">
+    <string>Open Project</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/save.png</normaloff>:/MagicGameEditor/Images/save.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Save</string>
+   </property>
+   <property name="statusTip">
+    <string>Save Project</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionSave_As">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/saveall.png</normaloff>:/MagicGameEditor/Images/saveall.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save &amp;As...</string>
+   </property>
+   <property name="toolTip">
+    <string>Save As...</string>
+   </property>
+   <property name="statusTip">
+    <string>Save Project As...</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/exit.png</normaloff>:/MagicGameEditor/Images/exit.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Quit</string>
+   </property>
+   <property name="statusTip">
+    <string>Quit Application</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::ApplicationShortcut</enum>
+   </property>
+  </action>
+  <action name="actionClose_Project">
+   <property name="text">
+    <string>&amp;Close Project</string>
+   </property>
+   <property name="toolTip">
+    <string>Close Project</string>
+   </property>
+  </action>
+  <action name="actionConfigure_Project">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/configure.png</normaloff>:/MagicGameEditor/Images/configure.png</iconset>
+   </property>
+   <property name="text">
+    <string>Configure Project</string>
+   </property>
+   <property name="toolTip">
+    <string>Configure</string>
+   </property>
+   <property name="statusTip">
+    <string>Configure Project</string>
+   </property>
+  </action>
+  <action name="actionDevice4_3">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Device (4:3)</string>
+   </property>
+  </action>
+  <action name="actionDevice16_9">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Device (16:9)</string>
+   </property>
+   <property name="toolTip">
+    <string>Device (16:9)</string>
+   </property>
+  </action>
+  <action name="actionDevice16_10">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Device (16:10)</string>
+   </property>
+   <property name="toolTip">
+    <string>Device (16:10)</string>
+   </property>
+  </action>
+  <action name="actionFree">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/monitor.png</normaloff>:/MagicGameEditor/Images/monitor.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Free</string>
+   </property>
+  </action>
+  <action name="actionPortrait">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Portrait</string>
+   </property>
+  </action>
+  <action name="actionLandscape">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Landscape</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>&amp;About</string>
+   </property>
+  </action>
+  <action name="actionAddSprite">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/sprite.png</normaloff>:/MagicGameEditor/Images/sprite.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Sprite</string>
+   </property>
+  </action>
+  <action name="actionAddText">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/text.png</normaloff>:/MagicGameEditor/Images/text.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Text</string>
+   </property>
+  </action>
+  <action name="actionAddWindow">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/window.png</normaloff>:/MagicGameEditor/Images/window.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Window</string>
+   </property>
+  </action>
+  <action name="actionAddButton">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/button.png</normaloff>:/MagicGameEditor/Images/button.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Button</string>
+   </property>
+  </action>
+  <action name="actionAddSlider">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/vslider.png</normaloff>:/MagicGameEditor/Images/vslider.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Slider</string>
+   </property>
+  </action>
+  <action name="actionAddModel">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/model.png</normaloff>:/MagicGameEditor/Images/model.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Model</string>
+   </property>
+  </action>
+  <action name="actionAddLayer">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/layer_add.png</normaloff>:/MagicGameEditor/Images/layer_add.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Add Layer</string>
+   </property>
+  </action>
+  <action name="actionRemoveLayer">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/layer_delete.png</normaloff>:/MagicGameEditor/Images/layer_delete.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Remove Layer</string>
+   </property>
+  </action>
+  <action name="actionRenameLayer">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/layer_edit.png</normaloff>:/MagicGameEditor/Images/layer_edit.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Rename Layer</string>
+   </property>
+  </action>
+  <action name="actionVisibleLayer">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Visible</string>
+   </property>
+  </action>
+  <action name="actionRemoveObject">
+   <property name="text">
+    <string>Remove Object</string>
+   </property>
+  </action>
+  <action name="actionSolid">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/solid.png</normaloff>:/MagicGameEditor/Images/solid.png</iconset>
+   </property>
+   <property name="text">
+    <string>Solid</string>
+   </property>
+   <property name="toolTip">
+    <string>Solid</string>
+   </property>
+  </action>
+  <action name="actionWireframe">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/wireframe.png</normaloff>:/MagicGameEditor/Images/wireframe.png</iconset>
+   </property>
+   <property name="text">
+    <string>Wireframe</string>
+   </property>
+  </action>
+  <action name="actionBringToFront">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/front.png</normaloff>:/MagicGameEditor/Images/front.png</iconset>
+   </property>
+   <property name="text">
+    <string>Bring to Front</string>
+   </property>
+   <property name="iconText">
+    <string>Bring to Front</string>
+   </property>
+   <property name="toolTip">
+    <string>Bring to Front</string>
+   </property>
+  </action>
+  <action name="actionSendToBack">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/back.png</normaloff>:/MagicGameEditor/Images/back.png</iconset>
+   </property>
+   <property name="text">
+    <string>Send to Back</string>
+   </property>
+   <property name="toolTip">
+    <string>Send to Back</string>
+   </property>
+  </action>
+  <action name="actionBringForward">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/forward.png</normaloff>:/MagicGameEditor/Images/forward.png</iconset>
+   </property>
+   <property name="text">
+    <string>Bring Forward</string>
+   </property>
+   <property name="toolTip">
+    <string>Bring Forward</string>
+   </property>
+  </action>
+  <action name="actionSendBackward">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/backward.png</normaloff>:/MagicGameEditor/Images/backward.png</iconset>
+   </property>
+   <property name="text">
+    <string>Send Backward</string>
+   </property>
+   <property name="toolTip">
+    <string>Send Backward</string>
+   </property>
+  </action>
+  <action name="actionSimulate">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/switch.png</normaloff>:/MagicGameEditor/Images/switch.png</iconset>
+   </property>
+   <property name="text">
+    <string>Simulate</string>
+   </property>
+  </action>
+  <action name="actionCamera">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/camera.png</normaloff>:/MagicGameEditor/Images/camera.png</iconset>
+   </property>
+   <property name="text">
+    <string>Camera</string>
+   </property>
+  </action>
+  <action name="actionLight">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/light.png</normaloff>:/MagicGameEditor/Images/light.png</iconset>
+   </property>
+   <property name="text">
+    <string>Light</string>
+   </property>
+  </action>
+  <action name="actionTerrain">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/terrain.png</normaloff>:/MagicGameEditor/Images/terrain.png</iconset>
+   </property>
+   <property name="text">
+    <string>Terrain</string>
+   </property>
+  </action>
+  <action name="actionParticles">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/particles.png</normaloff>:/MagicGameEditor/Images/particles.png</iconset>
+   </property>
+   <property name="text">
+    <string>Particles</string>
+   </property>
+  </action>
+  <action name="actionOrthographic">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/orthographic.png</normaloff>:/MagicGameEditor/Images/orthographic.png</iconset>
+   </property>
+   <property name="text">
+    <string>Orthographic</string>
+   </property>
+   <property name="toolTip">
+    <string>Orthographic</string>
+   </property>
+  </action>
+  <action name="actionPerspective">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/perspective.png</normaloff>:/MagicGameEditor/Images/perspective.png</iconset>
+   </property>
+   <property name="text">
+    <string>Perspective</string>
+   </property>
+   <property name="toolTip">
+    <string>Perspective</string>
+   </property>
+  </action>
+  <action name="actionSound">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/music.png</normaloff>:/MagicGameEditor/Images/music.png</iconset>
+   </property>
+   <property name="text">
+    <string>Sound</string>
+   </property>
+   <property name="toolTip">
+    <string>Sound</string>
+   </property>
+  </action>
+  <action name="actionShow_Gizmos">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show Gizmos</string>
+   </property>
+   <property name="toolTip">
+    <string>Show Gizmos</string>
+   </property>
+  </action>
+  <action name="actionShow_FPS">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show FPS</string>
+   </property>
+  </action>
+  <action name="actionShow_Information">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show Information</string>
+   </property>
+  </action>
+  <action name="actionShow_Mouse_Position">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show Mouse Position</string>
+   </property>
+  </action>
+  <action name="actionTop">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Top</string>
+   </property>
+   <property name="toolTip">
+    <string>Top</string>
+   </property>
+  </action>
+  <action name="actionBottom">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Bottom</string>
+   </property>
+   <property name="toolTip">
+    <string>Bottom</string>
+   </property>
+  </action>
+  <action name="actionFront">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Front</string>
+   </property>
+   <property name="toolTip">
+    <string>Front</string>
+   </property>
+  </action>
+  <action name="actionBack">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Back</string>
+   </property>
+   <property name="toolTip">
+    <string>Back</string>
+   </property>
+  </action>
+  <action name="actionLeft">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Left</string>
+   </property>
+   <property name="toolTip">
+    <string>Left</string>
+   </property>
+  </action>
+  <action name="actionRight">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Right</string>
+   </property>
+   <property name="toolTip">
+    <string>Right</string>
+   </property>
+  </action>
+  <action name="actionFly">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Fly</string>
+   </property>
+   <property name="toolTip">
+    <string>Fly</string>
+   </property>
+  </action>
+  <action name="actionCloneObject">
+   <property name="text">
+    <string>Clone Object</string>
+   </property>
+   <property name="toolTip">
+    <string>Clone Object</string>
+   </property>
+  </action>
+  <action name="actionWater">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/water.png</normaloff>:/MagicGameEditor/Images/water.png</iconset>
+   </property>
+   <property name="text">
+    <string>Water</string>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionVegetation">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/tree.png</normaloff>:/MagicGameEditor/Images/tree.png</iconset>
+   </property>
+   <property name="text">
+    <string>Vegetation</string>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionCopy">
+   <property name="text">
+    <string>Copy</string>
+   </property>
+   <property name="toolTip">
+    <string>Copy Selected Object</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="actionPaste">
+   <property name="text">
+    <string>Paste</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="actionJoystick">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/controller.png</normaloff>:/MagicGameEditor/Images/controller.png</iconset>
+   </property>
+   <property name="text">
+    <string>Joystick</string>
+   </property>
+  </action>
+  <action name="actionReset_Window_Layout">
+   <property name="text">
+    <string>Reset Window Layout</string>
+   </property>
+   <property name="toolTip">
+    <string>Reset Window Layout</string>
+   </property>
+  </action>
+  <action name="actionUpdate_Scene_Tree_View">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/folders_explorer.png</normaloff>:/MagicGameEditor/Images/folders_explorer.png</iconset>
+   </property>
+   <property name="text">
+    <string>Update Scene Tree View</string>
+   </property>
+   <property name="toolTip">
+    <string>Update Scene Tree View with Script Objects</string>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionRenameObject">
+   <property name="text">
+    <string>Rename Object</string>
+   </property>
+   <property name="toolTip">
+    <string>Rename Object</string>
+   </property>
+   <property name="shortcut">
+    <string>F2</string>
+   </property>
+  </action>
+  <action name="actionShow_GizmosPhysics">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show Physics Gizmos</string>
+   </property>
+   <property name="toolTip">
+    <string>Show Physics Gizmos</string>
+   </property>
+  </action>
+  <action name="actionNormals">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/normals.png</normaloff>:/MagicGameEditor/Images/normals.png</iconset>
+   </property>
+   <property name="text">
+    <string>Normals</string>
+   </property>
+   <property name="toolTip">
+    <string>Normals</string>
+   </property>
+  </action>
+  <action name="actionUVs">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/uvs.png</normaloff>:/MagicGameEditor/Images/uvs.png</iconset>
+   </property>
+   <property name="text">
+    <string>UVs</string>
+   </property>
+   <property name="toolTip">
+    <string>UVs</string>
+   </property>
+  </action>
+  <action name="actionDepth">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/depth.png</normaloff>:/MagicGameEditor/Images/depth.png</iconset>
+   </property>
+   <property name="text">
+    <string>Depth</string>
+   </property>
+   <property name="toolTip">
+    <string>Depth</string>
+   </property>
+  </action>
+  <action name="actionScreenEffects">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/screeneffects.png</normaloff>:/MagicGameEditor/Images/screeneffects.png</iconset>
+   </property>
+   <property name="text">
+    <string>Screen Effects</string>
+   </property>
+   <property name="toolTip">
+    <string>Screen Effects</string>
+   </property>
+  </action>
+  <action name="actionNewScript">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/new.png</normaloff>:/MagicGameEditor/Images/new.png</iconset>
+   </property>
+   <property name="text">
+    <string>New Script</string>
+   </property>
+   <property name="toolTip">
+    <string>New Script</string>
+   </property>
+   <property name="statusTip">
+    <string>New Script</string>
+   </property>
+  </action>
+  <action name="actionOpenScript">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/open.png</normaloff>:/MagicGameEditor/Images/open.png</iconset>
+   </property>
+   <property name="text">
+    <string>Open Script</string>
+   </property>
+   <property name="toolTip">
+    <string>Open Script</string>
+   </property>
+   <property name="statusTip">
+    <string>Open Script</string>
+   </property>
+  </action>
+  <action name="actionPack">
+   <property name="text">
+    <string>&amp;Pack</string>
+   </property>
+   <property name="toolTip">
+    <string>Pack</string>
+   </property>
+   <property name="statusTip">
+    <string>Pack ./data Folder</string>
+   </property>
+  </action>
+  <action name="actionInstance">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/box.png</normaloff>:/MagicGameEditor/Images/box.png</iconset>
+   </property>
+   <property name="text">
+    <string>Instance</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="MagicGameEditor.qrc"/>
+ </resources>
+ <connections/>
+</ui>
