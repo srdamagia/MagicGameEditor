@@ -8,4 +8,4 @@ Magic Game Editor is released under the zlib license.
 
 Libraries
 ------------
-* http://qt-project.org/
+* https://www.qt.io
