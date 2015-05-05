@@ -51,6 +51,6 @@ RESOURCES += \
     MagicGameEditor/MagicGameEditor.qrc
 
 OTHER_FILES += \
-    Project/data/shader/*.* \
-    Project/mge.style \
-    Project/config.xml
+    $$MAGIC3D/game/data/shader/*.* \
+    $$MAGIC3D/game/mge.style \
+    $$MAGIC3D/game/config.xml

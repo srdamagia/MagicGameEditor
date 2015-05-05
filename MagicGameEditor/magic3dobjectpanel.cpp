@@ -79,7 +79,7 @@ void Magic3DObjectPanel::setButtonColor(QPushButton* button, const Magic3D::Colo
 {
     QString COLOR_STYLE("* { background-color : %1; color : %2; }");
 
-    QColor rgba(color.r * 255, color.g * 255, color.b * 255, color.a * 255);
+    QColor rgba = QColor::fromRgbF(color.r, color.g, color.b, color.a);
 
     if (button)
     {
@@ -92,12 +92,11 @@ void Magic3DObjectPanel::setButtonColor(QPushButton* button, const Magic3D::Colo
 
 Magic3D::ColorRGBA Magic3DObjectPanel::chooseColor(Magic3D::ColorRGBA color)
 {
-    float factor = 255.0f;
-    QColor qColor(color.r * factor, color.g * factor, color.b * factor, color.a * factor);
+    QColor qColor = QColor::fromRgbF(color.r, color.g, color.b, color.a);
 
     qColor = Utils::getColor(qColor);
 
-    Magic3D::ColorRGBA result = Magic3D::ColorRGBA(qColor.red() / factor, qColor.green() / factor, qColor.blue() / factor, qColor.alpha() / factor);
+    Magic3D::ColorRGBA result = Magic3D::ColorRGBA(qColor.redF(), qColor.greenF(), qColor.blueF(), qColor.alphaF());
     return result;
 }
 

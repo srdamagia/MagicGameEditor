@@ -249,6 +249,8 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
         settings.setValue("showGizmos", magic3dwidget->isShowingGizmos());
         settings.setValue("showGizmosPhysics", magic3dwidget->isShowingGizmosPhysics());
+        settings.setValue("showOctree", magic3dwidget->isShowingOctree());
+        settings.setValue("showOctreeObjects", magic3dwidget->isShowingOctreeObjects());
         settings.setValue("showFPS", Magic3D::Scene::getInstance()->isShowingFPSText());
         settings.setValue("showINFO", Magic3D::Scene::getInstance()->isShowingINFOText());
         settings.setValue("showWINDOW", Magic3D::Scene::getInstance()->isShowingWINDOWText());
@@ -520,6 +522,8 @@ void MainWindow::update()
 
     ui->actionShow_Gizmos->setChecked(enabled && magic3dwidget->isShowingGizmos());
     ui->actionShow_GizmosPhysics->setChecked(enabled && magic3dwidget->isShowingGizmosPhysics());
+    ui->actionShow_Octree->setChecked(enabled && magic3dwidget->isShowingOctree());
+    ui->actionShow_Octree_Objects->setChecked(enabled && magic3dwidget->isShowingOctreeObjects());
     ui->actionShow_FPS->setChecked(enabled && Magic3D::Scene::getInstance()->isShowingFPSText());
     ui->actionShow_Information->setChecked(enabled && Magic3D::Scene::getInstance()->isShowingINFOText());
     ui->actionShow_Mouse_Position->setChecked(enabled && Magic3D::Scene::getInstance()->isShowingWINDOWText());
@@ -2286,6 +2290,18 @@ void MainWindow::on_actionShow_Gizmos_triggered()
     update();
 }
 
+void MainWindow::on_actionShow_Octree_triggered()
+{
+    magic3dwidget->setShowOctree(!magic3dwidget->isShowingOctree());
+    update();
+}
+
+void MainWindow::on_actionShow_Octree_Objects_triggered()
+{
+    magic3dwidget->setShowOctreeObjects(!magic3dwidget->isShowingOctreeObjects());
+    update();
+}
+
 void MainWindow::on_actionShow_FPS_triggered()
 {
     Magic3D::Scene::getInstance()->showFPSText(!Magic3D::Scene::getInstance()->isShowingFPSText());
@@ -2720,4 +2736,3 @@ void MainWindow::on_actionPack_triggered()
     }
 #endif
 }
-

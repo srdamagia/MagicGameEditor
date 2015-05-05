@@ -256,6 +256,7 @@ INPUT(
 ./MGE_Windows/math.o
 ./MGE_Windows/mesh.o
 ./MGE_Windows/object.o
+./MGE_Windows/octree.o
 ./MGE_Windows/particles.o
 ./MGE_Windows/scene.o
 ./MGE_Windows/sprite.o

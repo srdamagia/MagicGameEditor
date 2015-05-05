@@ -215,6 +215,11 @@ public:
     void setShowGizmosPhysics(bool show);
     bool isShowingGizmosPhysics();
 
+    void setShowOctree(bool show);
+    bool isShowingOctree();
+    void setShowOctreeObjects(bool show);
+    bool isShowingOctreeObjects();
+
     void setCameraPosition(CAMERA_POSITION position);
     CAMERA_POSITION getCameraPosition();
 

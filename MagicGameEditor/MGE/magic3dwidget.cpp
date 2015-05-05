@@ -211,6 +211,26 @@ bool MGE::Magic3DWidget::isShowingGizmosPhysics()
     return Magic3D::Renderer::getInstance()->isShowingGizmosPhysics();
 }
 
+void MGE::Magic3DWidget::setShowOctree(bool show)
+{
+    Magic3D::Renderer::getInstance()->setShowOctree(show);
+}
+
+bool MGE::Magic3DWidget::isShowingOctree()
+{
+    return Magic3D::Renderer::getInstance()->isShowingOctree();
+}
+
+void MGE::Magic3DWidget::setShowOctreeObjects(bool show)
+{
+    Magic3D::Renderer::getInstance()->setShowOctreeObjects(show);
+}
+
+bool MGE::Magic3DWidget::isShowingOctreeObjects()
+{
+    return Magic3D::Renderer::getInstance()->isShowingOctreeObjects();
+}
+
 void MGE::Magic3DWidget::setCameraPosition(CAMERA_POSITION position)
 {
     Magic3D::Camera* camera = Magic3D::Renderer::getInstance()->getCurrentViewPort()->getPerspective();
@@ -318,6 +338,8 @@ void MGE::Magic3DWidget::initializeGL()
 
         Magic3D::Renderer::getInstance()->setShowGizmos(settings.value("showGizmos").toBool());
         Magic3D::Renderer::getInstance()->setShowGizmosPhysics(settings.value("showGizmosPhysics").toBool());
+        Magic3D::Renderer::getInstance()->setShowOctree(settings.value("showOctree").toBool());
+        Magic3D::Renderer::getInstance()->setShowOctreeObjects(settings.value("showOctreeObjects").toBool());
     }
 }
 
@@ -695,7 +717,7 @@ Magic3D::Object* MGE::Magic3DWidget::addSprite(std::string name, std::string lay
         ((Magic3D::Sprite*)object)->setPosition(position.getX(), position.getY());
         ((Magic3D::Sprite*)object)->setSize(128.0f, 128.0f);
 
-        l->addObject(object);
+        Magic3D::Scene::getInstance()->addObject(l, object);
 
         result = object;
     }
@@ -725,7 +747,7 @@ Magic3D::Object* MGE::Magic3DWidget::addParticles(std::string name, std::string 
         object->setPosition(position);
         ((Magic3D::Particles*)object)->play();
 
-        l->addObject(object);
+        Magic3D::Scene::getInstance()->addObject(l, object);
 
         result = object;
     }
@@ -754,7 +776,7 @@ Magic3D::Object* MGE::Magic3DWidget::addText(std::string name, std::string layer
         ((Magic3D::GUILabel*)object)->setPosition(position.getX(), position.getY());
         ((Magic3D::GUILabel*)object)->setText("Placeholder");
 
-        l->addObject(object);
+        Magic3D::Scene::getInstance()->addObject(l, object);
 
         result = object;
     }
@@ -783,7 +805,7 @@ Magic3D::Object* MGE::Magic3DWidget::addWindow(std::string name, std::string lay
         ((Magic3D::GUIWindow*)object)->setPosition(position.getX(), position.getY());
         ((Magic3D::GUIWindow*)object)->setSize(256.0f, 256.0f);
 
-        l->addObject(object);
+        Magic3D::Scene::getInstance()->addObject(l, object);
 
         result = object;
     }
@@ -812,7 +834,7 @@ Magic3D::Object* MGE::Magic3DWidget::addButton(std::string name, std::string lay
         ((Magic3D::GUIButton*)object)->setPosition(position.getX(), position.getY());
         ((Magic3D::GUIButton*)object)->setSize(32.0f, 32.0f);
 
-        l->addObject(object);
+        Magic3D::Scene::getInstance()->addObject(l, object);
 
         result = object;
     }
@@ -841,7 +863,7 @@ Magic3D::Object* MGE::Magic3DWidget::addSlider(std::string name, std::string lay
         ((Magic3D::GUILabel*)object)->setPosition(position.getX(), position.getY());
         ((Magic3D::GUILabel*)object)->setText("Placeholder");
 
-        l->addObject(object);
+        Magic3D::Scene::getInstance()->addObject(l, object);
 
         result = object;
     }
@@ -868,7 +890,8 @@ Magic3D::Object* MGE::Magic3DWidget::addModel(std::string name, std::string laye
         object = mngr->addModel(name, created);
         Magic3D::Vector3 position = getPosition3D(pos);
         object->setPosition(position);
-        l->addObject(object);
+
+        Magic3D::Scene::getInstance()->addObject(l, object);
 
         result = object;
     }
@@ -895,7 +918,8 @@ Magic3D::Object* MGE::Magic3DWidget::addInstance(std::string name, std::string l
         object = mngr->addInstance(name, created);
         Magic3D::Vector3 position = getPosition3D(pos);
         object->setPosition(position);
-        l->addObject(object);
+
+        Magic3D::Scene::getInstance()->addObject(l, object);
 
         result = object;
     }
@@ -922,7 +946,8 @@ Magic3D::Object* MGE::Magic3DWidget::addLight(std::string name, QPoint pos)
         object = mngr->addLight(name, created);
         Magic3D::Vector3 position = getPosition3D(pos);
         object->setPosition(position);
-        l->addObject(object);
+
+        Magic3D::Scene::getInstance()->addObject(l, object);
 
         result = object;
     }
@@ -949,7 +974,8 @@ Magic3D::Object* MGE::Magic3DWidget::addSound(std::string name, QPoint pos)
         object = mngr->addSound(name, created);
         Magic3D::Vector3 position = getPosition3D(pos);
         object->setPosition(position);
-        l->addObject(object);
+
+        Magic3D::Scene::getInstance()->addObject(l, object);
 
         result = object;
     }
@@ -982,7 +1008,7 @@ Magic3D::Object* MGE::Magic3DWidget::addCamera(std::string name, QPoint pos)
 
         }
 
-        l->addObject(object);
+        Magic3D::Scene::getInstance()->addObject(l, object);
 
         result = object;
     }
@@ -1011,7 +1037,7 @@ Magic3D::Object* MGE::Magic3DWidget::addJoystick(std::string name, std::string l
         ((Magic3D::Joystick*)object)->setPosition(position.getX(), position.getY());
         ((Magic3D::Joystick*)object)->setSize(64.0f, 64.0f);
 
-        l->addObject(object);
+        Magic3D::Scene::getInstance()->addObject(l, object);
 
         result = object;
     }
