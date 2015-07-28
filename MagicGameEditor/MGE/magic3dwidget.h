@@ -186,9 +186,9 @@ public:
     Magic3D::Object* addSlider(std::string name, std::string layer, QPoint pos);
     Magic3D::Object* addModel(std::string name, std::string layer, QPoint pos);
     Magic3D::Object* addInstance(std::string name, std::string layer, QPoint pos);
-    Magic3D::Object* addLight(std::string name, QPoint pos);
-    Magic3D::Object* addSound(std::string name, QPoint pos);
-    Magic3D::Object* addCamera(std::string name, QPoint pos);
+    Magic3D::Object* addLight(std::string name, std::string layer, QPoint pos);
+    Magic3D::Object* addSound(std::string name, std::string layer, QPoint pos);
+    Magic3D::Object* addCamera(std::string name, std::string layer, QPoint pos);
     Magic3D::Object* addJoystick(std::string name, std::string layer, QPoint pos);
 
     Magic3D::Vector3 getPosition2D(QPoint pos);

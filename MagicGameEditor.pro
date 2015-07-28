@@ -54,3 +54,6 @@ OTHER_FILES += \
     $$MAGIC3D/game/data/shader/*.* \
     $$MAGIC3D/game/mge.style \
     $$MAGIC3D/game/config.xml
+
+DISTFILES += \
+    MagicGameEditor/icons.rc

@@ -69,7 +69,7 @@ void TweensInfo::update()
     Magic3D::PhysicsObject* physicsObject = getPhysicsObject();
     if (physicsObject)
     {
-        mainWindow->updateParentsList(true, false);
+        mainWindow->updateParentsList(physicsObject->getRender() == Magic3D::eRENDER_3D, true, false);
         parentsList = mainWindow->getParentsList();
 
         int count = physicsObject->getTweenCount();
@@ -122,24 +122,34 @@ void TweensInfo::saveObject(Magic3D::Tween* tween)
         rotation = getPhysicsObject()->getRotation();
         scale = getPhysicsObject()->getScale();
 
+        Magic3D::Sprite* sprite = getPhysicsObject()->getRender() == Magic3D::eRENDER_2D ? static_cast<Magic3D::Sprite*>(getPhysicsObject()) : NULL;
+        anchor =  sprite ? Magic3D::Vector3(sprite->getHorizontalAnchor(), sprite->getVerticalAnchor(), 0.0f) : Magic3D::Vector3(0.0f, 0.0f, 0.0f);
+
 
         if (getObject() && !getBone())
         {
-            std::vector<Magic3D::Mesh*>* meshes = getObject()->getMeshes();
-            std::vector<Magic3D::Mesh*>::const_iterator it_m = meshes->begin();
-
-            while (it_m != meshes->end())
+            if (getObject()->getType() == Magic3D::eOBJECT_GUI_LABEL)
             {
-                Magic3D::Mesh* mesh = *it_m++;
-                std::vector<Magic3D::Material*>* materials = mesh->getMaterials();
-                std::vector<Magic3D::Material*>::const_iterator it_mat = materials->begin();
+                alpha.append(static_cast<Magic3D::GUILabel*>(getObject())->getTextColor().a);
+            }
+            else
+            {
+                std::vector<Magic3D::Mesh*>* meshes = getObject()->getMeshes();
+                std::vector<Magic3D::Mesh*>::const_iterator it_m = meshes->begin();
 
-                while (it_mat != materials->end())
+                while (it_m != meshes->end())
                 {
-                    Magic3D::Material* material = *it_mat++;
+                    Magic3D::Mesh* mesh = *it_m++;
+                    std::vector<Magic3D::Material*>* materials = mesh->getMaterials();
+                    std::vector<Magic3D::Material*>::const_iterator it_mat = materials->begin();
 
-                    Magic3D::ColorRGBA color = material->getColorDiffuse();
-                    alpha.append(color.a);
+                    while (it_mat != materials->end())
+                    {
+                        Magic3D::Material* material = *it_mat++;
+
+                        Magic3D::ColorRGBA color = material->getColorDiffuse();
+                        alpha.append(color.a);
+                    }
                 }
             }
         }
@@ -161,27 +171,44 @@ void TweensInfo::resetObject(bool update)
         getPhysicsObject()->setPosition(position);
         getPhysicsObject()->setRotation(rotation);
         getPhysicsObject()->setScale(scale);
+
+        Magic3D::Sprite* sprite = getPhysicsObject()->getRender() == Magic3D::eRENDER_2D ? static_cast<Magic3D::Sprite*>(getPhysicsObject()) : NULL;
+        if (sprite)
+        {
+            sprite->setHorizontalAnchor(anchor.getX());
+            sprite->setVerticalAnchor(anchor.getY());
+        }
+
         getPhysicsObject()->resetPhysics();
 
         if (getObject() && !getBone())
         {
-            std::vector<Magic3D::Mesh*>* meshes = getObject()->getMeshes();
-            std::vector<Magic3D::Mesh*>::const_iterator it_m = meshes->begin();
-
-            int index = 0;
-            while (it_m != meshes->end())
+            if (getObject()->getType() == Magic3D::eOBJECT_GUI_LABEL)
             {
-                Magic3D::Mesh* mesh = *it_m++;
-                std::vector<Magic3D::Material*>* materials = mesh->getMaterials();
-                std::vector<Magic3D::Material*>::const_iterator it_mat = materials->begin();
+                Magic3D::ColorRGBA color = static_cast<Magic3D::GUILabel*>(getObject())->getTextColor();
+                color.a = alpha[0];
+                static_cast<Magic3D::GUILabel*>(getObject())->setTextColor(color);
+            }
+            else
+            {
+                std::vector<Magic3D::Mesh*>* meshes = getObject()->getMeshes();
+                std::vector<Magic3D::Mesh*>::const_iterator it_m = meshes->begin();
 
-                while (it_mat != materials->end())
+                int index = 0;
+                while (it_m != meshes->end())
                 {
-                    Magic3D::Material* material = *it_mat++;
+                    Magic3D::Mesh* mesh = *it_m++;
+                    std::vector<Magic3D::Material*>* materials = mesh->getMaterials();
+                    std::vector<Magic3D::Material*>::const_iterator it_mat = materials->begin();
 
-                    Magic3D::ColorRGBA color = material->getColorDiffuse();
-                    color.a = alpha[index++];
-                    material->setColorDiffuse(color);
+                    while (it_mat != materials->end())
+                    {
+                        Magic3D::Material* material = *it_mat++;
+
+                        Magic3D::ColorRGBA color = material->getColorDiffuse();
+                        color.a = alpha[index++];
+                        material->setColorDiffuse(color);
+                    }
                 }
             }
         }

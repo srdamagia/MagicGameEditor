@@ -94,6 +94,13 @@
               </property>
              </widget>
             </item>
+            <item>
+             <widget class="QCheckBox" name="chkIgnoreTimeScale">
+              <property name="text">
+               <string>Ignore Time Scale</string>
+              </property>
+             </widget>
+            </item>
            </layout>
           </widget>
          </item>
@@ -556,6 +563,7 @@
  <tabstops>
   <tabstop>chkPlayAtStart</tabstop>
   <tabstop>chkAllwaysUpdate</tabstop>
+  <tabstop>chkIgnoreTimeScale</tabstop>
   <tabstop>cmbUpdateType</tabstop>
   <tabstop>txtRepeat</tabstop>
   <tabstop>txtStartValue</tabstop>
@@ -567,6 +575,9 @@
   <tabstop>cmbNextTweenObject</tabstop>
   <tabstop>cmbNextTweenBone</tabstop>
   <tabstop>txtNextIndex</tabstop>
+  <tabstop>btnPlay</tabstop>
+  <tabstop>btnStop</tabstop>
+  <tabstop>btnDelete</tabstop>
  </tabstops>
  <resources>
   <include location="MagicGameEditor.qrc"/>

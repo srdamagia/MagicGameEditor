@@ -289,30 +289,49 @@ void Object3DInfo::updateSimulation()
     Magic3D::Object* object = getObject();
     if (object && object->getRender() == Magic3D::eRENDER_3D)
     {
-        Magic3D::Matrix4 m = object->getMatrixFromParent();
-        if (!ui->txtPosX->hasFocus())
-            ui->txtPosX->setValue(m.getTranslation().getX());
-        if (!ui->txtPosY->hasFocus())
-            ui->txtPosY->setValue(m.getTranslation().getY());
-        if (!ui->txtPosZ->hasFocus())
-            ui->txtPosZ->setValue(m.getTranslation().getZ());
+        if (Magic3D::Physics::getInstance()->isPlaying())
+        {
+            Magic3D::Matrix4 m = object->getMatrixFromParent();
+            if (!ui->txtPosX->hasFocus())
+                ui->txtPosX->setValue(m.getTranslation().getX());
+            if (!ui->txtPosY->hasFocus())
+                ui->txtPosY->setValue(m.getTranslation().getY());
+            if (!ui->txtPosZ->hasFocus())
+                ui->txtPosZ->setValue(m.getTranslation().getZ());
 
-        Magic3D::Vector3 euler = Magic3D::Math::euler(object->getRotation());
+            Magic3D::Vector3 euler = Magic3D::Math::euler(object->getRotation());
 
-        if (!ui->txtRotX->hasFocus())
+            if (!ui->txtRotX->hasFocus())
+                ui->txtRotX->setValue(euler.getX());
+            if (!ui->txtRotY->hasFocus())
+                ui->txtRotY->setValue(euler.getY());
+            if (!ui->txtRotZ->hasFocus())
+                ui->txtRotZ->setValue(euler.getZ());
+
+            Magic3D::Vector3 scale = object->getScale();
+            if (!ui->txtScaleX->hasFocus())
+                ui->txtScaleX->setValue(scale.getX());
+            if (!ui->txtScaleY->hasFocus())
+                ui->txtScaleY->setValue(scale.getY());
+            if (!ui->txtScaleZ->hasFocus())
+                ui->txtScaleZ->setValue(scale.getZ());
+        }
+        else
+        {
+            ui->txtPosX->setValue(object->getPosition().getX());
+            ui->txtPosY->setValue(object->getPosition().getY());
+            ui->txtPosZ->setValue(object->getPosition().getZ());
+
+            ui->txtScaleX->setValue(object->getScale().getX());
+            ui->txtScaleY->setValue(object->getScale().getY());
+            ui->txtScaleZ->setValue(object->getScale().getZ());
+
+            Magic3D::Vector3 euler = object->getRotationEuler();
+
             ui->txtRotX->setValue(euler.getX());
-        if (!ui->txtRotY->hasFocus())
             ui->txtRotY->setValue(euler.getY());
-        if (!ui->txtRotZ->hasFocus())
             ui->txtRotZ->setValue(euler.getZ());
-
-        Magic3D::Vector3 scale = object->getScale();
-        if (!ui->txtScaleX->hasFocus())
-            ui->txtScaleX->setValue(scale.getX());
-        if (!ui->txtScaleY->hasFocus())
-            ui->txtScaleY->setValue(scale.getY());
-        if (!ui->txtScaleZ->hasFocus())
-            ui->txtScaleZ->setValue(scale.getZ());
+        }
     }
     updating = false;
 }
@@ -458,16 +477,23 @@ void Object3DInfo::updateParentCombo()
         {
             Magic3D::Object* obj = *it_o++;
 
-            bool add = true;
+            items.append(QString::fromStdString(obj->getName()));
+        }
+
+        objects = layer->getCameras();
+        it_o = objects->begin();
+        while (it_o != objects->end())
+        {
+            Magic3D::Object* obj = *it_o++;
+
             if (obj->getType() == Magic3D::eOBJECT_CAMERA)
             {
                 Magic3D::Camera* camera = static_cast<Magic3D::Camera*>(obj);
 
-                add = camera->getProjectionType() != Magic3D::ePROJECTION_ORTHOGRAPHIC;
-            }
-            if (add)
-            {
-                items.append(QString::fromStdString(obj->getName()));
+                if (camera->getProjectionType() == Magic3D::ePROJECTION_PERSPECTIVE)
+                {
+                    items.append(QString::fromStdString(obj->getName()));
+                }
             }
         }
     }

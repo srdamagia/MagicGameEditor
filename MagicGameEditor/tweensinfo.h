@@ -76,6 +76,7 @@ private:
     Magic3D::Vector3 position;
     Magic3D::Quaternion rotation;
     Magic3D::Vector3 scale;
+    Magic3D::Vector3 anchor;
     QList<float> alpha;
     Magic3D::Tween* tween;
     QString nextTweenObject;

@@ -101,6 +101,7 @@ void TweenInfo::update()
 
         ui->chkPlayAtStart->setChecked(tween->isPlayingAtStart());
         ui->chkAllwaysUpdate->setChecked(tween->isAllwaysUpdated());
+        ui->chkIgnoreTimeScale->setChecked(tween->isIgnoringTimeScale());
         ui->cmbUpdateType->setCurrentIndex(tween->getTweenUpdateType());
 
         if (!ui->txtRepeat->hasFocus())
@@ -212,20 +213,20 @@ void TweenInfo::update()
             }
             case Magic3D::eTWEEN_LOOKAT:
             {
-                ui->lblX->setText("Position x:");
+                ui->lblX->setText("Rotation x:");
 
                 Magic3D::TweenLookAt* lookAt = static_cast<Magic3D::TweenLookAt*>(tween);
                 if (!ui->txtX->hasFocus())
                 {
-                    ui->txtX->setValue(lookAt->getPosition().getX());
+                    ui->txtX->setValue(lookAt->getRotation().getX());
                 }
                 if (!ui->txtY->hasFocus())
                 {
-                    ui->txtY->setValue(lookAt->getPosition().getY());
+                    ui->txtY->setValue(lookAt->getRotation().getY());
                 }
                 if (!ui->txtZ->hasFocus())
                 {
-                    ui->txtZ->setValue(lookAt->getPosition().getZ());
+                    ui->txtZ->setValue(lookAt->getRotation().getZ());
                 }
                 break;
             }
@@ -288,6 +289,7 @@ void TweenInfo::updateObject()
 
         tween->setPlayingAtStart(ui->chkPlayAtStart->isChecked());
         tween->setAllwaysUpdate(ui->chkAllwaysUpdate->isChecked());
+        tween->setIgnoreTimeScale(ui->chkIgnoreTimeScale->isChecked());
         tween->setTweenUpdateType((Magic3D::TweenUpdateType)ui->cmbUpdateType->currentIndex());
 
         tween->setRepeat(ui->txtRepeat->value());
@@ -329,7 +331,7 @@ void TweenInfo::updateObject()
             case Magic3D::eTWEEN_LOOKAT:
             {
                 Magic3D::TweenLookAt* lookAt = static_cast<Magic3D::TweenLookAt*>(tween);
-                lookAt->setPosition(Magic3D::Vector3(ui->txtX->value(), ui->txtY->value(), ui->txtZ->value()));
+                lookAt->setRotation(Magic3D::Vector3(ui->txtX->value(), ui->txtY->value(), ui->txtZ->value()));
                 break;
             }
             //case Magic3D::eTWEEN_DELAY: break;
@@ -543,6 +545,15 @@ void TweenInfo::on_cmbNextTweenObject_currentIndexChanged(int index)
 void TweenInfo::on_cmbNextTweenBone_currentIndexChanged(int index)
 {
     if (index > 0)
+    {
+
+    }
+    updateObject();
+}
+
+void TweenInfo::on_chkIgnoreTimeScale_toggled(bool checked)
+{
+    if (checked)
     {
 
     }

@@ -182,6 +182,7 @@ void SequenceWindow::updateObject()
             }
         }
 
+        sprite->saveSpriteTexture();
         sprite->setCurrentSequence(sequence);
         sprite->setLooping(true);
         sprite->play();

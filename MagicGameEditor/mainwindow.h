@@ -116,7 +116,7 @@ public:
     void updateToolRender();
     void updateMaterialsList();
     QStringList& getMaterialList();
-    void updateParentsList(bool tween, bool rigidbody);
+    void updateParentsList(bool is3D, bool tween, bool rigidbody);
     int getTweenCount(Magic3D::Object* object);
     QStringList& getParentsList();
     void setComboList(QStringList& list, QComboBox* combo);

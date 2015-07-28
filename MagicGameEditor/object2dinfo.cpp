@@ -111,11 +111,11 @@ void Object2DInfo::update()
 
         if (!ui->txtPosX->hasFocus())
         {
-            ui->txtPosX->setValue(sprite->getX());
+            ui->txtPosX->setValue(sprite->getPosition().getX());
         }
         if (!ui->txtPosY->hasFocus())
         {
-            ui->txtPosY->setValue(sprite->getY());
+            ui->txtPosY->setValue(sprite->getPosition().getY());
         }
 
         if (!ui->txtWidth->hasFocus())
@@ -140,6 +140,15 @@ void Object2DInfo::update()
         if (!ui->txtRotZ->hasFocus())
         {
             ui->txtRotZ->setValue(euler.getZ());
+        }
+
+        if (!ui->txtScaleX->hasFocus())
+        {
+            ui->txtScaleX->setValue(sprite->getScale().getX());
+        }
+        if (!ui->txtScaleY->hasFocus())
+        {
+            ui->txtScaleY->setValue(sprite->getScale().getY());
         }
 
         ui->chkScript->setChecked(object->isScripted());
@@ -228,6 +237,9 @@ void Object2DInfo::updateSimulation()
         ui->txtRotX->setValue(euler.getX());
         ui->txtRotY->setValue(euler.getY());
         ui->txtRotZ->setValue(euler.getZ());
+
+        ui->txtScaleX->setValue(object->getScale().getX());
+        ui->txtScaleY->setValue(object->getScale().getY());
     }
     updating = false;
 }
@@ -239,21 +251,7 @@ void Object2DInfo::updateObject()
     {
         Magic3D::Sprite* sprite = (Magic3D::Sprite*)object;
 
-
-        float x = ui->txtPosX->value();
-        float y = ui->txtPosY->value();
-
-        float tmpX = 0.0f;
-        float tmpY = 0.0f;
-
-        if (sprite->getParent())
-        {
-            Magic3D::Object* obj = sprite->getParent();
-
-            Magic3D::Box box = obj->getBoundingBox();
-            tmpX += obj->getMatrixFromParent().getTranslation().getX() - box.getWidth() * 0.5f;
-            tmpY += obj->getMatrixFromParent().getTranslation().getY() - box.getHeight() * 0.5f;
-        }
+        Magic3D::Vector3 position = Magic3D::Vector3(ui->txtPosX->value(), ui->txtPosY->value(), 0.0f);
 
         if (ui->cmbParent->currentIndex() > 0)
         {
@@ -261,21 +259,26 @@ void Object2DInfo::updateObject()
 
             if (sprite->getParent() != obj)
             {
+                if (sprite->getParent())
+                {
+                    position = sprite->getMatrixFromParent().getTranslation();
+                }
+
                 sprite->setParent(obj);
 
                 if (sprite->getParent())
                 {
-                    Magic3D::Box box = obj->getBoundingBox();
-                    x -= obj->getMatrixFromParent().getTranslation().getX() - box.getWidth() * 0.5f;
-                    y -= obj->getMatrixFromParent().getTranslation().getY() - box.getHeight() * 0.5f;
+                    position = (inverse(sprite->getParent()->getMatrixFromParent()) * Magic3D::Vector4(position, 1.0f)).getXYZ();
                 }
             }
         }
         else
         {
+            if (sprite->getParent())
+            {
+                position = sprite->getMatrixFromParent().getTranslation();
+            }
             sprite->setParent(NULL);
-            x += tmpX;
-            y += tmpY;
         }
 
         sprite->setParentRelation(ui->chkPosition->isChecked(), ui->chkRotation->isChecked(), ui->chkScale->isChecked());
@@ -283,9 +286,10 @@ void Object2DInfo::updateObject()
         sprite->setEnabled(ui->chkEnabled->isChecked());
         sprite->setVisible(ui->chkVisible->isChecked());
         sprite->setPickable(ui->chkPick->isChecked());
-        sprite->setPosition(x, y);
+        sprite->setPosition(Magic3D::Vector3(position.getX(), position.getY(), 0.0f));
         sprite->setSize(ui->txtWidth->value(), ui->txtHeight->value());
         sprite->setRotationEuler(Magic3D::Vector3(ui->txtRotX->value(), ui->txtRotY->value(), ui->txtRotZ->value()));
+        sprite->setScale(Magic3D::Vector3(ui->txtScaleX->value(), ui->txtScaleY->value(), 1.0f));
 
         sprite->setScripted(ui->chkScript->isChecked());
 
@@ -377,7 +381,7 @@ void Object2DInfo::updateParentCombo()
             items.append(QString::fromStdString(obj->getName()));
         }
 
-        objects = layer->getObjects3D();
+        objects = layer->getCameras();
         it_o = objects->begin();
         while (it_o != objects->end())
         {
@@ -519,6 +523,24 @@ void Object2DInfo::on_txtRotY_valueChanged(double arg1)
 }
 
 void Object2DInfo::on_txtRotZ_valueChanged(double arg1)
+{
+    if (arg1 > 0.0)
+    {
+
+    }
+    updateObject();
+}
+
+void Object2DInfo::on_txtScaleX_valueChanged(double arg1)
+{
+    if (arg1 > 0.0)
+    {
+
+    }
+    updateObject();
+}
+
+void Object2DInfo::on_txtScaleY_valueChanged(double arg1)
 {
     if (arg1 > 0.0)
     {

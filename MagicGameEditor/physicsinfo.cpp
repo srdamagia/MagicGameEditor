@@ -155,6 +155,24 @@ void PhysicsInfo::update()
             ui->txtDampingAngular->setValue(object->getDampingAngular());
         }
 
+        ui->grpGroupCollision->setChecked(object->isGroupCollision());
+
+        if (!ui->txtGroup->hasFocus())
+        {
+            ui->txtGroup->setValue(object->getGroup());
+        }
+
+        ui->chkGrp_0->setChecked(object->getGroupCollision() & Magic3D::ePHYSICS_GROUP_0);
+        ui->chkGrp_1->setChecked(object->getGroupCollision() & Magic3D::ePHYSICS_GROUP_1);
+        ui->chkGrp_2->setChecked(object->getGroupCollision() & Magic3D::ePHYSICS_GROUP_2);
+        ui->chkGrp_3->setChecked(object->getGroupCollision() & Magic3D::ePHYSICS_GROUP_3);
+        ui->chkGrp_4->setChecked(object->getGroupCollision() & Magic3D::ePHYSICS_GROUP_4);
+        ui->chkGrp_5->setChecked(object->getGroupCollision() & Magic3D::ePHYSICS_GROUP_5);
+        ui->chkGrp_6->setChecked(object->getGroupCollision() & Magic3D::ePHYSICS_GROUP_6);
+        ui->chkGrp_7->setChecked(object->getGroupCollision() & Magic3D::ePHYSICS_GROUP_7);
+        ui->chkGrp_8->setChecked(object->getGroupCollision() & Magic3D::ePHYSICS_GROUP_8);
+        ui->chkGrp_9->setChecked(object->getGroupCollision() & Magic3D::ePHYSICS_GROUP_9);
+
         ui->chkGhost->setChecked(object->isGhost());
 
         updateConstraints();
@@ -168,7 +186,7 @@ void PhysicsInfo::updateConstraints()
     Magic3D::PhysicsObject* physicsObject = getPhysicsObject();
     if (physicsObject)
     {
-        mainWindow->updateParentsList(false, true);
+        mainWindow->updateParentsList(physicsObject->getRender() == Magic3D::eRENDER_3D, false, true);
         parentsList = mainWindow->getParentsList();
 
         int count = physicsObject->getConstraintCount();
@@ -250,6 +268,54 @@ void PhysicsInfo::updateObject()
             object->setRestitution(ui->txtRestitution->value());
             object->setDampingLinear(ui->txtDampingLinear->value());
             object->setDampingAngular(ui->txtDampingAngular->value());
+
+            object->setIsGroupCollision(ui->grpGroupCollision->isChecked());
+            object->setGroup(ui->txtGroup->value());
+
+            int groupMask = 0;
+            if (ui->chkGrp_0->isChecked())
+            {
+               groupMask = groupMask | Magic3D::ePHYSICS_GROUP_0;
+            }
+            if (ui->chkGrp_1->isChecked())
+            {
+               groupMask = groupMask | Magic3D::ePHYSICS_GROUP_1;
+            }
+            if (ui->chkGrp_2->isChecked())
+            {
+               groupMask = groupMask | Magic3D::ePHYSICS_GROUP_2;
+            }
+            if (ui->chkGrp_3->isChecked())
+            {
+               groupMask = groupMask | Magic3D::ePHYSICS_GROUP_3;
+            }
+            if (ui->chkGrp_4->isChecked())
+            {
+               groupMask = groupMask | Magic3D::ePHYSICS_GROUP_4;
+            }
+            if (ui->chkGrp_5->isChecked())
+            {
+               groupMask = groupMask | Magic3D::ePHYSICS_GROUP_5;
+            }
+            if (ui->chkGrp_6->isChecked())
+            {
+               groupMask = groupMask | Magic3D::ePHYSICS_GROUP_6;
+            }
+            if (ui->chkGrp_7->isChecked())
+            {
+               groupMask = groupMask | Magic3D::ePHYSICS_GROUP_7;
+            }
+            if (ui->chkGrp_8->isChecked())
+            {
+               groupMask = groupMask | Magic3D::ePHYSICS_GROUP_8;
+            }
+            if (ui->chkGrp_9->isChecked())
+            {
+               groupMask = groupMask | Magic3D::ePHYSICS_GROUP_9;
+            }
+
+            object->setGroupCollision(groupMask);
+
             object->setGhost(ui->chkGhost->isChecked());
 
             if (!isBone && getObject() && (shape == Magic3D::ePHYSICS_SHAPE_CONVEXHULL || shape == Magic3D::ePHYSICS_SHAPE_TRIANGLEMESH))
@@ -624,4 +690,112 @@ void PhysicsInfo::on_actionGeneric_triggered()
         getPhysicsObject()->addConstraint(new Magic3D::PhysicsConstraint(Magic3D::eCONSTRAINT_CUSTOM));
         updateObject();
     }
+}
+
+void PhysicsInfo::on_txtGroup_valueChanged(int arg1)
+{
+    if (arg1 > 0)
+    {
+
+    }
+    updateObject();
+}
+
+void PhysicsInfo::on_chkGrp_0_toggled(bool checked)
+{
+    if (checked)
+    {
+
+    }
+    updateObject();
+}
+
+void PhysicsInfo::on_chkGrp_1_toggled(bool checked)
+{
+    if (checked)
+    {
+
+    }
+    updateObject();
+}
+
+void PhysicsInfo::on_chkGrp_2_toggled(bool checked)
+{
+    if (checked)
+    {
+
+    }
+    updateObject();
+}
+
+void PhysicsInfo::on_chkGrp_3_toggled(bool checked)
+{
+    if (checked)
+    {
+
+    }
+    updateObject();
+}
+
+void PhysicsInfo::on_chkGrp_4_toggled(bool checked)
+{
+    if (checked)
+    {
+
+    }
+    updateObject();
+}
+
+void PhysicsInfo::on_chkGrp_5_toggled(bool checked)
+{
+    if (checked)
+    {
+
+    }
+    updateObject();
+}
+
+void PhysicsInfo::on_chkGrp_6_toggled(bool checked)
+{
+    if (checked)
+    {
+
+    }
+    updateObject();
+}
+
+void PhysicsInfo::on_chkGrp_7_toggled(bool checked)
+{
+    if (checked)
+    {
+
+    }
+    updateObject();
+}
+
+void PhysicsInfo::on_chkGrp_8_toggled(bool checked)
+{
+    if (checked)
+    {
+
+    }
+    updateObject();
+}
+
+void PhysicsInfo::on_chkGrp_9_toggled(bool checked)
+{
+    if (checked)
+    {
+
+    }
+    updateObject();
+}
+
+void PhysicsInfo::on_grpGroupCollision_toggled(bool arg1)
+{
+    if (arg1)
+    {
+
+    }
+    updateObject();
 }

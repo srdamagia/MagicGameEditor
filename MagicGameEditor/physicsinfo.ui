@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>449</width>
-    <height>591</height>
+    <width>404</width>
+    <height>620</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,8 +27,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>431</width>
-        <height>519</height>
+        <width>386</width>
+        <height>548</height>
        </rect>
       </property>
       <attribute name="label">
@@ -46,6 +46,12 @@
        </property>
        <item>
         <widget class="QGroupBox" name="chkPhysics">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="title">
           <string>Enabled:</string>
          </property>
@@ -55,6 +61,12 @@
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
            <widget class="QGroupBox" name="gbCollision">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="title">
              <string>Collision Shape:</string>
             </property>
@@ -558,6 +570,12 @@
           </item>
           <item>
            <widget class="QGroupBox" name="gbBody">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="title">
              <string>Body:</string>
             </property>
@@ -892,8 +910,150 @@
             </layout>
            </widget>
           </item>
+          <item>
+           <widget class="QGroupBox" name="grpGroupCollision">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="title">
+             <string>Collision Group:</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout">
+               <item>
+                <widget class="QLabel" name="label_19">
+                 <property name="text">
+                  <string>Group:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="txtGroup">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QGridLayout" name="gridLayout_7">
+               <item row="2" column="7">
+                <widget class="QCheckBox" name="chkGrp_7">
+                 <property name="text">
+                  <string>7</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="3">
+                <widget class="QCheckBox" name="chkGrp_3">
+                 <property name="text">
+                  <string>3</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QCheckBox" name="chkGrp_1">
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="5">
+                <widget class="QCheckBox" name="chkGrp_5">
+                 <property name="text">
+                  <string>5</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="2">
+                <widget class="QCheckBox" name="chkGrp_2">
+                 <property name="text">
+                  <string>2</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="6">
+                <widget class="QCheckBox" name="chkGrp_6">
+                 <property name="text">
+                  <string>6</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="4">
+                <widget class="QCheckBox" name="chkGrp_4">
+                 <property name="text">
+                  <string>4</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QCheckBox" name="chkGrp_0">
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="8">
+                <widget class="QCheckBox" name="chkGrp_8">
+                 <property name="text">
+                  <string>8</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="9">
+                <widget class="QCheckBox" name="chkGrp_9">
+                 <property name="text">
+                  <string>9</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
          </layout>
         </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>
@@ -902,8 +1062,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>431</width>
-        <height>519</height>
+        <width>386</width>
+        <height>548</height>
        </rect>
       </property>
       <attribute name="label">
@@ -938,7 +1098,7 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>429</width>
+            <width>384</width>
             <height>16</height>
            </rect>
           </property>
@@ -1035,6 +1195,7 @@
   </action>
  </widget>
  <tabstops>
+  <tabstop>chkPhysics</tabstop>
   <tabstop>chkBox</tabstop>
   <tabstop>chkSphere</tabstop>
   <tabstop>chkCapsule</tabstop>
@@ -1063,6 +1224,18 @@
   <tabstop>chkTransX</tabstop>
   <tabstop>chkTransY</tabstop>
   <tabstop>chkTransZ</tabstop>
+  <tabstop>txtGroup</tabstop>
+  <tabstop>chkGrp_0</tabstop>
+  <tabstop>chkGrp_1</tabstop>
+  <tabstop>chkGrp_2</tabstop>
+  <tabstop>chkGrp_3</tabstop>
+  <tabstop>chkGrp_4</tabstop>
+  <tabstop>chkGrp_5</tabstop>
+  <tabstop>chkGrp_6</tabstop>
+  <tabstop>chkGrp_7</tabstop>
+  <tabstop>chkGrp_8</tabstop>
+  <tabstop>chkGrp_9</tabstop>
+  <tabstop>scrollConstraint</tabstop>
  </tabstops>
  <resources>
   <include location="MagicGameEditor.qrc"/>

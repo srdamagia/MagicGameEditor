@@ -82,6 +82,8 @@ private slots:
 
     void on_cmbNextTweenBone_currentIndexChanged(int index);
 
+    void on_chkIgnoreTimeScale_toggled(bool checked);
+
 private:
     Ui::TweenInfo *ui;
     int tweenIndex;

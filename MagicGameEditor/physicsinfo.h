@@ -90,6 +90,18 @@ private slots:
     void on_actionSlider_triggered();
     void on_actionCone_triggered();
     void on_actionGeneric_triggered();
+    void on_txtGroup_valueChanged(int arg1);
+    void on_chkGrp_0_toggled(bool checked);
+    void on_chkGrp_1_toggled(bool checked);
+    void on_chkGrp_2_toggled(bool checked);
+    void on_chkGrp_3_toggled(bool checked);
+    void on_chkGrp_4_toggled(bool checked);
+    void on_chkGrp_5_toggled(bool checked);
+    void on_chkGrp_6_toggled(bool checked);
+    void on_chkGrp_7_toggled(bool checked);
+    void on_chkGrp_8_toggled(bool checked);
+    void on_chkGrp_9_toggled(bool checked);
+    void on_grpGroupCollision_toggled(bool arg1);
 };
 
 #endif // PHYSICSINFO_H

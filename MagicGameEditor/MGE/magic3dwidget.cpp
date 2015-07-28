@@ -233,12 +233,7 @@ bool MGE::Magic3DWidget::isShowingOctreeObjects()
 
 void MGE::Magic3DWidget::setCameraPosition(CAMERA_POSITION position)
 {
-    Magic3D::Camera* camera = Magic3D::Renderer::getInstance()->getCurrentViewPort()->getPerspective();
-    if (cameraPosition == eCAMERA_POSITION_FLY)
-    {
-        flyPosition = camera->getPosition();
-        flyRotation = camera->getRotationEuler();
-    }
+    Magic3D::Camera* camera = Magic3D::Renderer::getInstance()->getCurrentViewPort()->getPerspective();    
 
     mainWindow->getUi()->actionTop->setChecked(false);
     mainWindow->getUi()->actionBottom->setChecked(false);
@@ -252,6 +247,12 @@ void MGE::Magic3DWidget::setCameraPosition(CAMERA_POSITION position)
 
     if (camera)
     {
+        if (cameraPosition == eCAMERA_POSITION_FLY)
+        {
+            flyPosition = camera->getPosition();
+            flyRotation = camera->getRotationEuler();
+        }
+
         switch (cameraPosition)
         {
             case MGE::eCAMERA_POSITION_TOP:
@@ -428,7 +429,7 @@ void MGE::Magic3DWidget::updateCamera(float factor, bool force)
         if (camera)
         {
             //float speed = Magic3D::Magic3D::getInstance()->getTicks() - elapsed;
-            float speed = Magic3D::Magic3D::getInstance()->getElapsedTime();
+            float speed = Magic3D::Magic3D::getInstance()->getElapsedTimeReal();
             float value = mainWindow->cameraoptions->getSpeedMove() * speed;
 
             if (keyShift && !keyCtrl)
@@ -714,8 +715,7 @@ Magic3D::Object* MGE::Magic3DWidget::addSprite(std::string name, std::string lay
         object = mngr->addSprite(name, created);
         ((Magic3D::Sprite*)object)->addMaterial(Magic3D::ResourceManager::getMaterials()->get(M3D_DEFAULT_MATERIAL));
         Magic3D::Vector3 position = getPosition2D(pos);
-        ((Magic3D::Sprite*)object)->setPosition(position.getX(), position.getY());
-        ((Magic3D::Sprite*)object)->setSize(128.0f, 128.0f);
+        ((Magic3D::Sprite*)object)->setPosition(Magic3D::Vector3(position.getX(), position.getY(), 0.0f));
 
         Magic3D::Scene::getInstance()->addObject(l, object);
 
@@ -773,7 +773,7 @@ Magic3D::Object* MGE::Magic3DWidget::addText(std::string name, std::string layer
         bool created = false;
         object = mngr->addGUILabel(name, 32, created);
         Magic3D::Vector3 position = getPosition2D(pos);
-        ((Magic3D::GUILabel*)object)->setPosition(position.getX(), position.getY());
+        ((Magic3D::GUILabel*)object)->setPosition(Magic3D::Vector3(position.getX(), position.getY(), 0.0f));
         ((Magic3D::GUILabel*)object)->setText("Placeholder");
 
         Magic3D::Scene::getInstance()->addObject(l, object);
@@ -802,8 +802,7 @@ Magic3D::Object* MGE::Magic3DWidget::addWindow(std::string name, std::string lay
         bool created = false;
         object = mngr->addGUIWindow(name, created);
         Magic3D::Vector3 position = getPosition2D(pos);
-        ((Magic3D::GUIWindow*)object)->setPosition(position.getX(), position.getY());
-        ((Magic3D::GUIWindow*)object)->setSize(256.0f, 256.0f);
+        ((Magic3D::GUIWindow*)object)->setPosition(Magic3D::Vector3(position.getX(), position.getY(), 0.0f));
 
         Magic3D::Scene::getInstance()->addObject(l, object);
 
@@ -831,8 +830,7 @@ Magic3D::Object* MGE::Magic3DWidget::addButton(std::string name, std::string lay
         bool created = false;
         object = mngr->addGUIButton(name, created);
         Magic3D::Vector3 position = getPosition2D(pos);
-        ((Magic3D::GUIButton*)object)->setPosition(position.getX(), position.getY());
-        ((Magic3D::GUIButton*)object)->setSize(32.0f, 32.0f);
+        ((Magic3D::GUIButton*)object)->setPosition(Magic3D::Vector3(position.getX(), position.getY(), 0.0f));
 
         Magic3D::Scene::getInstance()->addObject(l, object);
 
@@ -860,7 +858,7 @@ Magic3D::Object* MGE::Magic3DWidget::addSlider(std::string name, std::string lay
         bool created = false;
         object = mngr->addGUILabel(name, 32, created);
         Magic3D::Vector3 position = getPosition2D(pos);
-        ((Magic3D::GUILabel*)object)->setPosition(position.getX(), position.getY());
+        ((Magic3D::GUILabel*)object)->setPosition(Magic3D::Vector3(position.getX(), position.getY(), 0.0f));
         ((Magic3D::GUILabel*)object)->setText("Placeholder");
 
         Magic3D::Scene::getInstance()->addObject(l, object);
@@ -931,12 +929,12 @@ Magic3D::Object* MGE::Magic3DWidget::addInstance(std::string name, std::string l
     return result;
 }
 
-Magic3D::Object* MGE::Magic3DWidget::addLight(std::string name, QPoint pos)
+Magic3D::Object* MGE::Magic3DWidget::addLight(std::string name, std::string layer, QPoint pos)
 {
     Magic3D::Object* result = NULL;
 
     Magic3D::ResourceManager* mngr = Magic3D::ResourceManager::getInstance();
-    Magic3D::Layer* l = Magic3D::Scene::getInstance()->getLayer(M3D_MAIN_LAYER_NAME);
+    Magic3D::Layer* l = Magic3D::Scene::getInstance()->getLayer(layer);
 
     Magic3D::Object* object = mngr->getObjects()->get(name);
 
@@ -959,12 +957,12 @@ Magic3D::Object* MGE::Magic3DWidget::addLight(std::string name, QPoint pos)
     return result;
 }
 
-Magic3D::Object* MGE::Magic3DWidget::addSound(std::string name, QPoint pos)
+Magic3D::Object* MGE::Magic3DWidget::addSound(std::string name, std::string layer, QPoint pos)
 {
     Magic3D::Object* result = NULL;
 
     Magic3D::ResourceManager* mngr = Magic3D::ResourceManager::getInstance();
-    Magic3D::Layer* l = Magic3D::Scene::getInstance()->getLayer(M3D_MAIN_LAYER_NAME);
+    Magic3D::Layer* l = Magic3D::Scene::getInstance()->getLayer(layer);
 
     Magic3D::Object* object = mngr->getObjects()->get(name);
 
@@ -987,12 +985,12 @@ Magic3D::Object* MGE::Magic3DWidget::addSound(std::string name, QPoint pos)
     return result;
 }
 
-Magic3D::Object* MGE::Magic3DWidget::addCamera(std::string name, QPoint pos)
+Magic3D::Object* MGE::Magic3DWidget::addCamera(std::string name, std::string layer, QPoint pos)
 {
     Magic3D::Object* result = NULL;
 
     Magic3D::ResourceManager* mngr = Magic3D::ResourceManager::getInstance();
-    Magic3D::Layer* l = Magic3D::Scene::getInstance()->getLayer(M3D_MAIN_LAYER_NAME);
+    Magic3D::Layer* l = Magic3D::Scene::getInstance()->getLayer(layer);
 
     Magic3D::Object* object = mngr->getObjects()->get(name);
 
@@ -1000,7 +998,7 @@ Magic3D::Object* MGE::Magic3DWidget::addCamera(std::string name, QPoint pos)
     {
         bool created = false;
         object = mngr->addCamera(name, created);
-        object->setPosition(Magic3D::Vector3(0.0f, 0.0f, 10.0f));
+        object->setPosition(Magic3D::Vector3(0.0f, 0.0f, 0.0f));
         object->setRotationEuler(Magic3D::Vector3(0.0f, 180.0f, 0.0f));
 
         if (pos.isNull())
@@ -1034,8 +1032,7 @@ Magic3D::Object* MGE::Magic3DWidget::addJoystick(std::string name, std::string l
         bool created = false;
         object = mngr->addJoystick(name, created);
         Magic3D::Vector3 position = getPosition2D(pos);
-        ((Magic3D::Joystick*)object)->setPosition(position.getX(), position.getY());
-        ((Magic3D::Joystick*)object)->setSize(64.0f, 64.0f);
+        ((Magic3D::Joystick*)object)->setPosition(Magic3D::Vector3(position.getX(), position.getY(), 0.0f));
 
         Magic3D::Scene::getInstance()->addObject(l, object);
 
@@ -1054,10 +1051,12 @@ Magic3D::Vector3 MGE::Magic3DWidget::getPosition2D(QPoint pos)
     Magic3D::Vector3 result = Magic3D::Vector3(0.0f, 0.0f, 0.0f);
     Magic3D::ViewPort* viewport = Magic3D::Renderer::getInstance()->getCurrentViewPort();
     Magic3D::Camera* camera = viewport->getOrthographic();
+    Magic3D::Window* window = Magic3D::Renderer::getInstance()->getWindow();
+    Magic3D::Vector3 aspect = window->getWindowScreenAspect();
 
     if (camera)
     {
-        result = Magic3D::Vector3(camera->getPosition().getX() + pos.x(), camera->getPosition().getY() + pos.y(), 0.0f);
+        result = Magic3D::Vector3(camera->getPosition().getX() + (pos.x() / (float)window->getWidth()) * aspect.getX(), camera->getPosition().getY() + (pos.y() / (float)window->getHeight()) * aspect.getY(), 0.0f);
     }
 
     return result;
@@ -1549,24 +1548,17 @@ void MGE::Magic3DWidget::mouseMoveEvent(QMouseEvent *event)
 
         if (mouseDown && object && event->buttons() & Qt::LeftButton && event->buttons() & Qt::RightButton)
         {
-            float max  = (fabs(y) > fabs(x) ? y : x) * (object->getRender() == Magic3D::eRENDER_2D ? 1.0f : 0.01f);
+            float max  = (fabs(y) > fabs(x) ? y : x) * 0.01f;
 
+            float x = object->getScale().getX() + (trsX ? max : 0.0f);
+            float y = object->getScale().getY() + (trsY ? max : 0.0f);
+            float z = object->getScale().getZ() + (trsZ ? max : 0.0f);
             if (object->getRender() == Magic3D::eRENDER_2D)
             {
-                Magic3D::Sprite* sprite = (Magic3D::Sprite*)object;
-                float x = sprite->getWidth() + (trsX ? max : 0.0f);
-                float y = sprite->getHeight() + (trsY ? max : 0.0f);
-
-                sprite->setSize(x, y);
+                z = 1.0f;
             }
-            else
-            {
-                float x = object->getScale().getX() + (trsX ? max : 0.0f);
-                float y = object->getScale().getY() + (trsY ? max : 0.0f);
-                float z = object->getScale().getZ() + (trsZ ? max : 0.0f);
 
-                object->setScale(Magic3D::Vector3(x, y, z));
-            }
+            object->setScale(Magic3D::Vector3(x, y, z));
 
             mainWindow->object2dinfo->updateSimulation();
             mainWindow->object3dinfo->updateSimulation();
@@ -1667,20 +1659,21 @@ void MGE::Magic3DWidget::mouseMoveEvent(QMouseEvent *event)
         {
             if (mouseDown && object && !Magic3D::Physics::getInstance()->isPlaying())
             {
-                float x = event->pos().x() - selectedOffset.x();
-                float y = event->pos().y() - selectedOffset.y();
+                Magic3D::Window* window = Magic3D::Renderer::getInstance()->getWindow();
+                Magic3D::Vector3 aspect = window->getWindowScreenAspect();
+                float x = (event->pos().x() - selectedOffset.x());
+                float y = (event->pos().y() - selectedOffset.y());
 
                 if (object->getRender() == Magic3D::eRENDER_2D)
                 {
+                    x = x / window->getWidth() * aspect.getX();
+                    y = y / window->getHeight() * aspect.getY();
                     Magic3D::Sprite* sprite = (Magic3D::Sprite*)object;
 
-                    Magic3D::Vector3 finalPos = Magic3D::Vector3(sprite->getX(), sprite->getY(), 0.0f);
-                    Magic3D::Vector4 pos = Magic3D::Vector4(x, y, 0.0f, 1.0f);
-                    if (object->getParent())
-                    {
-                        Magic3D::Matrix4 rot = Magic3D::Matrix4(object->getParent()->getRotationFromParent(), Magic3D::Vector3(0.0f, 0.0f, 0.0f));
-                        pos = inverse(rot) * pos;
-                    }
+                    Magic3D::Matrix4 matrix = sprite->getMatrixFromParent();
+                    //Magic3D::Vector3 finalPos = sprite->getPosition();
+                    Magic3D::Vector3 finalPos = matrix.getTranslation();
+                    Magic3D::Vector4 pos = Magic3D::Vector4(Magic3D::Vector3(x, y, 0.0f), 1.0f);
 
                     pos += Magic3D::Vector4(finalPos, 1.0f);
 
@@ -1693,12 +1686,13 @@ void MGE::Magic3DWidget::mouseMoveEvent(QMouseEvent *event)
                         finalPos.setY(pos.getY());
                     }
 
-                    Magic3D::Vector3 diff = finalPos - Magic3D::Vector3(sprite->getX(), sprite->getY(), 0.0f);
+                    //Magic3D::Vector3 diff = (finalPos - sprite->getPosition());
+                    Magic3D::Vector3 diff = (finalPos - matrix.getTranslation());
 
                     if (fabs(diff.getX()) >= mainWindow->getProject()->getGrid2DX() ||
                         fabs(diff.getY()) >= mainWindow->getProject()->getGrid2DY())
                     {
-                        if (mainWindow->getProject()->getGrid2DX() > 0.0f)
+                        /*if (mainWindow->getProject()->getGrid2DX() > 0.0f)
                         {
                             diff.setX((int)(diff.getX() / mainWindow->getProject()->getGrid2DX()) * mainWindow->getProject()->getGrid2DX());
                         }
@@ -1707,7 +1701,8 @@ void MGE::Magic3DWidget::mouseMoveEvent(QMouseEvent *event)
                             diff.setY((int)(diff.getY() / mainWindow->getProject()->getGrid2DY()) * mainWindow->getProject()->getGrid2DY());
                         }
 
-                        finalPos = Magic3D::Vector3(sprite->getX(), sprite->getY(), 0.0f) + diff;
+                        finalPos = sprite->getPosition() + diff;*/
+                        finalPos += Magic3D::Vector3((finalPos.getX() > 0.0f ? 1.0 : -1.0f) * mainWindow->getProject()->getGrid2DX(), (finalPos.getY() > 0.0f ? 1.0 : -1.0f) * mainWindow->getProject()->getGrid2DY(), 0.0f) * 0.5f;
 
                         if (mainWindow->getProject()->getGrid2DX() > 0.0f)
                         {
@@ -1718,8 +1713,13 @@ void MGE::Magic3DWidget::mouseMoveEvent(QMouseEvent *event)
                             finalPos.setY((int)(finalPos.getY() / mainWindow->getProject()->getGrid2DY()) * mainWindow->getProject()->getGrid2DY());
                         }
 
-                        sprite->setPosition(finalPos.getX(), finalPos.getY());
-                        //object->setPosition(finalPos);
+                        if (sprite->getParent())
+                        {
+                            Magic3D::Matrix4 inv = inverse(sprite->getParent()->getMatrixFromParent());
+                            finalPos = (inv * Magic3D::Vector4(finalPos, 1.0f)).getXYZ();
+                        }
+                        sprite->setPosition(finalPos);
+                        //sprite->setPosition((inverse(matrix) * Magic3D::Vector4(finalPos, 1.0f)).getXYZ());
                     }
                     else
                     {

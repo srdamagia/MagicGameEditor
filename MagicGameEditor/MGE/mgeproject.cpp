@@ -42,7 +42,7 @@ MGE::MGEProject::MGEProject(const std::string file, const std::string path)
     cameraMove = 0.0f;
     cameraLook = 0.0f;
 
-    setGrid2D(10.0f, 10.0f);
+    setGrid2D(0.01f, 0.01f);
     setGrid3D(1.0f, 1.0f, 1.0f);
 
     cameraTop    = Magic3D::Vector3(0.0f, 0.0f, 0.0f);

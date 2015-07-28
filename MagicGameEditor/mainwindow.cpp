@@ -762,242 +762,245 @@ void MainWindow::addObject(int type, Magic3D::Object* object, bool clone)
 void MainWindow::addObject(QString name, int object, QPoint pos)
 {
     QModelIndex index = ui->treeScene->currentIndex();
+    SceneTreeItem* item = NULL;
     if (index.isValid())
     {
-        SceneTreeItem* item = static_cast<SceneTreeItem*>(index.internalPointer());
-
-        switch (item->getType())
-        {
-            case ROOT:
-            {
-                //item = item->child(0);
-                item = static_cast<SceneTreeItem*>(sceneTreeModel->findItem(magic3dwidget->getLastLayer(), false).internalPointer());
-                break;
-            }
-            case LAYER_2D:
-            case LAYER_3D:
-            {
-                item = item->parent();
-                break;
-            }
-            case OBJECT:
-            {
-                item = item->parent()->parent();
-                break;
-            }
-            default: break;
-        }
-
-        QList<QVariant> itemData;
-        itemData << name;
-
-        SceneTreeItem* child = item;
-        SceneTreeItem* obj = NULL;
-
-        QString layerName = item->data(0).toString();
-
-        if (item->getType() == MAIN_LAYER)
-        {
-            layerName = M3D_MAIN_LAYER_NAME;
-        }
-
-        switch (object)
-        {
-            case Magic3D::eOBJECT_CUSTOM: break;
-            case Magic3D::eOBJECT_CAMERA:
-            {
-                if (magic3dwidget->addCamera(name.toStdString(), pos))
-                {
-                    item = sceneTreeModel->getRoot()->child(0);
-                    child = item->child(LAYER_INDEX_3D);
-
-                    obj = new SceneTreeItem(itemData, OBJECT, child);
-                    child->appendChild(obj);
-                }
-
-                break;
-            }
-            case Magic3D::eOBJECT_SPRITE:
-            {
-                if (magic3dwidget->addSprite(name.toStdString(), layerName.toStdString(), pos))
-                {
-                    child = item->child(LAYER_INDEX_2D);
-
-                    obj = new SceneTreeItem(itemData, OBJECT, child);
-                    child->appendChild(obj);
-                }
-
-                break;
-            }
-            case Magic3D::eOBJECT_MODEL:
-            {
-                if (magic3dwidget->addModel(name.toStdString(), layerName.toStdString(), pos))
-                {
-                    child = item->child(LAYER_INDEX_3D);
-
-                    obj = new SceneTreeItem(itemData, OBJECT, child);
-                    child->appendChild(obj);
-                }
-                break;
-            }
-            case Magic3D::eOBJECT_INSTANCE:
-            {
-                if (magic3dwidget->addInstance(name.toStdString(), layerName.toStdString(), pos))
-                {
-                    child = item->child(LAYER_INDEX_3D);
-
-                    obj = new SceneTreeItem(itemData, OBJECT, child);
-                    child->appendChild(obj);
-                }
-                break;
-            }
-            case Magic3D::eOBJECT_LIGHT:
-            {
-                if (magic3dwidget->addLight(name.toStdString(), pos))
-                {
-                    item = sceneTreeModel->getRoot()->child(0);
-                    child = item->child(LAYER_INDEX_3D);
-
-                    obj = new SceneTreeItem(itemData, OBJECT, child);
-                    child->appendChild(obj);
-                }
-
-                break;
-            }
-            case Magic3D::eOBJECT_PARTICLES:
-            {
-                if (magic3dwidget->addParticles(name.toStdString(), layerName.toStdString(), pos))
-                {
-                    child = item->child(LAYER_INDEX_3D);
-
-                    obj = new SceneTreeItem(itemData, OBJECT, child);
-                    child->appendChild(obj);
-                }
-                break;
-            }
-            case Magic3D::eOBJECT_TERRAIN:
-            {
-                //if (magic3dwidget->addTerrain(name.toStdString(), layerName.toStdString(), pos))
-                {
-                    child = item->child(LAYER_INDEX_3D);
-
-                    obj = new SceneTreeItem(itemData, OBJECT, child);
-                    child->appendChild(obj);
-                }
-                break;
-            }
-            case Magic3D::eOBJECT_WATER:
-            {
-                //if (magic3dwidget->addTerrain(name.toStdString(), layerName.toStdString(), pos))
-                {
-                    child = item->child(LAYER_INDEX_3D);
-
-                    obj = new SceneTreeItem(itemData, OBJECT, child);
-                    child->appendChild(obj);
-                }
-                break;
-            }
-            case Magic3D::eOBJECT_VEGETATION:
-            {
-                //if (magic3dwidget->addTerrain(name.toStdString(), layerName.toStdString(), pos))
-                {
-                    child = item->child(LAYER_INDEX_3D);
-
-                    obj = new SceneTreeItem(itemData, OBJECT, child);
-                    child->appendChild(obj);
-                }
-                break;
-            }
-            case Magic3D::eOBJECT_GUI_LABEL:
-            {
-                if (magic3dwidget->addText(name.toStdString(), layerName.toStdString(), pos))
-                {
-                    child = item->child(LAYER_INDEX_2D);
-
-                    obj = new SceneTreeItem(itemData, OBJECT, child);
-                    child->appendChild(obj);
-                }
-                break;
-            }
-            case Magic3D::eOBJECT_GUI_WINDOW:
-            {
-                if (magic3dwidget->addWindow(name.toStdString(), layerName.toStdString(), pos))
-                {
-                    child = item->child(LAYER_INDEX_2D);
-
-                    obj = new SceneTreeItem(itemData, OBJECT, child);
-                    child->appendChild(obj);
-                }
-                break;
-            }
-            case Magic3D::eOBJECT_GUI_BUTTON:
-            {
-                if (magic3dwidget->addButton(name.toStdString(), layerName.toStdString(), pos))
-                {
-                    child = item->child(LAYER_INDEX_2D);
-
-                    obj = new SceneTreeItem(itemData, OBJECT, child);
-                    child->appendChild(obj);
-                }
-                break;
-            }
-            case Magic3D::eOBJECT_GUI_SLIDER:
-            {
-                if (magic3dwidget->addSlider(name.toStdString(), layerName.toStdString(), pos))
-                {
-                    child = item->child(LAYER_INDEX_2D);
-
-                    obj = new SceneTreeItem(itemData, OBJECT, child);
-                    child->appendChild(obj);
-                }
-                break;
-            }
-            case Magic3D::eOBJECT_SOUND:
-            {
-                if (magic3dwidget->addSound(name.toStdString(), pos))
-                {
-                    item = sceneTreeModel->getRoot()->child(0);
-                    child = item->child(LAYER_INDEX_3D);
-
-                    obj = new SceneTreeItem(itemData, OBJECT, child);
-                    child->appendChild(obj);
-                }
-
-                break;
-            }
-            case Magic3D::eOBJECT_JOYSTICK:
-            {
-                if (magic3dwidget->addJoystick(name.toStdString(), layerName.toStdString(), pos))
-                {
-                    child = item->child(LAYER_INDEX_2D);
-
-                    obj = new SceneTreeItem(itemData, OBJECT, child);
-                    child->appendChild(obj);
-                }
-                break;
-            }
-        }
-
-        if (child && obj)
-        {
-            obj->setObject(magic3dwidget->getObject(name.toStdString()));
-            QModelIndex root = sceneTreeModel->index(item->parent()->row(), 0);
-            QModelIndex index = sceneTreeModel->index(item->row(), 0, root);
-            QModelIndex childIndex = sceneTreeModel->index(child->row(), 0, index);
-            ui->treeScene->collapse(root);
-            ui->treeScene->expand(root);
-            ui->treeScene->collapse(childIndex);
-            ui->treeScene->collapse(index);
-            ui->treeScene->expand(index);
-
-            QModelIndex objIndex = sceneTreeModel->index(obj->row(), 0, childIndex);
-            ui->treeScene->selectionModel()->setCurrentIndex(objIndex, QItemSelectionModel::ClearAndSelect);
-            magic3dwidget->setSelection(obj->getObject(), NULL);
-        }
-
-        updateMenus();
-        updateInfo();
+        item = static_cast<SceneTreeItem*>(index.internalPointer());
     }
+    else
+    {
+        QString s = MAIN_LAYER_NAME;
+        item = static_cast<SceneTreeItem*>(sceneTreeModel->findItem(s, false).internalPointer());
+    }
+
+    switch (item->getType())
+    {
+        case ROOT:
+        {
+            //item = item->child(0);
+            item = static_cast<SceneTreeItem*>(sceneTreeModel->findItem(magic3dwidget->getLastLayer(), false).internalPointer());
+            break;
+        }
+        case LAYER_2D:
+        case LAYER_3D:
+        {
+            item = item->parent();
+            break;
+        }
+        case OBJECT:
+        {
+            item = item->parent()->parent();
+            break;
+        }
+        default: break;
+    }
+
+    QList<QVariant> itemData;
+    itemData << name;
+
+    SceneTreeItem* child = item;
+    SceneTreeItem* obj = NULL;
+
+    QString layerName = item->data(0).toString();
+
+    if (item->getType() == MAIN_LAYER)
+    {
+        layerName = M3D_MAIN_LAYER_NAME;
+    }
+
+    switch (object)
+    {
+        case Magic3D::eOBJECT_CUSTOM: break;
+        case Magic3D::eOBJECT_CAMERA:
+        {
+            if (magic3dwidget->addCamera(name.toStdString(), layerName.toStdString(), pos))
+            {
+                child = item->child(LAYER_INDEX_3D);
+
+                obj = new SceneTreeItem(itemData, OBJECT, child);
+                child->appendChild(obj);
+            }
+
+            break;
+        }
+        case Magic3D::eOBJECT_SPRITE:
+        {
+            if (magic3dwidget->addSprite(name.toStdString(), layerName.toStdString(), pos))
+            {
+                child = item->child(LAYER_INDEX_2D);
+
+                obj = new SceneTreeItem(itemData, OBJECT, child);
+                child->appendChild(obj);
+            }
+
+            break;
+        }
+        case Magic3D::eOBJECT_MODEL:
+        {
+            if (magic3dwidget->addModel(name.toStdString(), layerName.toStdString(), pos))
+            {
+                child = item->child(LAYER_INDEX_3D);
+
+                obj = new SceneTreeItem(itemData, OBJECT, child);
+                child->appendChild(obj);
+            }
+            break;
+        }
+        case Magic3D::eOBJECT_INSTANCE:
+        {
+            if (magic3dwidget->addInstance(name.toStdString(), layerName.toStdString(), pos))
+            {
+                child = item->child(LAYER_INDEX_3D);
+
+                obj = new SceneTreeItem(itemData, OBJECT, child);
+                child->appendChild(obj);
+            }
+            break;
+        }
+        case Magic3D::eOBJECT_LIGHT:
+        {
+            if (magic3dwidget->addLight(name.toStdString(), layerName.toStdString(), pos))
+            {
+                child = item->child(LAYER_INDEX_3D);
+
+                obj = new SceneTreeItem(itemData, OBJECT, child);
+                child->appendChild(obj);
+            }
+
+            break;
+        }
+        case Magic3D::eOBJECT_PARTICLES:
+        {
+            if (magic3dwidget->addParticles(name.toStdString(), layerName.toStdString(), pos))
+            {
+                child = item->child(LAYER_INDEX_3D);
+
+                obj = new SceneTreeItem(itemData, OBJECT, child);
+                child->appendChild(obj);
+            }
+            break;
+        }
+        case Magic3D::eOBJECT_TERRAIN:
+        {
+            //if (magic3dwidget->addTerrain(name.toStdString(), layerName.toStdString(), pos))
+            {
+                child = item->child(LAYER_INDEX_3D);
+
+                obj = new SceneTreeItem(itemData, OBJECT, child);
+                child->appendChild(obj);
+            }
+            break;
+        }
+        case Magic3D::eOBJECT_WATER:
+        {
+            //if (magic3dwidget->addTerrain(name.toStdString(), layerName.toStdString(), pos))
+            {
+                child = item->child(LAYER_INDEX_3D);
+
+                obj = new SceneTreeItem(itemData, OBJECT, child);
+                child->appendChild(obj);
+            }
+            break;
+        }
+        case Magic3D::eOBJECT_VEGETATION:
+        {
+            //if (magic3dwidget->addTerrain(name.toStdString(), layerName.toStdString(), pos))
+            {
+                child = item->child(LAYER_INDEX_3D);
+
+                obj = new SceneTreeItem(itemData, OBJECT, child);
+                child->appendChild(obj);
+            }
+            break;
+        }
+        case Magic3D::eOBJECT_GUI_LABEL:
+        {
+            if (magic3dwidget->addText(name.toStdString(), layerName.toStdString(), pos))
+            {
+                child = item->child(LAYER_INDEX_2D);
+
+                obj = new SceneTreeItem(itemData, OBJECT, child);
+                child->appendChild(obj);
+            }
+            break;
+        }
+        case Magic3D::eOBJECT_GUI_WINDOW:
+        {
+            if (magic3dwidget->addWindow(name.toStdString(), layerName.toStdString(), pos))
+            {
+                child = item->child(LAYER_INDEX_2D);
+
+                obj = new SceneTreeItem(itemData, OBJECT, child);
+                child->appendChild(obj);
+            }
+            break;
+        }
+        case Magic3D::eOBJECT_GUI_BUTTON:
+        {
+            if (magic3dwidget->addButton(name.toStdString(), layerName.toStdString(), pos))
+            {
+                child = item->child(LAYER_INDEX_2D);
+
+                obj = new SceneTreeItem(itemData, OBJECT, child);
+                child->appendChild(obj);
+            }
+            break;
+        }
+        case Magic3D::eOBJECT_GUI_SLIDER:
+        {
+            if (magic3dwidget->addSlider(name.toStdString(), layerName.toStdString(), pos))
+            {
+                child = item->child(LAYER_INDEX_2D);
+
+                obj = new SceneTreeItem(itemData, OBJECT, child);
+                child->appendChild(obj);
+            }
+            break;
+        }
+        case Magic3D::eOBJECT_SOUND:
+        {
+            if (magic3dwidget->addSound(name.toStdString(), layerName.toStdString(), pos))
+            {
+                child = item->child(LAYER_INDEX_3D);
+
+                obj = new SceneTreeItem(itemData, OBJECT, child);
+                child->appendChild(obj);
+            }
+
+            break;
+        }
+        case Magic3D::eOBJECT_JOYSTICK:
+        {
+            if (magic3dwidget->addJoystick(name.toStdString(), layerName.toStdString(), pos))
+            {
+                child = item->child(LAYER_INDEX_2D);
+
+                obj = new SceneTreeItem(itemData, OBJECT, child);
+                child->appendChild(obj);
+            }
+            break;
+        }
+    }
+
+    if (child && obj)
+    {
+        obj->setObject(magic3dwidget->getObject(name.toStdString()));
+        QModelIndex root = sceneTreeModel->index(item->parent()->row(), 0);
+        QModelIndex index = sceneTreeModel->index(item->row(), 0, root);
+        QModelIndex childIndex = sceneTreeModel->index(child->row(), 0, index);
+        ui->treeScene->collapse(root);
+        ui->treeScene->expand(root);
+        ui->treeScene->collapse(childIndex);
+        ui->treeScene->collapse(index);
+        ui->treeScene->expand(index);
+
+        QModelIndex objIndex = sceneTreeModel->index(obj->row(), 0, childIndex);
+        ui->treeScene->selectionModel()->setCurrentIndex(objIndex, QItemSelectionModel::ClearAndSelect);
+        magic3dwidget->setSelection(obj->getObject(), NULL);
+    }
+
+    updateMenus();
+    updateInfo();
 }
 
 void MainWindow::duplicateObject(QString name, Magic3D::Object* object, bool clone)
@@ -1398,9 +1401,10 @@ void MainWindow::updateFromEngine()
         if (item)
         {
             item->setVisible(layer->isVisible());
+            updateObjectsFromEngine(item, layer->getCameras());
             updateObjectsFromEngine(item, layer->getObjects2D());
             updateObjectsFromEngine(item, layer->getObjects3D());
-            updateObjectsFromEngine(item, layer->getLights());
+            updateObjectsFromEngine(item, layer->getLights());            
         }
     }
 
@@ -1587,7 +1591,7 @@ QStringList& MainWindow::getMaterialList()
     return filesMaterial;
 }
 
-void MainWindow::updateParentsList(bool tween, bool rigidbody)
+void MainWindow::updateParentsList(bool is3D, bool tween, bool rigidbody)
 {
     parentsList.clear();
     parentsList.append(UTILS_NONE);
@@ -1598,7 +1602,7 @@ void MainWindow::updateParentsList(bool tween, bool rigidbody)
     {
         Magic3D::Layer* layer = *it_l++;
 
-        std::vector<Magic3D::Object*>* objects = layer->getObjects3D();
+        std::vector<Magic3D::Object*>* objects = is3D ? layer->getObjects3D() : layer->getObjects2D();
         std::vector<Magic3D::Object*>::const_iterator it_o = objects->begin();
         while (it_o != objects->end())
         {
@@ -2247,9 +2251,10 @@ void MainWindow::on_actionPerspective_triggered()
 
 void MainWindow::on_actionSimulate_triggered()
 {
+    QSettings settings;
     if (!Magic3D::Physics::getInstance()->isPlaying())
-    {
-        QSettings settings;
+    {        
+        settings.setValue("time_scale", Magic3D::Magic3D::getInstance()->getTimeScale());
         settings.setValue("script_file", editorLua->getFileName());
         settings.setValue("script_cursor_pos", editorLua->getCursorPosition());
         reloadProject = QString::fromStdString(getProject()->getFullPath());
@@ -2278,6 +2283,7 @@ void MainWindow::on_actionSimulate_triggered()
     }
     else
     {
+        Magic3D::Magic3D::getInstance()->setTimeScale(settings.value("time_scale").toFloat());
         magic3dwidget->setSelection(NULL, NULL);
         ui->actionSimulate->setEnabled(false);
         ui->actionOpen->trigger();

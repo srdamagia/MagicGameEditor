@@ -67,6 +67,8 @@ private slots:
     void on_txtRotX_valueChanged(double arg1);
     void on_txtRotY_valueChanged(double arg1);
     void on_txtRotZ_valueChanged(double arg1);
+    void on_txtScaleX_valueChanged(double arg1);
+    void on_txtScaleY_valueChanged(double arg1);
     void on_txtFontSize_valueChanged(double arg1);
     void on_txtFlag_valueChanged(int arg1);
     void on_rbLeft_toggled(bool checked);

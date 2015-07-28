@@ -94,12 +94,18 @@ void MeshInfo::updateObject()
         mesh->getMaterials()->clear();
         if (ui->cmbMaterial->currentIndex() > 0 && ui->cmbMaterial->currentText() != UTILS_NONE)
         {
+            std::string sequence;
             if (getObject()->getRender() == Magic3D::eRENDER_2D)
             {
+                sequence = static_cast<Magic3D::Sprite*>(getObject())->getCurrentSequenceName();
                 static_cast<Magic3D::Sprite*>(getObject())->setCurrentSequence(NULL);
             }
             bool created = false;
             mesh->addMaterial(Magic3D::ResourceManager::getMaterials()->load(ui->cmbMaterial->currentText().toStdString(), created));
+            if (getObject()->getRender() == Magic3D::eRENDER_2D)
+            {
+                static_cast<Magic3D::Sprite*>(getObject())->setCurrentSequence(sequence);
+            }
         }
 
         Magic3D::Object* object = getObject();
