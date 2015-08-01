@@ -196,6 +196,11 @@ INPUT(
 ./MGE_Windows/trees.o
 ./MGE_Windows/uncompr.o
 ./MGE_Windows/zutil.o
+./MGE_Windows/ioapi.o
+./MGE_Windows/iowin32.o
+./MGE_Windows/mztools.o
+./MGE_Windows/unzip.o
+./MGE_Windows/zip.o
 ./MGE_Windows/example.o
 ./MGE_Windows/png.o
 ./MGE_Windows/pngerror.o
@@ -257,6 +262,7 @@ INPUT(
 ./MGE_Windows/mesh.o
 ./MGE_Windows/object.o
 ./MGE_Windows/octree.o
+./MGE_Windows/package.o
 ./MGE_Windows/particles.o
 ./MGE_Windows/scene.o
 ./MGE_Windows/sprite.o

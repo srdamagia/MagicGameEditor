@@ -46,6 +46,7 @@ subject to the following restrictions:
 #include "shaderseditor.h"
 
 #include <magic3d/magic3d.h>
+#include <magic3d/package.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -469,7 +470,7 @@ void MainWindow::update()
     ui->actionSave_As->setVisible(false);
     ui->actionClose_Project->setEnabled(enabled);
     ui->actionConfigure_Project->setEnabled(enabled);
-    ui->actionPack->setEnabled(enabled);
+    //ui->actionPack->setEnabled(enabled);
 
     ui->dockScene->setEnabled(enabled);
     ui->dockProperties->setEnabled(enabled);
@@ -2683,8 +2684,18 @@ void MainWindow::on_actionOpenScript_triggered()
     }
 }
 
+void packRefresh(std::string fileName, bool done)
+{
+    if (!fileName.empty() && done)
+    {
+
+    }
+    QApplication::processEvents();
+}
+
 void MainWindow::on_actionPack_triggered()
 {
+    QString dataPath = Utils::getApplicationPath() + "data/";
 #if (defined(__APPLE__) && defined(__MACH__))
     QString textureToolFile = "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/texturetool";
     QFile textureTool(textureToolFile);
@@ -2693,7 +2704,7 @@ void MainWindow::on_actionPack_triggered()
         int errors = 0;
         QString fileName = "*.png";
 
-        QDirIterator it(QString::fromStdString(Magic3D::ResourceManager::getInstance()->getPath()), QStringList() << fileName, QDir::Files, QDirIterator::Subdirectories);
+        QDirIterator it(dataPath, QStringList() << fileName, QDir::Files, QDirIterator::Subdirectories);
         while (it.hasNext())
         {
             QString texture = it.next();
@@ -2741,4 +2752,19 @@ void MainWindow::on_actionPack_triggered()
         Utils::message("Error!", "Can't find PVRTC texture tool!");
     }
 #endif
+
+    Magic3D::Package* package = new Magic3D::Package();
+    QString fileName = "*.*";
+
+    QDirIterator it(dataPath, QStringList() << fileName, QDir::Files, QDirIterator::Subdirectories);
+    while (it.hasNext())
+    {
+        QString fileInPack = it.next();
+        if (!fileInPack.endsWith(".DS_Store", Qt::CaseInsensitive))
+        {
+            package->addFile(fileInPack.remove(0, dataPath.size()).toStdString());
+        }
+    }
+    package->setPackage(QString(Utils::getApplicationPath() + "data.magic3d").toStdString());
+    package->pack(dataPath.toStdString(), packRefresh);
 }

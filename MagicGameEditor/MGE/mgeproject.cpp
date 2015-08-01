@@ -284,7 +284,8 @@ void MGE::MGEProject::setPathData(const std::string path)
 
         changed = true;
 
-        Magic3D::ResourceManager::getInstance()->setPath(UTILS_DEFAULT_PATH.toStdString() + path);
+        Magic3D::ResourceManager::getInstance()->setPath(UTILS_DEFAULT_PATH.toStdString() + path, false);
+        Magic3D::ResourceManager::getInstance()->setUserPath(UTILS_DEFAULT_PATH.toStdString());
     }
 }
 

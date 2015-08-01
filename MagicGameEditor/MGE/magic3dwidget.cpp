@@ -569,7 +569,7 @@ void MGE::Magic3DWidget::contextMenuEvent(QContextMenuEvent *event)
 
 void MGE::Magic3DWidget::setPath(std::string path)
 {
-    Magic3D::ResourceManager::getInstance()->setPath(path);
+    Magic3D::ResourceManager::getInstance()->setPath(path, false);
 }
 
 bool MGE::Magic3DWidget::addLayer(std::string name)
