@@ -30,6 +30,8 @@ subject to the following restrictions:
 #include "lightinfo.h"
 #include "soundinfo.h"
 #include "tweensinfo.h"
+#include "vegetationinfo.h"
+#include "waterinfo.h"
 #include "utils.h"
 
 namespace Ui {
@@ -54,15 +56,18 @@ public:
     virtual void updateSimulation();
     virtual void updateObject();
 
+    void updateCombos();
     void updateParentCombo();
     void updateParentBoneCombo();
-    void listBones(Magic3D::Skeleton* bone, QStringList& items);
+    void listBones(Magic3D::Skeleton* bone, QStringList& items);    
 private:
     Ui::Object3DInfo *ui;
 
     CameraInfo* cameraInfo;
     LightInfo* lightInfo;
     SoundInfo* soundInfo;
+    VegetationInfo* vegetationInfo;
+    WaterInfo* waterInfo;
     QFileSystemModel* model;
 
     Magic3D::Model* getModel(bool parent = false);

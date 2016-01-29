@@ -536,8 +536,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>100</width>
-          <height>30</height>
+          <width>98</width>
+          <height>28</height>
          </rect>
         </property>
         <attribute name="label">
@@ -563,8 +563,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>100</width>
-          <height>30</height>
+          <width>98</width>
+          <height>28</height>
          </rect>
         </property>
         <attribute name="label">
@@ -590,8 +590,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>100</width>
-          <height>30</height>
+          <width>98</width>
+          <height>28</height>
          </rect>
         </property>
         <attribute name="label">
@@ -617,8 +617,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>100</width>
-          <height>30</height>
+          <width>98</width>
+          <height>28</height>
          </rect>
         </property>
         <attribute name="label">
@@ -717,7 +717,9 @@
    <attribute name="dockWidgetArea">
     <number>2</number>
    </attribute>
-   <widget class="QWidget" name="dockWidgetContents_4"/>
+   <widget class="QWidget" name="dockWidgetContents_4">
+    <layout class="QGridLayout" name="layoutTerrain"/>
+   </widget>
   </widget>
   <widget class="QToolBar" name="view">
    <property name="windowTitle">
@@ -1270,9 +1272,6 @@ p, li { white-space: pre-wrap; }
    </property>
   </action>
   <action name="actionTerrain">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
    <property name="icon">
     <iconset resource="MagicGameEditor.qrc">
      <normaloff>:/MagicGameEditor/Images/terrain.png</normaloff>:/MagicGameEditor/Images/terrain.png</iconset>
@@ -1457,7 +1456,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionWater">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="icon">
     <iconset resource="MagicGameEditor.qrc">
@@ -1467,12 +1466,12 @@ p, li { white-space: pre-wrap; }
     <string>Water</string>
    </property>
    <property name="visible">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
   </action>
   <action name="actionVegetation">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="icon">
     <iconset resource="MagicGameEditor.qrc">
@@ -1482,7 +1481,7 @@ p, li { white-space: pre-wrap; }
     <string>Vegetation</string>
    </property>
    <property name="visible">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
   </action>
   <action name="actionCopy">

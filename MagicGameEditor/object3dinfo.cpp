@@ -43,6 +43,12 @@ Object3DInfo::Object3DInfo(MainWindow* mainWindow) :
 
     soundInfo = new SoundInfo(mainWindow);
     ui->layoutOther->addWidget(soundInfo);
+
+    vegetationInfo = new VegetationInfo(mainWindow);
+    ui->layoutOther->addWidget(vegetationInfo);
+
+    waterInfo = new WaterInfo(mainWindow);
+    ui->layoutOther->addWidget(waterInfo);
 }
 
 Object3DInfo::~Object3DInfo()
@@ -65,12 +71,25 @@ Object3DInfo::~Object3DInfo()
         soundInfo = NULL;
     }
 
+    if (vegetationInfo)
+    {
+        delete vegetationInfo;
+        vegetationInfo = NULL;
+    }
+
     if (model)
     {
         ui->lstFiles->setModel(NULL);
         delete model;
         model = NULL;
     }
+
+    if (waterInfo)
+    {
+        delete waterInfo;
+        waterInfo = NULL;
+    }
+
     delete ui;
 }
 
@@ -240,6 +259,14 @@ void Object3DInfo::update()
         soundInfo->setPhysicsObject(object);
         soundInfo->update();
 
+        vegetationInfo->setVisible(object->getType() == Magic3D::eOBJECT_VEGETATION);
+        vegetationInfo->setPhysicsObject(object);
+        vegetationInfo->update();
+
+        waterInfo->setVisible(object->getType() == Magic3D::eOBJECT_WATER);
+        waterInfo->setPhysicsObject(object);
+        waterInfo->update();
+
         Magic3D::Box box = object->getBoundingBox();
         ui->lblWidth->setText(tr("width: %0").arg(box.getWidth() * object->getScale().getX(), 0, 'f', 3));
         ui->lblHeight->setText(tr("height: %0").arg(box.getHeight() * object->getScale().getY(), 0, 'f', 3));
@@ -277,6 +304,8 @@ void Object3DInfo::update()
         cameraInfo->setVisible(false);
         lightInfo->setVisible(false);
         soundInfo->setVisible(false);
+        vegetationInfo->setVisible(false);
+        waterInfo->setVisible(false);
         ui->lstFiles->setModel(NULL);
     }
 
@@ -455,6 +484,11 @@ void Object3DInfo::updateObject()
         mainWindow->setProjectChanged(true);
         mainWindow->update();
     }
+}
+
+void Object3DInfo::updateCombos()
+{
+    vegetationInfo->updateTerrainCombo();
 }
 
 void Object3DInfo::updateParentCombo()

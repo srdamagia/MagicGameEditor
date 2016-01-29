@@ -23,7 +23,7 @@ UI_DIR = $$OBJECTS_DIR
 MOC_DIR = $$OBJECTS_DIR
 
 CONFIG += app_bundle
-win32:LIBS += -lOpenAL32 #-lopengl32
+win32:LIBS += -lOpenAL32 -lgdi32 -lopengl32
 unix:!macx:LIBS += -lopenal -lpng
 macx:LIBS += -framework OpenAL
 
@@ -38,14 +38,14 @@ include($$MAGIC3D/Magic3D_Base.pro)
 
 SOURCES += \
     MagicGameEditor/*.cpp \
-    MagicGameEditor/MGE/*.cpp
+    MagicGameEditor/MGE/*.cpp \
 
 HEADERS  += \
     MagicGameEditor/*.h \
-    MagicGameEditor/MGE/*.h
+    MagicGameEditor/MGE/*.h \
 
 FORMS += \
-    MagicGameEditor/*.ui
+    MagicGameEditor/*.ui \
 
 RESOURCES += \
     MagicGameEditor/MagicGameEditor.qrc

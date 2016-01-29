@@ -44,6 +44,7 @@ subject to the following restrictions:
 #include "meshesinfo.h"
 #include "particlesinfo.h"
 #include "shaderseditor.h"
+#include "terraininfo.h"
 
 #include <magic3d/magic3d.h>
 #include <magic3d/package.h>
@@ -168,6 +169,12 @@ MainWindow::~MainWindow()
     {
         delete materialinfo;
         materialinfo = NULL;
+    }
+
+    if (terraininfo)
+    {
+        delete terraininfo;
+        terraininfo = NULL;
     }
 
     if (highlighterLua)
@@ -311,9 +318,7 @@ void MainWindow::init()
     tabifyDockWidget(ui->dockProperties, ui->dockParticles);
     tabifyDockWidget(ui->dockProperties, ui->dockMaterials);
     tabifyDockWidget(ui->dockProperties, ui->dockShaders);
-    ui->dockProperties->raise();
-
-    ui->dockTerrain->setVisible(false);
+    ui->dockProperties->raise();    
 
     tabifyDockWidget(ui->dockScript, ui->dockLog);
     ui->dockScript->raise();
@@ -373,6 +378,10 @@ void MainWindow::init()
 
     materialinfo = new MaterialInfo(this);
     ui->layoutMaterials->addWidget(materialinfo);
+
+    terraininfo   = new TerrainInfo(this);
+    ui->layoutTerrain->addWidget(terraininfo);
+    terraininfo->setVisible(false);
 
     QFont font;
     font.setFamily("Courier");
@@ -596,6 +605,7 @@ void MainWindow::updateInfo()
     object2dinfo->updateParentCombo();
     object3dinfo->updateParentCombo();
     sceneinfo->updateCamerasCombo();
+    object3dinfo->updateCombos();
     magic3dwidget->updateInfo();
     update();
 }
@@ -883,7 +893,7 @@ void MainWindow::addObject(QString name, int object, QPoint pos)
         }
         case Magic3D::eOBJECT_TERRAIN:
         {
-            //if (magic3dwidget->addTerrain(name.toStdString(), layerName.toStdString(), pos))
+            if (magic3dwidget->addTerrain(name.toStdString(), layerName.toStdString(), pos))
             {
                 child = item->child(LAYER_INDEX_3D);
 
@@ -894,7 +904,7 @@ void MainWindow::addObject(QString name, int object, QPoint pos)
         }
         case Magic3D::eOBJECT_WATER:
         {
-            //if (magic3dwidget->addTerrain(name.toStdString(), layerName.toStdString(), pos))
+            if (magic3dwidget->addWater(name.toStdString(), layerName.toStdString(), pos))
             {
                 child = item->child(LAYER_INDEX_3D);
 
@@ -905,7 +915,7 @@ void MainWindow::addObject(QString name, int object, QPoint pos)
         }
         case Magic3D::eOBJECT_VEGETATION:
         {
-            //if (magic3dwidget->addTerrain(name.toStdString(), layerName.toStdString(), pos))
+            if (magic3dwidget->addVegetation(name.toStdString(), layerName.toStdString(), pos))
             {
                 child = item->child(LAYER_INDEX_3D);
 

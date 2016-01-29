@@ -85,5 +85,11 @@
         <file>Logos/zlib.png</file>
         <file>Logos/openal.png</file>
         <file>Icons/magic3d.ico</file>
+        <file>Images/lower.png</file>
+        <file>Images/raise.png</file>
+        <file>Images/flatten.png</file>
+        <file>Images/circle.png</file>
+        <file>Images/square.png</file>
+        <file>Images/add.png</file>
     </qresource>
 </RCC>

@@ -160,6 +160,8 @@ private:
     void capsule(QPainter *painter);
 
     void resetKeys();
+
+    void editTerrain(Magic3D::Camera* camera, QMouseEvent *event);
 public:
     Magic3DWidget(const QGLFormat& format, MainWindow *parent);
     ~Magic3DWidget();
@@ -185,6 +187,9 @@ public:
     Magic3D::Object* addButton(std::string name, std::string layer, QPoint pos);
     Magic3D::Object* addSlider(std::string name, std::string layer, QPoint pos);
     Magic3D::Object* addModel(std::string name, std::string layer, QPoint pos);
+    Magic3D::Object* addTerrain(std::string name, std::string layer, QPoint pos);
+    Magic3D::Object* addWater(std::string name, std::string layer, QPoint pos);
+    Magic3D::Object* addVegetation(std::string name, std::string layer, QPoint pos);
     Magic3D::Object* addInstance(std::string name, std::string layer, QPoint pos);
     Magic3D::Object* addLight(std::string name, std::string layer, QPoint pos);
     Magic3D::Object* addSound(std::string name, std::string layer, QPoint pos);

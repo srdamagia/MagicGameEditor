@@ -60,6 +60,7 @@ class MeshesInfo;
 class ParticlesInfo;
 class MaterialInfo;
 class ShadersEditor;
+class TerrainInfo;
 
 class MainWindow : public QMainWindow
 {
@@ -78,6 +79,7 @@ public:
     ParticlesInfo*  particlesinfo;
     MaterialInfo*   materialinfo;
     ShadersEditor*  shaderseditor;
+    TerrainInfo*    terraininfo;
 
     QLabel cursor;
     QLabel info;

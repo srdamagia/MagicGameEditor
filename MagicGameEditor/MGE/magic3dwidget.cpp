@@ -35,6 +35,7 @@ subject to the following restrictions:
 #include "meshesinfo.h"
 #include "particlesinfo.h"
 #include "shaderseditor.h"
+#include "terraininfo.h"
 #include "utils.h"
 #include <magic3d/magic3d.h>
 
@@ -901,6 +902,90 @@ Magic3D::Object* MGE::Magic3DWidget::addModel(std::string name, std::string laye
     return result;
 }
 
+Magic3D::Object* MGE::Magic3DWidget::addTerrain(std::string name, std::string layer, QPoint pos)
+{
+    Magic3D::Object* result = NULL;
+
+    Magic3D::ResourceManager* mngr = Magic3D::ResourceManager::getInstance();
+    Magic3D::Layer* l = Magic3D::Scene::getInstance()->getLayer(layer);
+
+    Magic3D::Object* object = mngr->getObjects()->get(name);
+
+    if (!object && l)
+    {
+        bool created = false;
+        object = mngr->addTerrain(name, created);
+        Magic3D::Vector3 position = getPosition3D(pos);
+        object->setPosition(position);
+
+        Magic3D::Scene::getInstance()->addObject(l, object);
+
+        result = object;
+    }
+    else
+    {
+        objectAlreadyExists(name);
+    }
+
+    return result;
+}
+
+Magic3D::Object* MGE::Magic3DWidget::addWater(std::string name, std::string layer, QPoint pos)
+{
+    Magic3D::Object* result = NULL;
+
+    Magic3D::ResourceManager* mngr = Magic3D::ResourceManager::getInstance();
+    Magic3D::Layer* l = Magic3D::Scene::getInstance()->getLayer(layer);
+
+    Magic3D::Object* object = mngr->getObjects()->get(name);
+
+    if (!object && l)
+    {
+        bool created = false;
+        object = mngr->addWater(name, created);
+        Magic3D::Vector3 position = getPosition3D(pos);
+        object->setPosition(position);
+
+        Magic3D::Scene::getInstance()->addObject(l, object);
+
+        result = object;
+    }
+    else
+    {
+        objectAlreadyExists(name);
+    }
+
+    return result;
+}
+
+Magic3D::Object* MGE::Magic3DWidget::addVegetation(std::string name, std::string layer, QPoint pos)
+{
+    Magic3D::Object* result = NULL;
+
+    Magic3D::ResourceManager* mngr = Magic3D::ResourceManager::getInstance();
+    Magic3D::Layer* l = Magic3D::Scene::getInstance()->getLayer(layer);
+
+    Magic3D::Object* object = mngr->getObjects()->get(name);
+
+    if (!object && l)
+    {
+        bool created = false;
+        object = mngr->addVegetation(name, created);
+        Magic3D::Vector3 position = getPosition3D(pos);
+        object->setPosition(position);
+
+        Magic3D::Scene::getInstance()->addObject(l, object);
+
+        result = object;
+    }
+    else
+    {
+        objectAlreadyExists(name);
+    }
+
+    return result;
+}
+
 Magic3D::Object* MGE::Magic3DWidget::addInstance(std::string name, std::string layer, QPoint pos)
 {
     Magic3D::Object* result = NULL;
@@ -1112,6 +1197,7 @@ void MGE::Magic3DWidget::setSelection(Magic3D::Object* object, Magic3D::Bone* bo
     mainWindow->meshesinfo->setPhysicsObject(this->selected);
     mainWindow->particlesinfo->setPhysicsObject(this->selected);
     mainWindow->materialinfo->setPhysicsObject(this->selected);
+    mainWindow->terraininfo->setPhysicsObject(this->selected);
     mainWindow->shaderseditor->setPhysicsObject(this->selected);
 
     if (this->selected)
@@ -1139,6 +1225,7 @@ void MGE::Magic3DWidget::setSelection(Magic3D::Object* object, Magic3D::Bone* bo
     mainWindow->tweensinfo->setVisible(this->selectedBone || (this->selected));
     mainWindow->meshesinfo->setVisible(onlyObject);
     mainWindow->particlesinfo->setVisible(onlyObject && this->selected->getType() == Magic3D::eOBJECT_PARTICLES);
+    mainWindow->terraininfo->setVisible(onlyObject && this->selected->getType() == Magic3D::eOBJECT_TERRAIN);
 
     if (mainWindow->getProject())
     {
@@ -1197,6 +1284,7 @@ void MGE::Magic3DWidget::updateInfo()
         mainWindow->tweensinfo->update();
         mainWindow->meshesinfo->update();
         mainWindow->particlesinfo->update();
+        mainWindow->terraininfo->update();
     }
 }
 
@@ -1324,34 +1412,41 @@ void MGE::Magic3DWidget::mousePressEvent(QMouseEvent *event)
     }
     else
     {
-        if (event->button() == Qt::LeftButton)
+        if (mainWindow->terraininfo->isEditing())
         {
-            if (!raycast(x, y, false))
+            editTerrain(Magic3D::Renderer::getInstance()->getCurrentViewPort()->getPerspective(), event);
+        }
+        else
+        {
+            if (event->button() == Qt::LeftButton)
             {
-                if (!raycast(x, y, true))
+                if (!raycast(x, y, false))
                 {
-                    mainWindow->selectObjectByName(lastLayer, false);
+                    if (!raycast(x, y, true))
+                    {
+                        mainWindow->selectObjectByName(lastLayer, false);
+                    }
+                }
+
+                if (getSelectedObject() && keyCtrl)
+                {
+                    Magic3D::Object* obj = getSelectedObject();
+                    //mainWindow->duplicateObject(QString::fromStdString(obj->getCloneName()), getSelectedObject(), true);
+                    mainWindow->duplicateObject(QString::fromStdString(Magic3D::ResourceManager::getObjects()->getNewName(obj->getName())), obj, true);
                 }
             }
 
-            if (getSelectedObject() && keyCtrl)
+            if (getSelectedPhysicsObject() && !keyCtrl)
             {
-                Magic3D::Object* obj = getSelectedObject();
-                //mainWindow->duplicateObject(QString::fromStdString(obj->getCloneName()), getSelectedObject(), true);
-                mainWindow->duplicateObject(QString::fromStdString(Magic3D::ResourceManager::getObjects()->getNewName(obj->getName())), obj, true);
-            }
-        }
+                objectRestore.position = getSelectedPhysicsObject()->getPosition();
+                objectRestore.rotation = getSelectedPhysicsObject()->getRotation();
+                objectRestore.scale = getSelectedPhysicsObject()->getScale();
+                objectRestore.changed = mainWindow->getProject()->isChanged();
 
-        if (getSelectedPhysicsObject() && !keyCtrl)
-        {
-            objectRestore.position = getSelectedPhysicsObject()->getPosition();
-            objectRestore.rotation = getSelectedPhysicsObject()->getRotation();
-            objectRestore.scale = getSelectedPhysicsObject()->getScale();
-            objectRestore.changed = mainWindow->getProject()->isChanged();
-
-            if (getSelectedObject()->getType() != Magic3D::eOBJECT_LIGHT && getSelectedObject()->getType() != Magic3D::eOBJECT_SOUND)
-            {
-                getSelectedObject()->setSelected(false);
+                if (getSelectedObject()->getType() != Magic3D::eOBJECT_LIGHT && getSelectedObject()->getType() != Magic3D::eOBJECT_SOUND)
+                {
+                    getSelectedObject()->setSelected(false);
+                }
             }
         }
     }
@@ -1365,70 +1460,6 @@ bool MGE::Magic3DWidget::raycast(float x, float y, bool perspective)
 
     Magic3D::ViewPort* viewport = Magic3D::Renderer::getInstance()->getCurrentViewPort();
     Magic3D::Camera* camera = perspective ? viewport->getPerspective() : viewport->getOrthographic();
-
-    /*Magic3D::Window* window = Magic3D::Renderer::getInstance()->getWindow();
-
-    if (camera && window)
-    {
-
-        std::list<Magic3D::RenderObject>* objs;
-
-        Magic3D::Matrix4 projection;
-        if (perspective)
-        {
-            projection = camera->view3D((float)window->getWidth() / (float)window->getHeight());
-            Magic3D::Scene::getInstance()->updateVisibleObjects3D(camera, true, true);
-            objs = Magic3D::Scene::getInstance()->getVisibleObjects3D();
-        }
-        else
-        {
-            projection = camera->view2D(0.0f, window->getWidth(), window->getHeight(), 0.0f);
-            Magic3D::Scene::getInstance()->updateVisibleObjects2D(camera, false);
-            objs = Magic3D::Scene::getInstance()->getVisibleObjects2D();
-        }
-
-
-        float mx = x;
-        float my = -y;
-
-        if (perspective)
-        {
-            mx = x / window->getWidth();
-            my = 1.0f - y / window->getHeight();
-        }
-
-        std::list<Magic3D::RenderObject>::const_iterator it_o = objs->end();
-
-        while (it_o != objs->begin() && !result)
-        {
-            const Magic3D::RenderObject* object = &(*--it_o);
-            Magic3D::Box box = object->object->getBoundingBox();
-
-            Magic3D::Matrix4 matrix = camera->getView() * object->object->getMatrixFromParent();
-
-            Magic3D::Vector3 n = Magic3D::Camera::unproject(Magic3D::Vector3(mx, my, 0.0f), matrix, projection, viewport);
-            Magic3D::Vector3 f = Magic3D::Camera::unproject(Magic3D::Vector3(mx, my, 1.0f), matrix, projection, viewport);
-
-            Magic3D::Vector3 dir = f - n;
-            dir = normalize(dir);
-
-            Magic3D::Vector4 mouse = inverse(matrix) * Magic3D::Vector4(mx, -my, object->object->getMaxSizeFromParent(), 1.0f);
-            Magic3D::Vector3 pos = Magic3D::Vector3(mouse.getX(), mouse.getY(), mouse.getZ());
-            if (perspective)
-            {
-                pos = n;
-            }
-
-            Magic3D::Ray ray = Magic3D::Ray(pos, dir);
-
-            if (Magic3D::Math::collide(ray, camera->getNear(), camera->getFar(), box))
-            {
-                QString name = QString::fromStdString(object->object->getName());
-                mainWindow->selectObjectByName(name, true);
-                result = true;
-            }
-        }
-    }*/
 
     if (camera)
     {
@@ -1546,6 +1577,7 @@ void MGE::Magic3DWidget::mouseMoveEvent(QMouseEvent *event)
             }
         }
 
+        editTerrain(camera, event);
         if (mouseDown && object && event->buttons() & Qt::LeftButton && event->buttons() & Qt::RightButton)
         {
             float max  = (fabs(y) > fabs(x) ? y : x) * 0.01f;
@@ -1567,7 +1599,7 @@ void MGE::Magic3DWidget::mouseMoveEvent(QMouseEvent *event)
             mainWindow->setProjectChanged(true);
             mainWindow->update();
         }
-        else if (mouseDown && object && object->getType() != Magic3D::eOBJECT_CAMERA && event->buttons() & Qt::MiddleButton)
+        else if (mouseDown && !mainWindow->terraininfo->isEditing() && object && object->getType() != Magic3D::eOBJECT_CAMERA && event->buttons() & Qt::MiddleButton)
         {
             Magic3D::Quaternion quat = Magic3D::Quaternion::identity();
 
@@ -1657,7 +1689,7 @@ void MGE::Magic3DWidget::mouseMoveEvent(QMouseEvent *event)
         }
         else if (event->buttons() & Qt::LeftButton && !(event->buttons() & Qt::RightButton))
         {
-            if (mouseDown && object && !Magic3D::Physics::getInstance()->isPlaying())
+            if (mouseDown && !mainWindow->terraininfo->isEditing() && object && !Magic3D::Physics::getInstance()->isPlaying())
             {
                 Magic3D::Window* window = Magic3D::Renderer::getInstance()->getWindow();
                 Magic3D::Vector3 aspect = window->getWindowScreenAspect();
@@ -1953,11 +1985,12 @@ void MGE::Magic3DWidget::mouseReleaseEvent(QMouseEvent *event)
         Magic3D::Input::getInstance()->dispatchEvent(Magic3D::eINPUT_TOUCH, Magic3D::eEVENT_TOUCH_UP, event->pos().x(), event->pos().y(), button);
     }
     else
-    {
+    {        
         while (qApp->overrideCursor() != 0)
         {
             qApp->restoreOverrideCursor();
         }
+
         if (getSelectedObject())
         {
             getSelectedObject()->setSelected(true);
@@ -1999,7 +2032,15 @@ void MGE::Magic3DWidget::wheelEvent(QWheelEvent *event)
     {
         float numDegrees = event->delta() / 8.0f;
         float numSteps = numDegrees / 15.0f;
-        updateCamera(numSteps);
+
+        if (mainWindow->terraininfo->isEditing() && keyCtrl)
+        {
+            mainWindow->terraininfo->setRadius(mainWindow->terraininfo->getRadius() + numSteps);
+        }
+        else
+        {
+            updateCamera(numSteps);
+        }
     }
 }
 
@@ -2181,4 +2222,9 @@ QString& MGE::Magic3DWidget::getLastLayer()
 bool MGE::Magic3DWidget::isSimulating()
 {
     return Magic3D::Script::getInstance()->isPlaying() || Magic3D::Physics::getInstance()->isPlaying();
+}
+
+void MGE::Magic3DWidget::editTerrain(Magic3D::Camera* camera, QMouseEvent *event)
+{
+    mainWindow->terraininfo->editTerrain(camera, mouseDown, keyCtrl, event);
 }
