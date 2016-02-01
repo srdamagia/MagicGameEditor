@@ -108,6 +108,7 @@ private:
     bool mouseDown;
     bool mouseMoved;
     QPointF selectedOffset;
+    QPointF mouseStart;
     QString lastLayer;
 
     QMenu* popup;

@@ -344,10 +344,10 @@ void ConstraintInfo::updateObject()
 
             constraint->setConnectedPivot(mid);
 
-            float x, y, z;
+            /*float x, y, z;
 
             (transformCon.inverse().getBasis() * transformObj.getBasis()).getEulerZYX(z, y, x);
-            constraint->setConnectedAxis(Magic3D::Vector3(Magic3D::Math::degrees(x), Magic3D::Math::degrees(y), Magic3D::Math::degrees(z)));
+            constraint->setConnectedAxis(Magic3D::Vector3(x, y, z));*/
         }
 
         if (ui->lblTitle->isChecked())
