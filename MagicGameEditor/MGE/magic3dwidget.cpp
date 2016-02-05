@@ -79,7 +79,6 @@ MGE::Magic3DWidget::Magic3DWidget(const QGLFormat& format, MainWindow *parent) :
     mouseDown = false;
     mouseMoved = false;
     selectedOffset = QPointF(0.0f, 0.0f);
-    mouseStart = QPointF(0.0f, 0.0f);
 
     popup = new QMenu(this);
 
@@ -1506,19 +1505,8 @@ void MGE::Magic3DWidget::mouseMoveEvent(QMouseEvent *event)
 
     if (Magic3D::Script::getInstance()->isPlaying())
     {
-        float deltaX = 0.0f;
-        float deltaY = 0.0f;
-
-        if (mouseDown)
-        {
-            deltaX = (float)event->pos().x() - mouseStart.x();
-            deltaY = (float)event->pos().y() - mouseStart.y();
-        }
-
-        mouseStart = QPointF(event->pos().x(), event->pos().y());
-
-        Magic3D::Input::getInstance()->dispatchEvent(Magic3D::eINPUT_MOUSE, Magic3D::eEVENT_MOUSE_MOVE, (int)deltaX, (int)deltaY, button);
-        Magic3D::Input::getInstance()->dispatchEvent(Magic3D::eINPUT_TOUCH, Magic3D::eEVENT_TOUCH_MOVE, (int)deltaX, (int)deltaY, button);
+        Magic3D::Input::getInstance()->dispatchEvent(Magic3D::eINPUT_MOUSE, Magic3D::eEVENT_MOUSE_MOVE, event->pos().x(), event->pos().y(), button);
+        Magic3D::Input::getInstance()->dispatchEvent(Magic3D::eINPUT_TOUCH, Magic3D::eEVENT_TOUCH_MOVE, event->pos().x(), event->pos().y(), button);
     }
     else
     {

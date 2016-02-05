@@ -336,7 +336,7 @@
           <double>0.010000000000000</double>
          </property>
          <property name="maximum">
-          <double>10.000000000000000</double>
+          <double>1.000000000000000</double>
          </property>
          <property name="singleStep">
           <double>0.001000000000000</double>
@@ -365,7 +365,7 @@
           <number>10</number>
          </property>
          <property name="maximum">
-          <number>10000</number>
+          <number>1000</number>
          </property>
          <property name="orientation">
           <enum>Qt::Horizontal</enum>

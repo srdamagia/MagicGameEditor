@@ -250,6 +250,15 @@ INPUT(
 ./MGE_Windows\lutf8lib.o
 ./MGE_Windows\lvm.o
 ./MGE_Windows\lzio.o
+./MGE_Windows\callbacks.o
+./MGE_Windows\ecompress.o
+./MGE_Windows\host.o
+./MGE_Windows\list.o
+./MGE_Windows\packet.o
+./MGE_Windows\peer.o
+./MGE_Windows\protocol.o
+./MGE_Windows\unix.o
+./MGE_Windows\win32.o
 ./MGE_Windows\camera.o
 ./MGE_Windows\config.o
 ./MGE_Windows\eventlistener.o
@@ -260,6 +269,7 @@ INPUT(
 ./MGE_Windows\material.o
 ./MGE_Windows\math.o
 ./MGE_Windows\mesh.o
+./MGE_Windows\network.o
 ./MGE_Windows\object.o
 ./MGE_Windows\octree.o
 ./MGE_Windows\package.o

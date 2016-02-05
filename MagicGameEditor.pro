@@ -23,7 +23,7 @@ UI_DIR = $$OBJECTS_DIR
 MOC_DIR = $$OBJECTS_DIR
 
 CONFIG += app_bundle
-win32:LIBS += -lOpenAL32 -lgdi32 -lopengl32
+win32:LIBS += -lwsock32 -lwinmm -lws2_32 -lOpenAL32 -lgdi32 -lopengl32
 unix:!macx:LIBS += -lopenal -lpng
 macx:LIBS += -framework OpenAL
 
