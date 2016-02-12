@@ -58,8 +58,12 @@ TextFind* CodeEditor::getTextFind()
 void CodeEditor::setCursorPosition(int pos)
 {
     QTextCursor cursor = textCursor();
-    cursor.setPosition(pos);
-    setTextCursor(cursor);
+
+    if (pos < cursor.document()->characterCount())
+    {
+        cursor.setPosition(pos);
+        setTextCursor(cursor);
+    }
 }
 
 int CodeEditor::getCursorPosition()

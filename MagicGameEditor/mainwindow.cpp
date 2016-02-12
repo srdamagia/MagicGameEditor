@@ -1736,6 +1736,7 @@ void MainWindow::on_actionOpen_triggered()
         if (reloadProject.isEmpty())
         {
             fileName = QFileDialog::getOpenFileName(this, tr("Open Project"), UTILS_DEFAULT_PATH + M3D_PATH_DEFAULT, tr(MGE_PROJECT_FILTER));
+            magic3dwidget->repaint();
         }
         else
         {
@@ -1743,7 +1744,7 @@ void MainWindow::on_actionOpen_triggered()
             reloadProject.clear();
         }
         if (!fileName.isEmpty())
-        {
+        {            
             ui->actionClose_Project->trigger();
             if (!project)
             {
@@ -1834,6 +1835,8 @@ void MainWindow::on_actionClose_Project_triggered()
             magic3dwidget->stop();
             magic3dwidget->setSelection(NULL, NULL);
             magic3dwidget->setLastLayer(MAIN_LAYER_NAME);
+
+            ui->treeScene->setModel(NULL);
 
             delete sceneTreeModel;
             sceneTreeModel = NULL;
