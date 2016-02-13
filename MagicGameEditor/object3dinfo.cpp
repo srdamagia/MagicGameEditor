@@ -820,7 +820,7 @@ void Object3DInfo::on_txtInstance_textChanged(const QString &arg1)
         Magic3D::Object* object = getObject();
         if (object && object->getType() == Magic3D::eOBJECT_INSTANCE)
         {
-            Magic3D::Object* instance = Magic3D::ResourceManager::getInstance()->getObjects()->get(arg1.toStdString());
+            Magic3D::Object* instance = Magic3D::ResourceManager::getObjects()->get(arg1.toStdString());
             if (instance != static_cast<Magic3D::ObjectInstance*>(object)->getInstance())
             {
                 static_cast<Magic3D::ObjectInstance*>(object)->setInstance(instance);
