@@ -2275,6 +2275,18 @@ void MainWindow::on_actionSimulate_triggered()
         clearLog();
         ui->actionSave->trigger();
 
+        if (!Magic3D::Network::getInstance()->isServer() && !Magic3D::Network::getInstance()->isConnected())
+        {
+            for (int i = 0 ; i < 3; i++)
+            {
+                Magic3D::Network::getInstance()->connect();
+                if (Magic3D::Network::getInstance()->isConnected())
+                {
+                    break;
+                }
+            }
+        }
+
         Magic3D::Physics::getInstance()->play(false);
         Magic3D::Script::getInstance()->play();
         Magic3D::Scene::getInstance()->playObjectsTweens();
@@ -2297,6 +2309,7 @@ void MainWindow::on_actionSimulate_triggered()
     }
     else
     {
+        Magic3D::Network::getInstance()->disconnect(true);
         Magic3D::Magic3D::getInstance()->setTimeScale(settings.value("time_scale").toFloat());
         magic3dwidget->setSelection(NULL, NULL);
         ui->actionSimulate->setEnabled(false);

@@ -13,7 +13,7 @@ CC            = gcc
 CXX           = g++
 DEFINES       = -DUNICODE -D_MGE_ -DMAGIC3D_LOG -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_NEEDS_QMAIN
 CFLAGS        = -pipe -fno-keep-inline-dllexport -O2 -Wall -Wextra $(DEFINES)
-CXXFLAGS      = -pipe -fno-keep-inline-dllexport -O2 -frtti -Wall -Wextra -fexceptions -mthreads $(DEFINES)
+CXXFLAGS      = -pipe -fno-keep-inline-dllexport -std=c++11 -O2 -frtti -Wall -Wextra -fexceptions -mthreads $(DEFINES)
 INCPATH       = -I. -IMagicGameEditor -I..\magic3d\magic3d -I..\magic3d\memory_manager -I..\magic3d\bullet -I..\magic3d\libvorbis -I..\magic3d\libvorbis\lib -I..\magic3d\libogg -I..\magic3d\libtheora -I..\magic3d\zlib -I..\magic3d\minizip -I..\magic3d\tinyxml2 -I..\magic3d\vectormath\cpp -I..\magic3d\lua -I..\magic3d\enet -I..\magic3d\lpng -IC:\Qt\Qt5.5.1\5.5\mingw492_32\include -IC:\Qt\Qt5.5.1\5.5\mingw492_32\include\QtOpenGL -IC:\Qt\Qt5.5.1\5.5\mingw492_32\include\QtWidgets -IC:\Qt\Qt5.5.1\5.5\mingw492_32\include\QtGui -IC:\Qt\Qt5.5.1\5.5\mingw492_32\include\QtANGLE -IC:\Qt\Qt5.5.1\5.5\mingw492_32\include\QtCore -IMGE_Windows -IMGE_Windows -IC:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-s -Wl,-subsystem,windows -mthreads
@@ -2176,6 +2176,13 @@ MGE_Windows/moc_boneinfo.cpp: C:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWidgets/QW
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -2589,6 +2596,13 @@ MGE_Windows/moc_camerainfo.cpp: C:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWidgets/
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -2999,6 +3013,13 @@ MGE_Windows/moc_cameraoptions.cpp: C:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWidge
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -3537,6 +3558,13 @@ MGE_Windows/moc_constraintinfo.cpp: MagicGameEditor/magic3dobjectpanel.h \
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -4286,6 +4314,13 @@ MGE_Windows/moc_lightinfo.cpp: MagicGameEditor/magic3dobjectpanel.h \
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -4698,6 +4733,13 @@ MGE_Windows/moc_magic3dobjectpanel.cpp: C:/Qt/Qt5.5.1/5.5/mingw492_32/include/Qt
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -5107,6 +5149,13 @@ MGE_Windows/moc_mainwindow.cpp: C:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWidgets/
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -5526,6 +5575,13 @@ MGE_Windows/moc_materialinfo.cpp: C:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWidget
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -5939,6 +5995,13 @@ MGE_Windows/moc_materialpanel.cpp: MagicGameEditor/magic3dobjectpanel.h \
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -6353,6 +6416,13 @@ MGE_Windows/moc_materialvar.cpp: MagicGameEditor/materialpanel.h \
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -6768,6 +6838,13 @@ MGE_Windows/moc_materialvar_boolean.cpp: MagicGameEditor/materialvar.h \
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -7183,6 +7260,13 @@ MGE_Windows/moc_materialvar_float.cpp: MagicGameEditor/materialvar.h \
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -7598,6 +7682,13 @@ MGE_Windows/moc_materialvar_integer.cpp: MagicGameEditor/materialvar.h \
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -8013,6 +8104,13 @@ MGE_Windows/moc_materialvar_matrix.cpp: MagicGameEditor/materialvar.h \
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -8428,6 +8526,13 @@ MGE_Windows/moc_materialvar_texture.cpp: MagicGameEditor/materialvar.h \
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -8841,6 +8946,13 @@ MGE_Windows/moc_meshesinfo.cpp: MagicGameEditor/magic3dobjectpanel.h \
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -9262,6 +9374,13 @@ MGE_Windows/moc_meshinfo.cpp: MagicGameEditor/magic3dobjectpanel.h \
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -9583,6 +9702,13 @@ MGE_Windows/moc_modelanimationsequences.cpp: C:/Qt/Qt5.5.1/5.5/mingw492_32/inclu
 		../magic3d/magic3d/magic3d/physics/physics_object.h \
 		../magic3d/magic3d/magic3d/xml.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -9826,6 +9952,13 @@ MGE_Windows/moc_newprojectwindow.cpp: C:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWi
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -10198,6 +10331,13 @@ MGE_Windows/moc_object2dinfo.cpp: MagicGameEditor/magic3dobjectpanel.h \
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -10616,6 +10756,13 @@ MGE_Windows/moc_object3dinfo.cpp: C:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWidget
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -11046,6 +11193,13 @@ MGE_Windows/moc_particlesinfo.cpp: C:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWidge
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -11459,6 +11613,13 @@ MGE_Windows/moc_physicsinfo.cpp: MagicGameEditor/magic3dobjectpanel.h \
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -11873,6 +12034,13 @@ MGE_Windows/moc_sceneinfo.cpp: MagicGameEditor/magic3dobjectpanel.h \
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -12397,6 +12565,13 @@ MGE_Windows/moc_sequencewindow.cpp: C:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWidg
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -12769,6 +12944,13 @@ MGE_Windows/moc_shaderseditor.cpp: C:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWidge
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -13196,6 +13378,13 @@ MGE_Windows/moc_skeletoninfo.cpp: MagicGameEditor/magic3dobjectpanel.h \
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -13610,6 +13799,13 @@ MGE_Windows/moc_soundinfo.cpp: MagicGameEditor/magic3dobjectpanel.h \
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -14129,6 +14325,13 @@ MGE_Windows/moc_spritesequence.cpp: MagicGameEditor/magic3dobjectpanel.h \
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -14543,6 +14746,13 @@ MGE_Windows/moc_terraininfo.cpp: C:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWidgets
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -15076,6 +15286,13 @@ MGE_Windows/moc_tweeninfo.cpp: MagicGameEditor/magic3dobjectpanel.h \
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -15489,6 +15706,13 @@ MGE_Windows/moc_tweensinfo.cpp: C:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWidgets/
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -15903,6 +16127,13 @@ MGE_Windows/moc_vegetationinfo.cpp: MagicGameEditor/magic3dobjectpanel.h \
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -16316,6 +16547,13 @@ MGE_Windows/moc_waterinfo.cpp: C:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWidgets/Q
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -16671,6 +16909,13 @@ MGE_Windows/moc_magic3dwidget.cpp: C:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtOpenG
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -21545,6 +21790,13 @@ MGE_Windows/camera.o: ../magic3d/magic3d/src/camera.cpp ../magic3d/magic3d/magic
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -21726,6 +21978,13 @@ MGE_Windows/config.o: ../magic3d/magic3d/src/config.cpp ../magic3d/magic3d/magic
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -21912,6 +22171,13 @@ MGE_Windows/input.o: ../magic3d/magic3d/src/input.cpp ../magic3d/magic3d/magic3d
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -22092,6 +22358,13 @@ MGE_Windows/light.o: ../magic3d/magic3d/src/light.cpp ../magic3d/magic3d/magic3d
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -22273,6 +22546,13 @@ MGE_Windows/log.o: ../magic3d/magic3d/src/log.cpp ../magic3d/magic3d/magic3d/mag
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -22454,6 +22734,13 @@ MGE_Windows/magic3d.o: ../magic3d/magic3d/src/magic3d.cpp ../magic3d/magic3d/mag
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -22635,6 +22922,13 @@ MGE_Windows/material.o: ../magic3d/magic3d/src/material.cpp ../magic3d/magic3d/m
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -22813,6 +23107,13 @@ MGE_Windows/math.o: ../magic3d/magic3d/src/math.cpp ../magic3d/magic3d/magic3d/m
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -22925,6 +23226,13 @@ MGE_Windows/mesh.o: ../magic3d/magic3d/src/mesh.cpp ../magic3d/magic3d/magic3d/r
 		../magic3d/magic3d/magic3d/mesh.h \
 		../magic3d/magic3d/magic3d/xml.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -23096,6 +23404,13 @@ MGE_Windows/network.o: ../magic3d/magic3d/src/network.cpp ../magic3d/magic3d/mag
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -23277,6 +23592,13 @@ MGE_Windows/object.o: ../magic3d/magic3d/src/object.cpp ../magic3d/magic3d/magic
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -23448,6 +23770,13 @@ MGE_Windows/octree.o: ../magic3d/magic3d/src/octree.cpp ../magic3d/magic3d/magic
 		../magic3d/magic3d/magic3d/mesh.h \
 		../magic3d/magic3d/magic3d/xml.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -23603,6 +23932,13 @@ MGE_Windows/octree.o: ../magic3d/magic3d/src/octree.cpp ../magic3d/magic3d/magic
 
 MGE_Windows/package.o: ../magic3d/magic3d/src/package.cpp ../magic3d/magic3d/magic3d/package.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -23806,6 +24142,13 @@ MGE_Windows/particles.o: ../magic3d/magic3d/src/particles.cpp ../magic3d/magic3d
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -23987,6 +24330,13 @@ MGE_Windows/scene.o: ../magic3d/magic3d/src/scene.cpp ../magic3d/magic3d/magic3d
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -24175,6 +24525,13 @@ MGE_Windows/sprite.o: ../magic3d/magic3d/src/sprite.cpp ../magic3d/magic3d/magic
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -24356,6 +24713,13 @@ MGE_Windows/terrain.o: ../magic3d/magic3d/src/terrain.cpp ../magic3d/magic3d/mag
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -24545,6 +24909,13 @@ MGE_Windows/vegetation.o: ../magic3d/magic3d/src/vegetation.cpp ../magic3d/magic
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -24715,6 +25086,13 @@ MGE_Windows/water.o: ../magic3d/magic3d/src/water.cpp ../magic3d/magic3d/magic3d
 		../magic3d/magic3d/magic3d/mesh.h \
 		../magic3d/magic3d/magic3d/xml.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -24868,6 +25246,13 @@ MGE_Windows/water.o: ../magic3d/magic3d/src/water.cpp ../magic3d/magic3d/magic3d
 
 MGE_Windows/xml.o: ../magic3d/magic3d/src/xml.cpp ../magic3d/magic3d/magic3d/xml.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -25032,6 +25417,13 @@ MGE_Windows/gui.o: ../magic3d/magic3d/src/gui/gui.cpp ../magic3d/magic3d/magic3d
 		../magic3d/magic3d/magic3d/mesh.h \
 		../magic3d/magic3d/magic3d/xml.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -25200,6 +25592,13 @@ MGE_Windows/guibutton.o: ../magic3d/magic3d/src/gui/guibutton.cpp ../magic3d/mag
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -25381,6 +25780,13 @@ MGE_Windows/guilabel.o: ../magic3d/magic3d/src/gui/guilabel.cpp ../magic3d/magic
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -25562,6 +25968,13 @@ MGE_Windows/guiwindow.o: ../magic3d/magic3d/src/gui/guiwindow.cpp ../magic3d/mag
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -25743,6 +26156,13 @@ MGE_Windows/joystick.o: ../magic3d/magic3d/src/gui/joystick.cpp ../magic3d/magic
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -25925,6 +26345,13 @@ MGE_Windows/image.o: ../magic3d/magic3d/src/image/image.cpp ../magic3d/magic3d/m
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -26106,6 +26533,13 @@ MGE_Windows/image_png.o: ../magic3d/magic3d/src/image/image_png.cpp ../magic3d/m
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -26291,6 +26725,13 @@ MGE_Windows/image_tga.o: ../magic3d/magic3d/src/image/image_tga.cpp ../magic3d/m
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -26472,6 +26913,13 @@ MGE_Windows/animation.o: ../magic3d/magic3d/src/model/animation.cpp ../magic3d/m
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -26639,6 +27087,13 @@ MGE_Windows/animation.o: ../magic3d/magic3d/src/model/animation.cpp ../magic3d/m
 MGE_Windows/loader.o: ../magic3d/magic3d/src/model/loader.cpp ../magic3d/magic3d/magic3d/model/loader.h \
 		../magic3d/magic3d/magic3d/xml.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -26810,6 +27265,13 @@ MGE_Windows/loader_dae.o: ../magic3d/magic3d/src/model/loader_dae.cpp ../magic3d
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -26981,6 +27443,13 @@ MGE_Windows/model.o: ../magic3d/magic3d/src/model/model.cpp ../magic3d/magic3d/m
 		../magic3d/magic3d/magic3d/mesh.h \
 		../magic3d/magic3d/magic3d/xml.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -27140,6 +27609,13 @@ MGE_Windows/skeleton.o: ../magic3d/magic3d/src/model/skeleton.cpp ../magic3d/mag
 		../magic3d/magic3d/magic3d/physics/physics_object.h \
 		../magic3d/magic3d/magic3d/xml.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -27283,6 +27759,13 @@ MGE_Windows/renderer.o: ../magic3d/magic3d/src/renderer/renderer.cpp ../magic3d/
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -27469,6 +27952,13 @@ MGE_Windows/window_internal.o: ../magic3d/magic3d/src/renderer/window_internal.c
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -27651,6 +28141,13 @@ MGE_Windows/window_win.o: ../magic3d/magic3d/src/renderer/window_win.cpp ../magi
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -27833,6 +28330,13 @@ MGE_Windows/window_x.o: ../magic3d/magic3d/src/renderer/window_x.cpp ../magic3d/
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -28015,6 +28519,13 @@ MGE_Windows/renderer_fixedfunction.o: ../magic3d/magic3d/src/renderer/opengl/ren
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -28198,6 +28709,13 @@ MGE_Windows/renderer_opengl.o: ../magic3d/magic3d/src/renderer/opengl/renderer_o
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -28380,6 +28898,13 @@ MGE_Windows/renderer_shaders.o: ../magic3d/magic3d/src/renderer/opengl/renderer_
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -28564,6 +29089,13 @@ MGE_Windows/resourcemngr.o: ../magic3d/magic3d/src/resource/resourcemngr.cpp ../
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -28752,6 +29284,13 @@ MGE_Windows/resources_animation.o: ../magic3d/magic3d/src/resource/resources_ani
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -28933,6 +29472,13 @@ MGE_Windows/resources_font.o: ../magic3d/magic3d/src/resource/resources_font.cpp
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -29114,6 +29660,13 @@ MGE_Windows/resources_material.o: ../magic3d/magic3d/src/resource/resources_mate
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -29295,6 +29848,13 @@ MGE_Windows/resources_model.o: ../magic3d/magic3d/src/resource/resources_model.c
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -29476,6 +30036,13 @@ MGE_Windows/resources_object.o: ../magic3d/magic3d/src/resource/resources_object
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -29657,6 +30224,13 @@ MGE_Windows/resources_shader.o: ../magic3d/magic3d/src/resource/resources_shader
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -29838,6 +30412,13 @@ MGE_Windows/resources_texture.o: ../magic3d/magic3d/src/resource/resources_textu
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -30025,6 +30606,13 @@ MGE_Windows/sound.o: ../magic3d/magic3d/src/sound/sound.cpp ../magic3d/magic3d/m
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -30207,6 +30795,13 @@ MGE_Windows/sound_ogg.o: ../magic3d/magic3d/src/sound/sound_ogg.cpp ../magic3d/m
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -30378,6 +30973,13 @@ MGE_Windows/script.o: ../magic3d/magic3d/src/script/script.cpp ../magic3d/magic3
 		../magic3d/magic3d/magic3d/mesh.h \
 		../magic3d/magic3d/magic3d/xml.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -30573,6 +31175,13 @@ MGE_Windows/script_basic.o: ../magic3d/magic3d/src/script/script_basic.cpp ../ma
 		../magic3d/lua/lauxlib.h \
 		../magic3d/lua/lualib.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -30708,6 +31317,13 @@ MGE_Windows/script_color.o: ../magic3d/magic3d/src/script/script_color.cpp ../ma
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -30885,6 +31501,13 @@ MGE_Windows/script_input.o: ../magic3d/magic3d/src/script/script_input.cpp ../ma
 		../magic3d/lua/lauxlib.h \
 		../magic3d/lua/lualib.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -31011,6 +31634,13 @@ MGE_Windows/script_magic3d.o: ../magic3d/magic3d/src/script/script_magic3d.cpp .
 		../magic3d/magic3d/magic3d/mesh.h \
 		../magic3d/magic3d/magic3d/xml.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -31196,6 +31826,13 @@ MGE_Windows/script_object.o: ../magic3d/magic3d/src/script/script_object.cpp ../
 		../magic3d/magic3d/magic3d/mesh.h \
 		../magic3d/magic3d/magic3d/xml.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -31358,6 +31995,13 @@ MGE_Windows/script_vector3.o: ../magic3d/magic3d/src/script/script_vector3.cpp .
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -31530,6 +32174,13 @@ MGE_Windows/tween.o: ../magic3d/magic3d/src/tween/tween.cpp ../magic3d/magic3d/m
 		../magic3d/magic3d/magic3d/physics/physics_object.h \
 		../magic3d/magic3d/magic3d/xml.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -31712,6 +32363,13 @@ MGE_Windows/tween_alpha.o: ../magic3d/magic3d/src/tween/tween_alpha.cpp ../magic
 		../magic3d/magic3d/magic3d/physics/physics_object.h \
 		../magic3d/magic3d/magic3d/xml.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -31847,6 +32505,13 @@ MGE_Windows/tween_delay.o: ../magic3d/magic3d/src/tween/tween_delay.cpp ../magic
 		../magic3d/magic3d/magic3d/physics/physics_object.h \
 		../magic3d/magic3d/magic3d/xml.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -31973,6 +32638,13 @@ MGE_Windows/tween_goto.o: ../magic3d/magic3d/src/tween/tween_goto.cpp ../magic3d
 		../magic3d/magic3d/magic3d/physics/physics_object.h \
 		../magic3d/magic3d/magic3d/xml.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -32099,6 +32771,13 @@ MGE_Windows/tween_lookat.o: ../magic3d/magic3d/src/tween/tween_lookat.cpp ../mag
 		../magic3d/magic3d/magic3d/physics/physics_object.h \
 		../magic3d/magic3d/magic3d/xml.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -32225,6 +32904,13 @@ MGE_Windows/tween_rotate.o: ../magic3d/magic3d/src/tween/tween_rotate.cpp ../mag
 		../magic3d/magic3d/magic3d/physics/physics_object.h \
 		../magic3d/magic3d/magic3d/xml.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -32351,6 +33037,13 @@ MGE_Windows/tween_scale.o: ../magic3d/magic3d/src/tween/tween_scale.cpp ../magic
 		../magic3d/magic3d/magic3d/physics/physics_object.h \
 		../magic3d/magic3d/magic3d/xml.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -32477,6 +33170,13 @@ MGE_Windows/tween_translate.o: ../magic3d/magic3d/src/tween/tween_translate.cpp 
 		../magic3d/magic3d/magic3d/physics/physics_object.h \
 		../magic3d/magic3d/magic3d/xml.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -32622,6 +33322,13 @@ MGE_Windows/physics.o: ../magic3d/magic3d/src/physics/physics.cpp ../magic3d/mag
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -32789,6 +33496,13 @@ MGE_Windows/physics.o: ../magic3d/magic3d/src/physics/physics.cpp ../magic3d/mag
 MGE_Windows/physics_constraint.o: ../magic3d/magic3d/src/physics/physics_constraint.cpp ../magic3d/magic3d/magic3d/physics/physics_constraint.h \
 		../magic3d/magic3d/magic3d/xml.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -32970,6 +33684,13 @@ MGE_Windows/physics_constraint.o: ../magic3d/magic3d/src/physics/physics_constra
 MGE_Windows/physics_object.o: ../magic3d/magic3d/src/physics/physics_object.cpp ../magic3d/magic3d/magic3d/physics/physics_object.h \
 		../magic3d/magic3d/magic3d/xml.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -33124,6 +33845,13 @@ MGE_Windows/image_pvr.o: ../magic3d/magic3d/src/image/image_pvr.mm ../magic3d/ma
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -33691,6 +34419,13 @@ MGE_Windows/AnimationTreeModel.o: MagicGameEditor/AnimationTreeModel.cpp C:/Qt/Q
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -34063,6 +34798,13 @@ MGE_Windows/boneinfo.o: MagicGameEditor/boneinfo.cpp MagicGameEditor/boneinfo.h 
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -34481,6 +35223,13 @@ MGE_Windows/camerainfo.o: MagicGameEditor/camerainfo.cpp MagicGameEditor/camerai
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -34898,6 +35647,13 @@ MGE_Windows/cameraoptions.o: MagicGameEditor/cameraoptions.cpp MagicGameEditor/c
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -35637,6 +36393,13 @@ MGE_Windows/constraintinfo.o: MagicGameEditor/constraintinfo.cpp MagicGameEditor
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -37016,6 +37779,13 @@ MGE_Windows/lightinfo.o: MagicGameEditor/lightinfo.cpp MagicGameEditor/lightinfo
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -37434,6 +38204,13 @@ MGE_Windows/magic3dobjectpanel.o: MagicGameEditor/magic3dobjectpanel.cpp MagicGa
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -37869,6 +38646,13 @@ MGE_Windows/main.o: MagicGameEditor/main.cpp C:/Qt/Qt5.5.1/5.5/mingw492_32/inclu
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -38301,6 +39085,13 @@ MGE_Windows/mainwindow.o: MagicGameEditor/mainwindow.cpp C:/Qt/Qt5.5.1/5.5/mingw
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -38760,6 +39551,13 @@ MGE_Windows/materialinfo.o: MagicGameEditor/materialinfo.cpp MagicGameEditor/mat
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -39217,6 +40015,13 @@ MGE_Windows/materialpanel.o: MagicGameEditor/materialpanel.cpp MagicGameEditor/m
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -39631,6 +40436,13 @@ MGE_Windows/materialvar.o: MagicGameEditor/materialvar.cpp MagicGameEditor/mater
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -40051,6 +40863,13 @@ MGE_Windows/materialvar_boolean.o: MagicGameEditor/materialvar_boolean.cpp Magic
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -40467,6 +41286,13 @@ MGE_Windows/materialvar_float.o: MagicGameEditor/materialvar_float.cpp MagicGame
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -40885,6 +41711,13 @@ MGE_Windows/materialvar_integer.o: MagicGameEditor/materialvar_integer.cpp Magic
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -41303,6 +42136,13 @@ MGE_Windows/materialvar_matrix.o: MagicGameEditor/materialvar_matrix.cpp MagicGa
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -41721,6 +42561,13 @@ MGE_Windows/materialvar_texture.o: MagicGameEditor/materialvar_texture.cpp Magic
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -42147,6 +42994,13 @@ MGE_Windows/meshesinfo.o: MagicGameEditor/meshesinfo.cpp MagicGameEditor/meshesi
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -42569,6 +43423,13 @@ MGE_Windows/meshinfo.o: MagicGameEditor/meshinfo.cpp MagicGameEditor/meshinfo.h 
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -42905,6 +43766,13 @@ MGE_Windows/modelanimationsequences.o: MagicGameEditor/modelanimationsequences.c
 		../magic3d/magic3d/magic3d/physics/physics_object.h \
 		../magic3d/magic3d/magic3d/xml.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -43219,6 +44087,13 @@ MGE_Windows/newprojectwindow.o: MagicGameEditor/newprojectwindow.cpp MagicGameEd
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -43657,6 +44532,13 @@ MGE_Windows/object2dinfo.o: MagicGameEditor/object2dinfo.cpp MagicGameEditor/obj
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -44097,6 +44979,13 @@ MGE_Windows/object3dinfo.o: MagicGameEditor/object3dinfo.cpp MagicGameEditor/obj
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -44545,6 +45434,13 @@ MGE_Windows/particlesinfo.o: MagicGameEditor/particlesinfo.cpp MagicGameEditor/p
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -44978,6 +45874,13 @@ MGE_Windows/physicsinfo.o: MagicGameEditor/physicsinfo.cpp MagicGameEditor/physi
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -45400,6 +46303,13 @@ MGE_Windows/sceneinfo.o: MagicGameEditor/sceneinfo.cpp MagicGameEditor/sceneinfo
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -46102,6 +47012,13 @@ MGE_Windows/SceneTreeModel.o: MagicGameEditor/SceneTreeModel.cpp C:/Qt/Qt5.5.1/5
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -46668,6 +47585,13 @@ MGE_Windows/SequenceTreeModel.o: MagicGameEditor/SequenceTreeModel.cpp C:/Qt/Qt5
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -46957,6 +47881,13 @@ MGE_Windows/sequencewindow.o: MagicGameEditor/sequencewindow.cpp C:/Qt/Qt5.5.1/5
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -47399,6 +48330,13 @@ MGE_Windows/shaderseditor.o: MagicGameEditor/shaderseditor.cpp MagicGameEditor/s
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -47835,6 +48773,13 @@ MGE_Windows/skeletoninfo.o: MagicGameEditor/skeletoninfo.cpp MagicGameEditor/ske
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -48268,6 +49213,13 @@ MGE_Windows/soundinfo.o: MagicGameEditor/soundinfo.cpp MagicGameEditor/soundinfo
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -48643,6 +49595,13 @@ MGE_Windows/splashscreen.o: MagicGameEditor/splashscreen.cpp MagicGameEditor/spl
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -49015,6 +49974,13 @@ MGE_Windows/spritesequence.o: MagicGameEditor/spritesequence.cpp MagicGameEditor
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -49435,6 +50401,13 @@ MGE_Windows/terraininfo.o: MagicGameEditor/terraininfo.cpp MagicGameEditor/terra
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -50019,6 +50992,13 @@ MGE_Windows/tweeninfo.o: MagicGameEditor/tweeninfo.cpp MagicGameEditor/tweeninfo
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -50451,6 +51431,13 @@ MGE_Windows/tweensinfo.o: MagicGameEditor/tweensinfo.cpp MagicGameEditor/tweensi
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -50998,6 +51985,13 @@ MGE_Windows/vegetationinfo.o: MagicGameEditor/vegetationinfo.cpp MagicGameEditor
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -51432,6 +52426,13 @@ MGE_Windows/waterinfo.o: MagicGameEditor/waterinfo.cpp MagicGameEditor/waterinfo
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -51996,6 +52997,13 @@ MGE_Windows/magic3dwidget.o: MagicGameEditor/MGE/magic3dwidget.cpp C:/Qt/Qt5.5.1
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
@@ -52290,6 +53298,13 @@ MGE_Windows/mgeproject.o: MagicGameEditor/MGE/mgeproject.cpp MagicGameEditor/MGE
 		../magic3d/vectormath/ios/vectormath_aos.h \
 		../magic3d/vectormath/scalar/cpp/vectormath_aos.h \
 		../magic3d/magic3d/magic3d/type.h \
+		../magic3d/enet/enet/enet.h \
+		../magic3d/enet/enet/win32.h \
+		../magic3d/enet/enet/unix.h \
+		../magic3d/enet/enet/types.h \
+		../magic3d/enet/enet/protocol.h \
+		../magic3d/enet/enet/list.h \
+		../magic3d/enet/enet/callbacks.h \
 		../magic3d/tinyxml2/tinyxml2.h \
 		../magic3d/bullet/btBulletDynamicsCommon.h \
 		../magic3d/bullet/btBulletCollisionCommon.h \
