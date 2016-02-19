@@ -21,11 +21,10 @@ subject to the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 */
 
+#include <magic3d/magic3d.h>
 #include <QtGui>
-
 #include "SceneTreeItem.h"
 #include "SceneTreeModel.h"
-#include <magic3d/magic3d.h>
 
 SceneTreeModel::SceneTreeModel(const QString &data, QTreeView *tree, QObject *parent)
     : QAbstractItemModel(parent)
@@ -115,6 +114,7 @@ QVariant SceneTreeModel::data(const QModelIndex &index, int role) const
                                 case Magic3D::eOBJECT_SOUND:      result = QIcon(":/MagicGameEditor/Images/music.png"); break;
                                 case Magic3D::eOBJECT_JOYSTICK:   result = QIcon(":/MagicGameEditor/Images/controller.png"); break;
                                 case Magic3D::eOBJECT_INSTANCE:   result = QIcon(":/MagicGameEditor/Images/box.png"); break;
+                                default: break;
                             }
                         }
                         break;

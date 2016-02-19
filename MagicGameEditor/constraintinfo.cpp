@@ -340,14 +340,14 @@ void ConstraintInfo::updateObject()
             btVector3 vobj = transformObj.getOrigin();
             btVector3 vcon = transformCon.getOrigin();
 
-            btQuaternion rot = transformObj.getRotation();
+            /*btQuaternion rot = transformObj.getRotation();
             Magic3D::Quaternion qObj = Magic3D::Quaternion(rot.getX(), rot.getY(), rot.getZ(), rot.getW());
 
             rot = transformCon.getRotation();
             Magic3D::Quaternion qCon = Magic3D::Quaternion(rot.getX(), rot.getY(), rot.getZ(), rot.getW());
 
             Magic3D::Vector3 rotObj = Magic3D::Math::euler(qObj);
-            Magic3D::Vector3 rotCon = Magic3D::Math::euler(qCon);
+            Magic3D::Vector3 rotCon = Magic3D::Math::euler(qCon);*/
 
             Magic3D::Vector3 mid = Magic3D::Math::vector3(transformCon.inverse().getBasis() * (vobj-vcon));
 

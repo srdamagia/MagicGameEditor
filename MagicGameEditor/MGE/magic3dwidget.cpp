@@ -21,6 +21,7 @@ subject to the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 */
 
+#include <magic3d/magic3d.h>
 #include <QtGui>
 #include <QScreen>
 #include <QAbstractItemView>
@@ -37,7 +38,6 @@ subject to the following restrictions:
 #include "shaderseditor.h"
 #include "terraininfo.h"
 #include "utils.h"
-#include <magic3d/magic3d.h>
 
 void MGE::Magic3DWidget::log(QString label, Magic3D::Vector3 vec)
 {

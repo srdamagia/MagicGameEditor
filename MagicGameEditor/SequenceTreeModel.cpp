@@ -21,11 +21,10 @@ subject to the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 */
 
+#include <magic3d/magic3d.h>
 #include <QtGui>
-
 #include "SequenceTreeItem.h"
 #include "SequenceTreeModel.h"
-#include <magic3d/magic3d.h>
 
 SequenceTreeModel::SequenceTreeModel(const QString &data, QTreeView *tree, QObject *parent)
     : QAbstractItemModel(parent)

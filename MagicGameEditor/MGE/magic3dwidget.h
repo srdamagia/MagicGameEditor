@@ -24,13 +24,13 @@ subject to the following restrictions:
 #ifndef MAGIC3DWIDGET_H
 #define MAGIC3DWIDGET_H
 
+#include <magic3d/math.h>
+#include <magic3d/log.h>
+#include <magic3d/tween/tween_translate.h>
 #include <QGLWidget>
 #include <QTextBrowser>
 #include <QMenu>
 #include <QLabel>
-#include <magic3d/math.h>
-#include <magic3d/log.h>
-#include <magic3d/tween/tween_translate.h>
 
 class MainWindow;
 namespace Magic3D

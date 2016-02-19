@@ -308,6 +308,7 @@ void MaterialInfo::loadMaterial()
             case Magic3D::eBLEND_DIVIDE:   ui->rbDivide->setChecked(true); break;
             case Magic3D::eBLEND_INVERT:   ui->rbInvert->setChecked(true); break;
             case Magic3D::eBLEND_COLOR:    ui->rbColor->setChecked(true); break;
+            default: break;
         }
 
         clearVariables();
