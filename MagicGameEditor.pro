@@ -23,19 +23,23 @@ macx:OBJECTS_DIR = ./MGE_MacOS
 UI_DIR = $$OBJECTS_DIR
 MOC_DIR = $$OBJECTS_DIR
 
+MAGIC3D = ../magic3d
+CONTRIB = $$MAGIC3D/contrib
+
 CONFIG += app_bundle
-win32:LIBS += -lwsock32 -lwinmm -lws2_32 -lOpenAL32 -lgdi32 -lopengl32
+LIBS += -L$$MAGIC3D/game -lmagic3d_contrib
+win32:LIBS += -lwsock32 -lwinmm -lws2_32 -lgdi32 -limm32 -lopengl32 -lOpenAL32 -lSDL2
 unix:!macx:LIBS += -lopenal -lpng
 macx:LIBS += -framework OpenAL
 
 DEFINES += _MGE_ MAGIC3D_LOG #DEBUG
 
-MAGIC3D = ../magic3d/
-
 INCLUDEPATH += \
     ./MagicGameEditor \
 
-include($$MAGIC3D/Magic3D_Base.pro)
+include($$CONTRIB/Magic3D_Base.pro)
+include($$CONTRIB/Magic3D_Base_Include.pro)
+include($$MAGIC3D/Magic3D_Engine.pro)
 
 SOURCES += \
     MagicGameEditor/*.cpp \

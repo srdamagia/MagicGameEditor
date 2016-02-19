@@ -2279,7 +2279,7 @@ void MainWindow::on_actionSimulate_triggered()
         {
             for (int i = 0 ; i < 3; i++)
             {
-                Magic3D::Network::getInstance()->connect();
+                Magic3D::Network::getInstance()->connect(Magic3D::Magic3D::getInstance()->getConfiguration().ADDRESS, Magic3D::Magic3D::getInstance()->getConfiguration().PORT);
                 if (Magic3D::Network::getInstance()->isConnected())
                 {
                     break;
