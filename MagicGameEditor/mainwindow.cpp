@@ -528,7 +528,7 @@ void MainWindow::update()
     ui->actionPerspective->setChecked(enabled && Magic3D::Renderer::getInstance()->getCurrentViewPort()->getPerspective());
     ui->actionSimulate->setChecked(enabled && Magic3D::Physics::getInstance()->isPlaying());
 
-    bool physics = enabled && Magic3D::Physics::getInstance()->isPlaying();
+    //bool physics = enabled && Magic3D::Physics::getInstance()->isPlaying();
 
     ui->actionShow_Gizmos->setChecked(enabled && magic3dwidget->isShowingGizmos());
     ui->actionShow_GizmosPhysics->setChecked(enabled && magic3dwidget->isShowingGizmosPhysics());
@@ -1016,6 +1016,10 @@ void MainWindow::addObject(QString name, int object, QPoint pos)
 
 void MainWindow::duplicateObject(QString name, Magic3D::Object* object, bool clone)
 {
+    if (clone)
+    {
+
+    }
     QModelIndex index = ui->treeScene->currentIndex();
     if (index.isValid())
     {
