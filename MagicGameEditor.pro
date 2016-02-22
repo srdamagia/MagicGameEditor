@@ -29,7 +29,7 @@ QMAKE_LFLAGS += -F/Library/Frameworks
 
 LIBS += -L$$MAGIC3D/game -lmagic3d_contrib
 win32:LIBS += -lwsock32 -lwinmm -lws2_32 -lgdi32 -limm32 -lopengl32 -lOpenAL32 -lSDL2
-unix:!macx:LIBS += -lopenal -lpng
+unix:!macx:LIBS += -lopenal -lpng -lSDL2
 macx:LIBS += -framework OpenAL -framework SDL2
 
 DEFINES += _MGE_ MAGIC3D_LOG
