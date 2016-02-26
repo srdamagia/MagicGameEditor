@@ -50,7 +50,7 @@ public:
     Magic3D::Texture* texture;
     int index;
 
-    LoadThread(QPushButton* button, QString fileName, Magic3D::Texture* texture, int index);
+    LoadThread(QPushButton* button, const QString& fileName, Magic3D::Texture* texture, int index);
     ~LoadThread();
 signals:
     void finished(QImage* image, QPushButton* button, Magic3D::Texture* texture, int index);

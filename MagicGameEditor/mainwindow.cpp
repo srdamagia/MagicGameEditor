@@ -2797,4 +2797,5 @@ void MainWindow::on_actionPack_triggered()
     }
     package->setPackage(QString(Utils::getApplicationPath() + "data.magic3d").toStdString());
     package->pack(dataPath.toStdString(), packRefresh);
+    delete package;
 }

@@ -42,7 +42,7 @@ subject to the following restrictions:
      Q_OBJECT
 
  public:
-     CodeEditor(QWidget *parent = 0);
+     explicit CodeEditor(QWidget *parent = 0);
 
      void lineNumberAreaPaintEvent(QPaintEvent *event);
      int lineNumberAreaWidth();
@@ -97,7 +97,8 @@ subject to the following restrictions:
  class LineNumberArea : public QWidget
  {
  public:
-     LineNumberArea(CodeEditor *editor) : QWidget(editor) {
+     explicit LineNumberArea(CodeEditor *editor) : QWidget(editor)
+     {
          codeEditor = editor;
      }
 

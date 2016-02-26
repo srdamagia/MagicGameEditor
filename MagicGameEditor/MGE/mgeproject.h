@@ -60,7 +60,7 @@ namespace MGE {
 class MGEProject
 {
 public:
-    MGEProject(const std::string file, const std::string path);
+    MGEProject(const std::string& file, const std::string& path);
     ~MGEProject();
 
     void save();
@@ -71,14 +71,14 @@ public:
     bool isChangedScript();
 
     const std::string& getName();
-    void setName(const std::string name);
+    void setName(const std::string& name);
 
     const std::string& getFile();
     const std::string& getPath();
     std::string getFullPath();
 
     const std::string& getPathData();
-    void setPathData(const std::string path);
+    void setPathData(const std::string& path);
 
     void setCameraMove(float speed);
     float getCameraMove();
@@ -110,9 +110,9 @@ public:
     const Magic3D::Vector3& getCameraRight();
 
     const std::string& getSelectedObject();
-    void setSelectedObject(const std::string object);
+    void setSelectedObject(const std::string& object);
     const std::string& getSelectedBone();
-    void setSelectedBone(const std::string bone);
+    void setSelectedBone(const std::string& bone);
 
     void setScriptCursorPos(int pos);
     int getScriptCursorPos();

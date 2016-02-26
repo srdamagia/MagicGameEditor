@@ -74,7 +74,7 @@ private:
     QTextBrowser* widgetLog;
 
 public:
-    WidgetLogCallBack(QTextBrowser* widgetLog)
+    explicit WidgetLogCallBack(QTextBrowser* widgetLog)
     {
         this->widgetLog = widgetLog;
     }

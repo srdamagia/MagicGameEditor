@@ -68,7 +68,7 @@ class Highlighter : public QSyntaxHighlighter
     Q_OBJECT
 
 public:
-    Highlighter(QTextDocument *document);
+    explicit Highlighter(QTextDocument *document);
 
 protected:
     void highlightBlock(const QString &text);

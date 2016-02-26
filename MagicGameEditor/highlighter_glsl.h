@@ -38,7 +38,7 @@ class HighlighterGLSL : public Highlighter
     Q_OBJECT
 
 public:
-    HighlighterGLSL(QTextDocument *parent = 0);
+    explicit HighlighterGLSL(QTextDocument *parent = 0);
 
 protected:
     void highlightBlock(const QString &text);

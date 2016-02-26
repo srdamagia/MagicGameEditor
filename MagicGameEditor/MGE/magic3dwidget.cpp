@@ -62,11 +62,13 @@ void MGE::Magic3DWidget::log(QString log)
 }
 
 MGE::Magic3DWidget::Magic3DWidget(const QGLFormat& format, MainWindow *parent) : QGLWidget(format, parent)
-{
+{    
     mainWindow = parent;
     selected = NULL;
     selectedBone = NULL;
     copied = NULL;
+
+    timer = 0;
 
     logCallBack = new WidgetLogCallBack(mainWindow ? mainWindow->getUi()->txtLog : NULL);
 
@@ -1953,7 +1955,6 @@ void MGE::Magic3DWidget::mouseMoveEvent(QMouseEvent *event)
         int pY = this->mapToGlobal(p).y();
 
         QCursor::setPos(pX, pY);
-        centerCursor = false;
 
         mX = selectedOffset.x();
         mY = selectedOffset.y();

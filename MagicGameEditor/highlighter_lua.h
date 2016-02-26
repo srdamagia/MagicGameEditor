@@ -38,7 +38,7 @@ class HighlighterLua : public Highlighter
     Q_OBJECT
 
 public:
-    HighlighterLua(QTextDocument *parent = 0);
+    explicit HighlighterLua(QTextDocument *parent = 0);
 
 protected:
     void highlightBlock(const QString &text);

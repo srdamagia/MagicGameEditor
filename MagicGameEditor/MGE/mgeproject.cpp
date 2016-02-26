@@ -24,7 +24,7 @@ subject to the following restrictions:
 #include "mgeproject.h"
 #include "utils.h"
 
-MGE::MGEProject::MGEProject(const std::string file, const std::string path)
+MGE::MGEProject::MGEProject(const std::string& file, const std::string& path)
 {
     changed = true;
     changedScript = false;
@@ -239,7 +239,7 @@ const std::string& MGE::MGEProject::getName()
     return name;
 }
 
-void MGE::MGEProject::setName(const std::string name)
+void MGE::MGEProject::setName(const std::string& name)
 {
     if (this->name.compare(name) != 0)
     {
@@ -272,7 +272,7 @@ const std::string& MGE::MGEProject::getPathData()
     return pathData;
 }
 
-void MGE::MGEProject::setPathData(const std::string path)
+void MGE::MGEProject::setPathData(const std::string& path)
 {
     if (this->pathData.compare(path) != 0)
     {
@@ -418,7 +418,7 @@ const std::string& MGE::MGEProject::getSelectedObject()
     return selectedObject;
 }
 
-void MGE::MGEProject::setSelectedObject(const std::string object)
+void MGE::MGEProject::setSelectedObject(const std::string& object)
 {
     selectedObject = object;
 }
@@ -428,7 +428,7 @@ const std::string& MGE::MGEProject::getSelectedBone()
     return selectedBone;
 }
 
-void MGE::MGEProject::setSelectedBone(const std::string bone)
+void MGE::MGEProject::setSelectedBone(const std::string& bone)
 {
     selectedBone = bone;
 }

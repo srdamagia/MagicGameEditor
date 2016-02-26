@@ -160,7 +160,7 @@ SceneTreeItem* SceneTreeItem::findChild(QString& child, bool onlyObjects)
     SceneTreeItem* result = NULL;
     for (int i = 0; i < childItems.count(); i++)
     {
-        if (childItems[i]->data(0).toString().compare(child) == 0 && (!onlyObjects || (onlyObjects && childItems[i]->getObject())))
+        if (childItems[i]->data(0).toString().compare(child) == 0 && (!onlyObjects || childItems[i]->getObject()))
         {
             result = childItems[i];
             break;

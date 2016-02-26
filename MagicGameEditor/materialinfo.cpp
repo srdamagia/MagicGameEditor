@@ -42,10 +42,9 @@ subject to the following restrictions:
 #include "materialvar_matrix.h"
 #include "materialvar_texture.h"
 
-LoadThread::LoadThread(QPushButton* button, QString fileName, Magic3D::Texture* texture, int index) : QThread()
+LoadThread::LoadThread(QPushButton* button, const QString& fileName, Magic3D::Texture* texture, int index) : QThread(), fileName(fileName)
 {
-    this->button = button;
-    this->fileName = fileName;
+    this->button = button;    
     this->texture = texture;
     this->index = index;
 }
@@ -358,7 +357,7 @@ void MaterialInfo::loadMaterial()
                 case Magic3D::eSHADER_VAR_SAMPLER_CUBE:
                 {
                     pnl = new MaterialVar_Texture(mainWindow);
-                    ((MaterialVar_Texture*)pnl)->updateTextureCombo(texturesList);
+                    static_cast<MaterialVar_Texture*>(pnl)->updateTextureCombo(texturesList);
                     break;
                 }
 

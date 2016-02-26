@@ -201,7 +201,7 @@ void SkeletonInfo::on_sldAnimation_valueChanged(int value)
             if (model->getSkeleton()->getAnimation()->getCurrentSequence())
             {
                 model->getSkeleton()->getAnimation()->stop();
-                model->getSkeleton()->getAnimation()->setCurrentSequence(NULL);
+                model->getSkeleton()->getAnimation()->setCurrentSequence(-1);
             }
             model->getSkeleton()->getAnimation()->setCurrentFrame(value);
 
@@ -287,7 +287,7 @@ void SkeletonInfo::on_btnRemove_clicked()
 
             if (model->getSkeleton()->getAnimation()->getCurrentSequenceName().compare(item->data(0).toString().toStdString()) == 0)
             {
-                model->getSkeleton()->getAnimation()->setCurrentSequence(NULL);
+                model->getSkeleton()->getAnimation()->setCurrentSequence(-1);
             }
             model->getSkeleton()->getAnimation()->removeSequence(item->data(0).toString().toStdString());
             update();
