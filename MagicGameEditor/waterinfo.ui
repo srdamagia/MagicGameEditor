@@ -136,6 +136,13 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>txtLength</tabstop>
+  <tabstop>txtWidth</tabstop>
+  <tabstop>txtTileLength</tabstop>
+  <tabstop>txtTileWidth</tabstop>
+  <tabstop>btnUpdate</tabstop>
+ </tabstops>
  <resources>
   <include location="MagicGameEditor.qrc"/>
  </resources>
