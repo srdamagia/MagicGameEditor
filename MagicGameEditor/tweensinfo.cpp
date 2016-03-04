@@ -128,9 +128,18 @@ void TweensInfo::saveObject(Magic3D::Tween* tween)
 
         if (getObject() && !getBone())
         {
+            Magic3D::TextData* textData = NULL;
             if (getObject()->getType() == Magic3D::eOBJECT_GUI_LABEL)
             {
-                alpha.append(static_cast<Magic3D::GUILabel*>(getObject())->getTextColor().a);
+                textData = static_cast<Magic3D::GUILabel*>(getObject())->getText();
+            }
+            if (getObject()->getType() == Magic3D::eOBJECT_TEXT)
+            {
+                textData = static_cast<Magic3D::Text*>(getObject())->getText();
+            }
+            if (textData)
+            {
+                alpha.append(textData->getTextColor().a);
             }
             else
             {
@@ -183,11 +192,20 @@ void TweensInfo::resetObject(bool update)
 
         if (getObject() && !getBone())
         {
+            Magic3D::TextData* textData = NULL;
             if (getObject()->getType() == Magic3D::eOBJECT_GUI_LABEL)
             {
-                Magic3D::ColorRGBA color = static_cast<Magic3D::GUILabel*>(getObject())->getTextColor();
+                textData = static_cast<Magic3D::GUILabel*>(getObject())->getText();
+            }
+            if (getObject()->getType() == Magic3D::eOBJECT_TEXT)
+            {
+                textData = static_cast<Magic3D::Text*>(getObject())->getText();
+            }
+            if (textData)
+            {
+                Magic3D::ColorRGBA color = textData->getTextColor();
                 color.a = alpha[0];
-                static_cast<Magic3D::GUILabel*>(getObject())->setTextColor(color);
+                textData->setTextColor(color);
             }
             else
             {

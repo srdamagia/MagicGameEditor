@@ -24,9 +24,9 @@ subject to the following restrictions:
 #include "object2dinfo.h"
 #include "ui_object2dinfo.h"
 #include "spritesequence.h"
-#include "tweensinfo.h"
-#include "utils.h"
+#include "textinfo.h"
 
+#include "utils.h"
 #include <magic3d/magic3d.h>
 
 Object2DInfo::Object2DInfo(MainWindow* mainWindow) :
@@ -35,14 +35,21 @@ Object2DInfo::Object2DInfo(MainWindow* mainWindow) :
 {
     ui->setupUi(this);
 
+    textinfo = new TextInfo(mainWindow);
     spritesequence = new SpriteSequence(mainWindow);
 
-    ui->layoutOther->addWidget(spritesequence);
-    ui->txtText->installEventFilter(this);
+    ui->layoutText->addWidget(textinfo);
+    ui->layoutOther->addWidget(spritesequence);        
 }
 
 Object2DInfo::~Object2DInfo()
 {
+    if (textinfo)
+    {
+        delete textinfo;
+        textinfo = NULL;
+    }
+
     if (spritesequence)
     {
         delete spritesequence;
@@ -50,28 +57,6 @@ Object2DInfo::~Object2DInfo()
     }
 
     delete ui;
-}
-
-void Object2DInfo::loadFontsList()
-{
-    updating = true;
-    QString fileName = "*.fnt";
-    QString path = tr(Magic3D::ResourceManager::getFonts()->getPath("").c_str());
-
-    QDir currentDir = QDir(path);
-    QStringList files;
-    files = currentDir.entryList(QStringList(fileName), QDir::Files | QDir::NoSymLinks);
-
-    for (int i = 0; i < files.count(); i++)
-    {
-        QString file = files.at(i);
-        files.replace(i, file.left(file.length() - 4));
-    }
-
-    qSort(files.begin(), files.end(), lessNone);
-    mainWindow->setComboList(files, ui->cmbFont);
-
-    updating = false;
 }
 
 void Object2DInfo::update()
@@ -167,44 +152,16 @@ void Object2DInfo::update()
         if (!ui->txtAnchorVertical->hasFocus())
         {
             ui->txtAnchorVertical->setValue(sprite->getVerticalAnchor());
-        }
-
-        if (object->getType() == Magic3D::eOBJECT_GUI_LABEL)
-        {
-            Magic3D::GUILabel* label = (Magic3D::GUILabel*)object;
-            ui->widgetText->setVisible(true);
-
-            QTextCursor cursor = ui->txtText->textCursor();
-            ui->txtText->setPlainText(QString::fromLatin1(label->getText().c_str(), label->getText().length()));
-            ui->txtText->setTextCursor(cursor);
-
-            switch (label->getTextAlignment())
-            {
-                case Magic3D::eHORIZONTAL_ALIGN_LEFT:   ui->rbTextAlignLeft->setChecked(true); break;
-                case Magic3D::eHORIZONTAL_ALIGN_CENTER: ui->rbTextAlignCenter->setChecked(true); break;
-                case Magic3D::eHORIZONTAL_ALIGN_RIGHT:  ui->rbTextAlignRight->setChecked(true); break;
-            }
-
-            setButtonColor(ui->btnTextColor, label->getTextColor());
-            if (!ui->txtFontSize->hasFocus())
-            {
-                ui->txtFontSize->setValue(label->getTextSize());
-            }
-
-            loadFontsList();
-            ui->cmbFont->setCurrentIndex(ui->cmbFont->findText(QString::fromStdString(label->getFont()->getName())));
-        }
-        else
-        {
-            ui->widgetText->setVisible(false);
-            ui->txtText->setPlainText(tr(""));
-            ui->txtFontSize->setValue(0.0f);
-        }
+        }        
 
         if (!ui->txtFlag->hasFocus())
         {
             ui->txtFlag->setValue(object->getFlag());
         }
+
+        textinfo->setVisible(object->getType() == Magic3D::eOBJECT_GUI_LABEL);
+        textinfo->setPhysicsObject(object);
+        textinfo->update();
 
         spritesequence->setVisible(object->getType() == Magic3D::eOBJECT_SPRITE);
         spritesequence->setPhysicsObject(object);
@@ -214,8 +171,8 @@ void Object2DInfo::update()
     }
     else
     {
-        spritesequence->setVisible(false);
-        ui->widgetText->setVisible(false);
+        textinfo->setVisible(false);
+        spritesequence->setVisible(false);        
     }
 
     updating = false;
@@ -323,29 +280,6 @@ void Object2DInfo::updateObject()
 
         sprite->setVerticalAnchor(ui->txtAnchorVertical->value());
 
-        if (object->getType() == Magic3D::eOBJECT_GUI_LABEL)
-        {
-            Magic3D::GUILabel* label = (Magic3D::GUILabel*)object;
-            //label->setLabel(ui->txtText->toPlainText().toStdString());
-            label->setText(std::string(ui->txtText->toPlainText().toLatin1()));
-
-            if (ui->rbTextAlignLeft->isChecked())
-            {
-                label->setTextAlignment(Magic3D::eHORIZONTAL_ALIGN_LEFT);
-            }
-            else if (ui->rbTextAlignCenter->isChecked())
-            {
-                label->setTextAlignment(Magic3D::eHORIZONTAL_ALIGN_CENTER);
-            }
-            else if (ui->rbTextAlignRight->isCheckable())
-            {
-                label->setTextAlignment(Magic3D::eHORIZONTAL_ALIGN_RIGHT);
-            }
-
-            bool created;
-            label->setFont(Magic3D::ResourceManager::getFonts()->load(ui->cmbFont->currentText().toStdString(), created));
-            label->setTextSize(ui->txtFontSize->value());
-        }
 
         sprite->setFlag(ui->txtFlag->value());
 
@@ -422,33 +356,6 @@ void Object2DInfo::on_chkVisible_toggled(bool checked)
     updateObject();
 }
 
-void Object2DInfo::on_txtText_textChanged()
-{
-    Magic3D::Object* object = getObject();
-    if (!updating && object && object->getRender() == Magic3D::eRENDER_2D)
-    {
-        if (object->getType() == Magic3D::eOBJECT_GUI_LABEL)
-        {
-            Magic3D::GUILabel* label = (Magic3D::GUILabel*)object;
-            label->setText(std::string(ui->txtText->toPlainText().toLatin1()));
-
-            mainWindow->setProjectChanged(true);
-            mainWindow->update();
-        }
-    }
-}
-
-bool Object2DInfo::eventFilter(QObject *object, QEvent *event)
-{
-    if (event->type() == QEvent::FocusOut)
-    {
-        if (object == ui->txtText)
-        {
-            //updateObject();
-        }
-    }
-    return false;
-}
 
 void Object2DInfo::on_chkScript_toggled(bool checked)
 {
@@ -541,15 +448,6 @@ void Object2DInfo::on_txtScaleX_valueChanged(double arg1)
 }
 
 void Object2DInfo::on_txtScaleY_valueChanged(double arg1)
-{
-    if (arg1 > 0.0)
-    {
-
-    }
-    updateObject();
-}
-
-void Object2DInfo::on_txtFontSize_valueChanged(double arg1)
 {
     if (arg1 > 0.0)
     {
@@ -669,53 +567,6 @@ void Object2DInfo::on_chkScale_toggled(bool checked)
 void Object2DInfo::on_chkEnabled_toggled(bool checked)
 {
     if (checked)
-    {
-
-    }
-    updateObject();
-}
-
-void Object2DInfo::on_rbTextAlignLeft_toggled(bool checked)
-{
-    if (checked)
-    {
-
-    }
-    updateObject();
-}
-
-void Object2DInfo::on_rbTextAlignCenter_toggled(bool checked)
-{
-    if (checked)
-    {
-
-    }
-    updateObject();
-}
-
-void Object2DInfo::on_rbTextAlignRight_toggled(bool checked)
-{
-    if (checked)
-    {
-
-    }
-    updateObject();
-}
-
-void Object2DInfo::on_btnTextColor_clicked()
-{
-    if (getObject() && getObject()->getType() == Magic3D::eOBJECT_GUI_LABEL)
-    {
-        Magic3D::GUILabel* label = static_cast<Magic3D::GUILabel*>(getObject());
-        label->setTextColor(chooseColor(label->getTextColor()));
-
-        updateObject();
-    }
-}
-
-void Object2DInfo::on_cmbFont_currentIndexChanged(int index)
-{
-    if (index)
     {
 
     }

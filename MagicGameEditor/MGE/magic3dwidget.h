@@ -124,6 +124,8 @@ private:
     bool trsY;
     bool trsZ;
 
+    bool mousemoving;
+
     AXIS_TYPE axis;
 
     int timer;
@@ -182,7 +184,7 @@ public:
 
     Magic3D::Object* addSprite(std::string name, std::string layer, QPoint pos);
     Magic3D::Object* addParticles(std::string name, std::string layer, QPoint pos);
-    Magic3D::Object* addText(std::string name, std::string layer, QPoint pos);
+    Magic3D::Object* addText(std::string name, std::string layer, QPoint pos, int type);
     Magic3D::Object* addWindow(std::string name, std::string layer, QPoint pos);
     Magic3D::Object* addButton(std::string name, std::string layer, QPoint pos);
     Magic3D::Object* addSlider(std::string name, std::string layer, QPoint pos);

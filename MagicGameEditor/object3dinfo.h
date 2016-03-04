@@ -32,6 +32,7 @@ subject to the following restrictions:
 #include "tweensinfo.h"
 #include "vegetationinfo.h"
 #include "waterinfo.h"
+#include "textinfo.h"
 #include "utils.h"
 
 namespace Ui {
@@ -68,6 +69,7 @@ private:
     SoundInfo* soundInfo;
     VegetationInfo* vegetationInfo;
     WaterInfo* waterInfo;
+    TextInfo* textInfo;
     QFileSystemModel* model;
 
     Magic3D::Model* getModel(bool parent = false);

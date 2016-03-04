@@ -358,7 +358,7 @@
        <normaloff>:/MagicGameEditor/Images/world.png</normaloff>:/MagicGameEditor/Images/world.png</iconset>
      </property>
      <addaction name="actionAddSprite"/>
-     <addaction name="actionAddText"/>
+     <addaction name="actionAddGuiText"/>
      <addaction name="separator"/>
      <addaction name="actionAddWindow"/>
      <addaction name="actionAddButton"/>
@@ -367,6 +367,7 @@
      <addaction name="separator"/>
      <addaction name="actionCamera"/>
      <addaction name="actionAddModel"/>
+     <addaction name="actionAddText"/>
      <addaction name="actionLight"/>
      <addaction name="actionParticles"/>
      <addaction name="actionTerrain"/>
@@ -536,8 +537,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>98</width>
-          <height>28</height>
+          <width>200</width>
+          <height>69</height>
          </rect>
         </property>
         <attribute name="label">
@@ -563,8 +564,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>98</width>
-          <height>28</height>
+          <width>200</width>
+          <height>69</height>
          </rect>
         </property>
         <attribute name="label">
@@ -590,8 +591,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>98</width>
-          <height>28</height>
+          <width>200</width>
+          <height>69</height>
          </rect>
         </property>
         <attribute name="label">
@@ -617,8 +618,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>98</width>
-          <height>28</height>
+          <width>200</width>
+          <height>69</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1066,13 +1067,13 @@ p, li { white-space: pre-wrap; }
     <string>&amp;Sprite</string>
    </property>
   </action>
-  <action name="actionAddText">
+  <action name="actionAddGuiText">
    <property name="icon">
     <iconset resource="MagicGameEditor.qrc">
      <normaloff>:/MagicGameEditor/Images/text.png</normaloff>:/MagicGameEditor/Images/text.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Text</string>
+    <string>&amp;Gui Text</string>
    </property>
   </action>
   <action name="actionAddWindow">
@@ -1687,6 +1688,15 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="toolTip">
     <string>Show Octree Objects</string>
+   </property>
+  </action>
+  <action name="actionAddText">
+   <property name="icon">
+    <iconset resource="MagicGameEditor.qrc">
+     <normaloff>:/MagicGameEditor/Images/text.png</normaloff>:/MagicGameEditor/Images/text.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Text</string>
    </property>
   </action>
  </widget>

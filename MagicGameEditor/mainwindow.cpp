@@ -741,7 +741,8 @@ void MainWindow::addObject(int type, Magic3D::Object* object, bool clone)
         case Magic3D::eOBJECT_TERRAIN:    title = "Terrain"; break;
         case Magic3D::eOBJECT_WATER:      title = "Water"; break;
         case Magic3D::eOBJECT_VEGETATION: title = "Vegetation"; break;
-        case Magic3D::eOBJECT_GUI_LABEL:  title = "Text"; break;
+        case Magic3D::eOBJECT_TEXT:       title = "Text"; break;
+        case Magic3D::eOBJECT_GUI_LABEL:  title = "GUI Text"; break;
         case Magic3D::eOBJECT_GUI_WINDOW: title = "GUI Window"; break;
         case Magic3D::eOBJECT_GUI_BUTTON: title = "GUI Button"; break;
         case Magic3D::eOBJECT_GUI_SLIDER: title = "GUI Slider"; break;
@@ -924,11 +925,19 @@ void MainWindow::addObject(QString name, int object, QPoint pos)
             }
             break;
         }
+        case Magic3D::eOBJECT_TEXT:
         case Magic3D::eOBJECT_GUI_LABEL:
         {
-            if (magic3dwidget->addText(name.toStdString(), layerName.toStdString(), pos))
+            if (magic3dwidget->addText(name.toStdString(), layerName.toStdString(), pos, object))
             {
-                child = item->child(LAYER_INDEX_2D);
+                if (object == Magic3D::eOBJECT_TEXT)
+                {
+                    child = item->child(LAYER_INDEX_3D);
+                }
+                else
+                {
+                    child = item->child(LAYER_INDEX_2D);
+                }
 
                 obj = new SceneTreeItem(itemData, OBJECT, child);
                 child->appendChild(obj);
@@ -1739,7 +1748,7 @@ void MainWindow::on_actionOpen_triggered()
         QString fileName;
         if (reloadProject.isEmpty())
         {
-            fileName = QFileDialog::getOpenFileName(this, tr("Open Project"), UTILS_DEFAULT_PATH + M3D_PATH_DEFAULT, tr(MGE_PROJECT_FILTER));
+            fileName = QFileDialog::getOpenFileName(this, tr("Open Project"), UTILS_DEFAULT_PATH + M3D_PATH_DEFAULT, tr(MGE_PROJECT_FILTER));            
             magic3dwidget->repaint();
         }
         else
@@ -1748,7 +1757,7 @@ void MainWindow::on_actionOpen_triggered()
             reloadProject.clear();
         }
         if (!fileName.isEmpty())
-        {            
+        {
             ui->actionClose_Project->trigger();
             if (!project)
             {
@@ -1758,7 +1767,7 @@ void MainWindow::on_actionOpen_triggered()
                 project->load();                
                 magic3dwidget->load();
                 cameraoptions->setSpeedMoveFactor(project->getCameraMove());
-                cameraoptions->setSpeedLookFactor(project->getCameraLook());                
+                cameraoptions->setSpeedLookFactor(project->getCameraLook());
             }
         }
     }
@@ -2046,7 +2055,7 @@ void MainWindow::on_actionAddSprite_triggered()
 
 void MainWindow::on_actionAddText_triggered()
 {
-    addObject(Magic3D::eOBJECT_GUI_LABEL);
+    addObject(Magic3D::eOBJECT_TEXT);
 }
 
 void MainWindow::on_actionAddWindow_triggered()
@@ -2316,6 +2325,10 @@ void MainWindow::on_actionSimulate_triggered()
         Magic3D::Network::getInstance()->disconnect(true);
         Magic3D::Magic3D::getInstance()->setTimeScale(settings.value("time_scale").toFloat());
         magic3dwidget->setSelection(NULL, NULL);
+        while (qApp->overrideCursor() != 0)
+        {
+            qApp->restoreOverrideCursor();
+        }
         ui->actionSimulate->setEnabled(false);
         ui->actionOpen->trigger();
     }
@@ -2798,4 +2811,9 @@ void MainWindow::on_actionPack_triggered()
     package->setPackage(QString(Utils::getApplicationPath() + "data.magic3d").toStdString());
     package->pack(dataPath.toStdString(), packRefresh);
     delete package;
+}
+
+void MainWindow::on_actionAddGuiText_triggered()
+{
+    addObject(Magic3D::eOBJECT_GUI_LABEL);
 }

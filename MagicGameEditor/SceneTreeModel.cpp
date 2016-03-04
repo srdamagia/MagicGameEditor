@@ -107,6 +107,7 @@ QVariant SceneTreeModel::data(const QModelIndex &index, int role) const
                                 case Magic3D::eOBJECT_TERRAIN:    result = QIcon(":/MagicGameEditor/Images/terrain.png"); break;
                                 case Magic3D::eOBJECT_WATER:      result = QIcon(":/MagicGameEditor/Images/water.png"); break;
                                 case Magic3D::eOBJECT_VEGETATION: result = QIcon(":/MagicGameEditor/Images/tree.png"); break;
+                                case Magic3D::eOBJECT_TEXT:
                                 case Magic3D::eOBJECT_GUI_LABEL:  result = QIcon(":/MagicGameEditor/Images/text.png"); break;
                                 case Magic3D::eOBJECT_GUI_WINDOW: result = QIcon(":/MagicGameEditor/Images/window.png"); break;
                                 case Magic3D::eOBJECT_GUI_BUTTON: result = QIcon(":/MagicGameEditor/Images/button.png"); break;

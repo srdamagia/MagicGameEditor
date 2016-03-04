@@ -30,8 +30,8 @@ namespace Ui {
     class Object2DInfo;
 }
 
+class TextInfo;
 class SpriteSequence;
-class TweensInfo;
 
 class Object2DInfo : public Magic3DObjectPanel
 {
@@ -40,8 +40,6 @@ class Object2DInfo : public Magic3DObjectPanel
 public:
     explicit Object2DInfo(MainWindow* mainWindow);
     ~Object2DInfo();
-
-    void loadFontsList();
 
     virtual void update();
     virtual void updateSimulation();
@@ -52,10 +50,9 @@ public:
 private:
     Ui::Object2DInfo *ui;
 
-    SpriteSequence* spritesequence;
-    bool eventFilter(QObject *object, QEvent *event);
+    SpriteSequence* spritesequence;    
+    TextInfo* textinfo;
 private slots:
-    void on_txtText_textChanged();
     void on_chkVisible_toggled(bool checked);
     void on_cmbParent_currentIndexChanged(int index);
     void on_chkScript_toggled(bool checked);
@@ -69,7 +66,6 @@ private slots:
     void on_txtRotZ_valueChanged(double arg1);
     void on_txtScaleX_valueChanged(double arg1);
     void on_txtScaleY_valueChanged(double arg1);
-    void on_txtFontSize_valueChanged(double arg1);
     void on_txtFlag_valueChanged(int arg1);
     void on_rbLeft_toggled(bool checked);
     void on_rbHCenter_toggled(bool checked);
@@ -82,12 +78,7 @@ private slots:
     void on_chkPosition_toggled(bool checked);
     void on_chkRotation_toggled(bool checked);
     void on_chkScale_toggled(bool checked);
-    void on_chkEnabled_toggled(bool checked);
-    void on_rbTextAlignLeft_toggled(bool checked);
-    void on_rbTextAlignCenter_toggled(bool checked);
-    void on_rbTextAlignRight_toggled(bool checked);
-    void on_btnTextColor_clicked();
-    void on_cmbFont_currentIndexChanged(int index);
+    void on_chkEnabled_toggled(bool checked);    
 };
 
 #endif // OBJECT2DINFO_H

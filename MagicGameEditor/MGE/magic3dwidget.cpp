@@ -96,6 +96,8 @@ MGE::Magic3DWidget::Magic3DWidget(const QGLFormat& format, MainWindow *parent) :
     trsY = true;
     trsZ = true;
 
+    mousemoving = false;
+
     axis = eAXIS_TYPE_CAMERA;
 
     loading = false;
@@ -762,7 +764,7 @@ Magic3D::Object* MGE::Magic3DWidget::addParticles(std::string name, std::string 
     return result;
 }
 
-Magic3D::Object* MGE::Magic3DWidget::addText(std::string name, std::string layer, QPoint pos)
+Magic3D::Object* MGE::Magic3DWidget::addText(std::string name, std::string layer, QPoint pos, int type)
 {
     Magic3D::Object* result = NULL;
 
@@ -773,11 +775,23 @@ Magic3D::Object* MGE::Magic3DWidget::addText(std::string name, std::string layer
 
     if (!object && l)
     {
-        bool created = false;
-        object = mngr->addGUILabel(name, 32, created);
-        Magic3D::Vector3 position = getPosition2D(pos);
-        ((Magic3D::GUILabel*)object)->setPosition(Magic3D::Vector3(position.getX(), position.getY(), 0.0f));
-        ((Magic3D::GUILabel*)object)->setText("Placeholder");
+        bool created = false;        
+
+        if (type == Magic3D::eOBJECT_GUI_LABEL)
+        {
+            object = mngr->addGUILabel(name, 32, created);
+            Magic3D::Vector3 position = getPosition2D(pos);
+            ((Magic3D::GUILabel*)object)->setPosition(Magic3D::Vector3(position.getX(), position.getY(), 0.0f));
+            ((Magic3D::GUILabel*)object)->getText()->setText("Placeholder");
+        }
+        if (type == Magic3D::eOBJECT_TEXT)
+        {
+            object = mngr->addText(name, 32, created);
+            Magic3D::Vector3 position = getPosition3D(pos);
+            ((Magic3D::Text*)object)->setPosition(position);
+            ((Magic3D::Text*)object)->getText()->setText("Placeholder");
+        }
+
 
         Magic3D::Scene::getInstance()->addObject(l, object);
 
@@ -862,7 +876,7 @@ Magic3D::Object* MGE::Magic3DWidget::addSlider(std::string name, std::string lay
         object = mngr->addGUILabel(name, 32, created);
         Magic3D::Vector3 position = getPosition2D(pos);
         ((Magic3D::GUILabel*)object)->setPosition(Magic3D::Vector3(position.getX(), position.getY(), 0.0f));
-        ((Magic3D::GUILabel*)object)->setText("Placeholder");
+        /*((Magic3D::GUILabel*)object)->setText("Placeholder");*/
 
         Magic3D::Scene::getInstance()->addObject(l, object);
 
@@ -1484,7 +1498,7 @@ void MGE::Magic3DWidget::mouseMoveEvent(QMouseEvent *event)
 
     if (Magic3D::Renderer::getInstance()->getWindow())
     {
-        Magic3D::Renderer::getInstance()->getWindow()->setCursorPosition(event->pos().x(), event->pos().y());
+        Magic3D::Renderer::getInstance()->getWindow()->updateCursorPosition(event->pos().x(), event->pos().y());
     }
 
     Magic3D::Object* object = getSelectedObject();
@@ -1507,8 +1521,26 @@ void MGE::Magic3DWidget::mouseMoveEvent(QMouseEvent *event)
 
     if (Magic3D::Script::getInstance()->isPlaying())
     {
-        Magic3D::Input::getInstance()->dispatchEvent(Magic3D::eINPUT_MOUSE, Magic3D::eEVENT_MOUSE_MOVE, event->pos().x(), event->pos().y(), button);
-        Magic3D::Input::getInstance()->dispatchEvent(Magic3D::eINPUT_TOUCH, Magic3D::eEVENT_TOUCH_MOVE, event->pos().x(), event->pos().y(), button);
+        if (Magic3D::Renderer::getInstance()->getWindow()->isRelativeMouseMode())
+        {
+            selectedOffset.setX(pos().x() + width() * 0.5f);
+            selectedOffset.setY(pos().y() + height() * 0.5f);
+            Magic3D::Renderer::getInstance()->getWindow()->updateCursorPosition(selectedOffset.x(),selectedOffset.y());
+            qApp->setOverrideCursor(QCursor( Qt::BlankCursor ));
+            centerCursor = true;
+        }
+        else
+        {
+            while (qApp->overrideCursor() != 0)
+            {
+                qApp->restoreOverrideCursor();
+            }
+        }
+        if (!mousemoving)
+        {
+            Magic3D::Input::getInstance()->dispatchEvent(Magic3D::eINPUT_MOUSE, Magic3D::eEVENT_MOUSE_MOVE, event->pos().x(), event->pos().y(), button);
+            Magic3D::Input::getInstance()->dispatchEvent(Magic3D::eINPUT_TOUCH, Magic3D::eEVENT_TOUCH_MOVE, event->pos().x(), event->pos().y(), button);
+        }
     }
     else
     {
@@ -1954,7 +1986,15 @@ void MGE::Magic3DWidget::mouseMoveEvent(QMouseEvent *event)
         int pX = this->mapToGlobal(p).x();
         int pY = this->mapToGlobal(p).y();
 
-        QCursor::setPos(pX, pY);
+        if (mousemoving)
+        {
+            mousemoving = false;
+        }
+        else
+        {
+            mousemoving = true;
+            QCursor::setPos(pX, pY);
+        }
 
         mX = selectedOffset.x();
         mY = selectedOffset.y();

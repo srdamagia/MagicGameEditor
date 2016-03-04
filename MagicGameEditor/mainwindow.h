@@ -263,6 +263,7 @@ private slots:
     void on_actionInstance_triggered();
     void on_actionShow_Octree_triggered();
     void on_actionShow_Octree_Objects_triggered();
+    void on_actionAddGuiText_triggered();
 };
 
 #endif // MAINWINDOW_H

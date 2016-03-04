@@ -49,6 +49,9 @@ Object3DInfo::Object3DInfo(MainWindow* mainWindow) :
 
     waterInfo = new WaterInfo(mainWindow);
     ui->layoutOther->addWidget(waterInfo);
+
+    textInfo = new TextInfo(mainWindow);
+    ui->layoutOther->addWidget(textInfo);
 }
 
 Object3DInfo::~Object3DInfo()
@@ -88,6 +91,12 @@ Object3DInfo::~Object3DInfo()
     {
         delete waterInfo;
         waterInfo = NULL;
+    }
+
+    if (textInfo)
+    {
+        delete textInfo;
+        textInfo = NULL;
     }
 
     delete ui;
@@ -267,6 +276,10 @@ void Object3DInfo::update()
         waterInfo->setPhysicsObject(object);
         waterInfo->update();
 
+        textInfo->setVisible(object->getType() == Magic3D::eOBJECT_TEXT);
+        textInfo->setPhysicsObject(object);
+        textInfo->update();
+
         Magic3D::Box box = object->getBoundingBox();
         ui->lblWidth->setText(tr("width: %0").arg(box.getWidth() * object->getScale().getX(), 0, 'f', 3));
         ui->lblHeight->setText(tr("height: %0").arg(box.getHeight() * object->getScale().getY(), 0, 'f', 3));
@@ -306,6 +319,7 @@ void Object3DInfo::update()
         soundInfo->setVisible(false);
         vegetationInfo->setVisible(false);
         waterInfo->setVisible(false);
+        textInfo->setVisible(false);
         ui->lstFiles->setModel(NULL);
     }
 
