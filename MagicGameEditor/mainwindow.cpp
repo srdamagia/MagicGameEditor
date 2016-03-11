@@ -1863,6 +1863,9 @@ void MainWindow::on_actionClose_Project_triggered()
             ui->dockScript->setWindowTitle("Script");
             ui->dockScript->setEnabled(false);
             loading = false;
+
+            Magic3D::Renderer::getInstance()->setUsingScreenEffects(false);
+            magic3dwidget->repaint();
         }
     }
     update();
@@ -2288,7 +2291,7 @@ void MainWindow::on_actionSimulate_triggered()
         clearLog();
         ui->actionSave->trigger();
 
-        if (!Magic3D::Network::getInstance()->isServer() && !Magic3D::Network::getInstance()->isConnected())
+        if (!Magic3D::Network::getInstance()->isConnected())
         {
             for (int i = 0 ; i < 3; i++)
             {
