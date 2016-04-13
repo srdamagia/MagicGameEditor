@@ -502,6 +502,7 @@ void Object3DInfo::updateObject()
 
 void Object3DInfo::updateCombos()
 {
+    vegetationInfo->setPhysicsObject(getPhysicsObject());
     vegetationInfo->updateTerrainCombo();
 }
 

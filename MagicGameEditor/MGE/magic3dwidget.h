@@ -74,7 +74,7 @@ private:
     QTextBrowser* widgetLog;
 
 public:
-    explicit WidgetLogCallBack(QTextBrowser* widgetLog)
+    explicit WidgetLogCallBack(QTextBrowser* widgetLog) : Magic3D::LogCallBack(false)
     {
         this->widgetLog = widgetLog;
     }

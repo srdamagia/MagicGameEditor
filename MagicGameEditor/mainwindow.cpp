@@ -2291,15 +2291,14 @@ void MainWindow::on_actionSimulate_triggered()
         clearLog();
         ui->actionSave->trigger();
 
-        if (!Magic3D::Network::getInstance()->isConnected())
+        int retry = 0;
+        while (!Magic3D::Network::getInstance()->isConnected())
         {
-            for (int i = 0 ; i < 3; i++)
+            Magic3D::Network::getInstance()->connect(Magic3D::Magic3D::getInstance()->getConfiguration().ADDRESS, Magic3D::Magic3D::getInstance()->getConfiguration().PORT);
+            retry++;
+            if (retry >= 3)
             {
-                Magic3D::Network::getInstance()->connect(Magic3D::Magic3D::getInstance()->getConfiguration().ADDRESS, Magic3D::Magic3D::getInstance()->getConfiguration().PORT);
-                if (Magic3D::Network::getInstance()->isConnected())
-                {
-                    break;
-                }
+                break;
             }
         }
 
