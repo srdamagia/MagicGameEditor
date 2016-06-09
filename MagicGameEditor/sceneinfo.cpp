@@ -182,7 +182,7 @@ void SceneInfo::updateCamerasCombo()
     {
         Magic3D::Layer* layer = *it_l++;
 
-        std::vector<Magic3D::Object*>* objects = layer->getObjects3D();
+        std::vector<Magic3D::Object*>* objects = layer->getCameras();
         std::vector<Magic3D::Object*>::const_iterator it_o = objects->begin();
         while (it_o != objects->end())
         {
