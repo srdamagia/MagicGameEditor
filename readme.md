@@ -1,3 +1,4 @@
+![MGE](https://github.com/srdamagia/MagicGameEditor/blob/master/mge.png)
 Magic Game Editor
 =================
 
